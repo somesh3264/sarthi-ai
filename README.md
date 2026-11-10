@@ -1,16 +1,28 @@
-# React + Vite
+# Sarthi AI Solutions website
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+React + Vite + Tailwind site for Sarthi AI Solutions, built to the website blueprint (v1.0).
 
-Currently, two official plugins are available:
+## Development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+`npm run build` creates the production build in `dist/`; `npm run lint` runs Oxlint.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Contact form (Formspree)
 
-## Expanding the Oxlint configuration
+The Contact Us enquiry form posts to a [Formspree](https://formspree.io) form.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+1. Sign in to Formspree with the business mailbox that should receive enquiries and create a new form.
+2. Copy the form endpoint, e.g. `https://formspree.io/f/abcdwxyz`.
+3. Set it as `VITE_CONTACT_ENDPOINT`:
+   - **Locally:** copy `.env.example` to `.env.local` and paste the endpoint.
+   - **GitHub Pages:** add a repository variable `VITE_CONTACT_ENDPOINT` under
+     Settings → Secrets and variables → Actions → Variables.
+   - **Vercel:** add the same name under Project → Settings → Environment Variables.
+4. In Formspree, add the site's domain under the form's allowed domains, and turn on the
+   autoresponse if visitors should get an acknowledgement email.
+
+Until the variable is set, the form validates input but shows a "couldn't send" message on submit.

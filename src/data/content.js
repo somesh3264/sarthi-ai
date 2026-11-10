@@ -1,279 +1,63 @@
+// Website copy, taken from the Sarthi AI website blueprint (v1.0, 04 November 2026).
+// Items the blueprint marks "proposed" or "needs confirmation" should be approved before launch.
+
 export const company = {
   name: "Sarthi AI Solutions",
-  tagline: "Spatial Analytics · Remote Sensing · Technology · Habitat Intelligence",
+  introLine: "We turn Geospatial Data into Resilient Decisions.",
+  intro:
+    "Sarthi AI Solutions transforms complex geospatial data into actionable intelligence through GIS, AI and advanced technology.",
   about:
-    "We are a specialized consulting and analytics firm providing geospatial intelligence, environmental assessments, disaster risk solutions, drone and aerial surveys, artificial intelligence and machine learning (AI/ML), and data analytics services to enable informed decision-making for infrastructure, industrial, power, and renewable energy projects. Through the integration of advanced GIS, remote sensing, environmental science, and regulatory expertise, we support clients in planning and compliance for the development of resilient, sustainable projects.",
+    "Sarthi AI Solutions is a geospatial intelligence and technology company combining GIS, remote sensing, environmental analysis, artificial intelligence and software capabilities. We work to transform complex location-based and operational data into clear insights that support planning, assessment and decision-making across land, infrastructure, industry and the environment.",
   vision:
     "To enable sustainable development and resilient infrastructure through AI-driven geospatial and environmental solutions.",
-  mission: [
-    "Deliver accurate, actionable insights using cutting-edge geospatial technologies.",
-    "Strengthen regulatory compliance and best environmental, social, and governance (ESG) practices.",
-    "Reduce risk and enhance resilience against natural and industrial hazards.",
-  ],
+  mission:
+    "To deliver accurate, actionable insights through geospatial technology and intelligent analysis; strengthen regulatory compliance, environmental management and ESG objectives; and help organisations reduce risk and improve resilience against natural and industrial hazards.",
+  approach:
+    "We bring geospatial data, environmental context and intelligent technology together to help organisations understand locations, assess conditions and evaluate options. Our work may combine field data, satellite and aerial imagery, spatial analysis, software and decision-support outputs according to the needs of each engagement.",
   sustainability:
-    "Committed to promoting environmentally responsible development, the growth of young talent, minimizing ecological impacts, and strengthening resilience against disasters through innovation and best practices.",
+    "Promoting environmentally responsible development, nurturing young talent, minimising ecological impact and strengthening resilience against disasters through innovation and best practice.",
 };
 
-export const executiveOverview = {
-  kicker: "Executive Overview",
-  headline: "Where geospatial science meets applied intelligence.",
-  body: "Sarthi AI Solutions operates at the intersection of geospatial science, environmental engineering, and artificial intelligence — translating satellite imagery, drone data, and field surveys into the decision-grade intelligence that infrastructure, industrial, and renewable energy programs are built on. Every engagement runs on the same integrated stack: GIS and remote sensing for acquisition, AI/ML for analysis, and regulatory expertise for compliance — delivered as maps, models, and dashboards clients can act on immediately.",
+export const homeFilm = {
+  heading: "See the world through a geospatial lens.",
+  body: "From satellite and aerial imagery to location intelligence, we turn the view from above into insight for decisions on the ground.",
 };
 
-export const stats = [
-  {
-    value: 6,
-    padTo: 2,
-    label: "Core service lines spanning the full project lifecycle",
-  },
-  {
-    value: 6,
-    padTo: 2,
-    label: "Industry sectors served, from energy to public infrastructure",
-  },
-  {
-    value: 12,
-    suffix: "+",
-    label: "Integrated technology platforms and data pipelines",
-  },
-  {
-    value: 360,
-    suffix: "°",
-    label: "End-to-end coverage — from site acquisition to ongoing monitoring",
-  },
-];
-
-export const coreValues = [
-  {
-    title: "Precision",
-    description:
-      "Every map, model, and recommendation is built on validated data and defensible methodology — accuracy is non-negotiable.",
-  },
-  {
-    title: "Compliance & Integrity",
-    description:
-      "Regulatory rigor and ESG discipline are embedded in every deliverable, not bolted on after the fact.",
-  },
-  {
-    title: "Innovation",
-    description:
-      "AI and machine learning are applied deliberately — to sharpen accuracy, compress timelines, and surface insight human review alone would miss.",
-  },
-  {
-    title: "Sustainability",
-    description:
-      "Solutions are designed to minimize ecological impact and strengthen resilience against natural and industrial hazards.",
-  },
-];
-
-export const technology = [
-  "Geographic Information Systems (GIS)",
-  "Remote Sensing & Satellite Data Processing",
-  "Drone & Aerial Survey Platforms",
-  "Spatial Data Analysis",
-  "Artificial Intelligence & Machine Learning Models",
-  "Spatial and Predictive Analytics",
-  "Cloud-based Data Processing and Visualization",
-  "Field Surveys and IoT / Sensor Data Integration",
-  "Multi-criteria Decision Analysis (MCDA)",
-  "Field Surveys and Geotagged Data Collection",
-  "Geofenced Monitoring Solutions",
-  "Data-driven Modeling and Visualization",
-];
-
-export const techStackLayers = [
-  {
-    name: "Data Acquisition",
-    items: [
-      "Drone & Aerial Survey Platforms",
-      "Remote Sensing & Satellite Data Processing",
-      "Field Surveys & Geotagged Data Collection",
-      "IoT / Sensor Data Integration",
-    ],
-  },
-  {
-    name: "Processing & Spatial Analysis",
-    items: [
-      "Geographic Information Systems (GIS)",
-      "Spatial Data Analysis",
-      "Multi-Criteria Decision Analysis (MCDA)",
-      "Geofenced Monitoring Solutions",
-    ],
-  },
-  {
-    name: "Intelligence & Modeling",
-    items: [
-      "Artificial Intelligence & Machine Learning Models",
-      "Spatial & Predictive Analytics",
-      "Data-Driven Modeling",
-    ],
-  },
-  {
-    name: "Delivery & Visualization",
-    items: ["Cloud-Based Processing & Visualization", "Interactive Dashboards", "Technical Reporting"],
-  },
-];
-
-export const capabilityMatrix = {
-  columns: ["GIS & Spatial Analysis", "AI / ML", "Drone & Remote Sensing", "Regulatory & Compliance", "Decision Dashboards"],
-  rows: [
-    { name: "Site Suitability Analysis", values: [true, true, true, true, true] },
-    { name: "Environmental Impact Analysis", values: [true, true, true, true, false] },
-    { name: "Disaster Management Planning", values: [true, true, true, true, false] },
-    { name: "Drone & Aerial Surveys", values: [true, true, true, false, false] },
-    { name: "AI & ML Solutions", values: [true, true, true, false, false] },
-    { name: "Data Analytics & Decision Intelligence", values: [true, true, false, true, true] },
-  ],
+export const whoWeAre = {
+  heading: "Geospatial intelligence. Real-world impact.",
+  body: "We bring together geospatial science, environmental understanding and intelligent technology to help organisations assess places, understand risk and make informed decisions.",
 };
 
-export const methodology = [
-  {
-    title: "Discovery & Data Acquisition",
-    description:
-      "Satellite imagery, drone surveys, and field data collection establish an accurate baseline for the project area.",
-  },
-  {
-    title: "Geospatial & Environmental Analysis",
-    description:
-      "GIS processing, remote sensing, and AI/ML models translate raw data into land-use, risk, and suitability layers.",
-  },
-  {
-    title: "Modeling & Decision Support",
-    description:
-      "Multi-criteria decision analysis and predictive modeling rank options and quantify risk for stakeholders.",
-  },
-  {
-    title: "Reporting & Ongoing Monitoring",
-    description:
-      "Regulatory-ready documentation, dashboards, and monitoring tools keep decision-makers current through delivery and beyond.",
-  },
-];
+export const competencyIntro =
+  "End-to-end geospatial, environmental and AI-enabled services powering decisions across industry, infrastructure, power and renewable energy.";
 
-export const competitiveAdvantages = [
-  {
-    title: "Integrated, Not Siloed",
-    description:
-      "Geospatial, environmental, drone, and AI/ML capability sit under one roof — one team, one methodology, one point of accountability.",
-  },
-  {
-    title: "Technology-Led Delivery",
-    description:
-      "AI/ML is applied across every service line to sharpen accuracy and compress turnaround time, not offered as a separate add-on.",
-  },
-  {
-    title: "Compliance-First Approach",
-    description:
-      "Regulatory and ESG requirements are designed into the methodology from day one, reducing approval risk downstream.",
-  },
-  {
-    title: "Decision-Ready Deliverables",
-    description:
-      "Every engagement ends in maps, dashboards, and reports built for executive and regulatory decision-making — not raw data dumps.",
-  },
-];
-
-export const esgPillars = [
-  {
-    pillar: "Environmental",
-    description:
-      "Minimizing ecological impact across every engagement, and building disaster-resilience solutions that protect communities and infrastructure from natural and industrial hazards.",
-  },
-  {
-    pillar: "Social",
-    description:
-      "Investing in the growth of young technical talent and delivering disaster-management planning that strengthens the safety and resilience of the communities our clients operate in.",
-  },
-  {
-    pillar: "Governance",
-    description:
-      "Embedding regulatory compliance and transparent, defensible methodology into every deliverable — from EIA documentation to disaster-management frameworks.",
-  },
-];
-
-export const futureVision = {
-  statement:
-    "Capability compounds over time. Each horizon below builds on the last — deeper automation first, then continuous client visibility, then a broader role across the infrastructure lifecycle.",
-  horizons: [
-    {
-      title: "Near-Term",
-      description:
-        "Deepen AI/ML automation across every service line, further compressing turnaround time on site suitability, EIA, and disaster-risk deliverables.",
-    },
-    {
-      title: "Mid-Term",
-      description:
-        "Extend cloud-based dashboards and monitoring tools so clients track project status, compliance, and risk continuously — not only at delivery milestones.",
-    },
-    {
-      title: "Long-Term",
-      description:
-        "Establish Sarthi AI Solutions as a full-lifecycle decision-intelligence partner for climate-resilient infrastructure, industrial, and renewable energy programs.",
-    },
-  ],
-};
-
-export const sectors = [
-  {
-    name: "Renewable Energy (Solar, Wind)",
-    blurb: "Site suitability, irradiance analysis, and monitoring for solar and wind assets.",
-  },
-  {
-    name: "Industrial & Manufacturing",
-    blurb: "Facility siting, risk assessment, and compliance analytics for industrial operations.",
-  },
-  {
-    name: "Infrastructure & Urban Development",
-    blurb: "Planning support, environmental screening, and disaster resilience for urban projects.",
-  },
-  {
-    name: "Mining & Natural Resources",
-    blurb: "Terrain modeling, environmental monitoring, and resource-area analytics.",
-  },
-  {
-    name: "Power",
-    blurb: "Site assessment, environmental compliance, and risk mapping for power projects.",
-  },
-  {
-    name: "Government & Public Sector",
-    blurb: "Data-driven planning, disaster management, and regulatory-ready documentation.",
-  },
-];
-
-export const visualCapabilities = [
-  "Satellite imagery and thematic maps",
-  "GIS-based suitability and risk maps",
-  "Drone survey visuals and 3D models",
-  "Analytics dashboards and infographics",
-];
-
-export const whyChooseUs = [
-  "Integrated geospatial and environmental expertise",
-  "Technology-based, compliant, and transparent approach",
-  "Customized solutions for project-specific needs",
-  "High-quality maps, reports, and decision tools",
-  "Mobile and web solutions for anytime/anywhere monitoring",
+export const serviceGroups = [
+  { name: "Planning & Compliance", services: ["site-suitability", "eia"] },
+  { name: "Risk & Survey", services: ["dmp", "drone-surveys"] },
+  { name: "Intelligence & Analytics", services: ["ai-ml", "analytics"] },
 ];
 
 export const services = [
   {
     id: "site-suitability",
     number: "01",
-    title: "Geospatial Industrial & Solar Power Project Site Suitability Analysis",
+    title: "Geospatial & Solar Project Site Suitability Analysis",
+    card: "GIS-based assessment of land and project locations using terrain, land-use, access, environmental constraints and other relevant spatial factors to support site selection.",
     summary:
-      "End-to-end site suitability assessments for industrial facilities and solar power projects using advanced GIS and multi-criteria decision analysis.",
+      "GIS-based assessment of land and project locations using terrain, land-use, access, environmental constraints and other relevant spatial factors to support site selection for solar and other industrial projects.",
     capabilities: [
       "Land-use / land-cover (LULC) analysis",
-      "Topography, slope, and aspect analysis",
-      "Temporal change monitoring and analysis",
+      "Topography, slope and aspect analysis",
+      "Temporal change monitoring",
       "Solar irradiance and shading analysis",
-      "Proximity analysis (roads, drainage, water, settlements, etc.)",
+      "Proximity analysis for roads, drainage, water and settlements",
       "Environmental and social constraints mapping",
-      "Regulatory and exclusion zone screening",
+      "Regulatory and exclusion-zone screening",
       "Site ranking and feasibility mapping",
-      "Cropping pattern, crop area, and production estimation for agri-based and food processing industries",
-      "Insurance compensation estimation",
+      "Cropping pattern, crop area and production estimation; insurance compensation estimation where in scope",
     ],
-    deliverables: [
+    outputsLabel: "Typical outputs",
+    outputs: [
       "GIS-based suitability maps",
       "Technical reports with site recommendations",
       "Decision-support dashboards",
@@ -283,39 +67,43 @@ export const services = [
   {
     id: "eia",
     number: "02",
-    title: "Environmental Impact Analysis (EIA)",
+    title: "Environmental Impact Assessment (EIA)",
+    card: "Geospatial and environmental analysis to support baseline studies, impact assessment, constraint mapping and practical environmental management recommendations.",
     summary:
-      "Comprehensive Environmental Impact Analyses aligned with national and international guidelines to support project approvals and sustainable development.",
+      "Geospatial and environmental analysis to support baseline studies, impact assessment, constraint mapping and practical environmental management recommendations.",
     capabilities: [
-      "Baseline environmental data collection and analysis",
-      "Air, water, soil, noise, and ecological assessments",
-      "Impact identification, prediction, and evaluation",
+      "Baseline environmental data collection",
+      "Air, water, soil, noise and ecological assessments",
+      "Impact identification, prediction and evaluation",
       "Risk assessment and mitigation planning",
       "Environmental Management Plans (EMP)",
       "Regulatory documentation and compliance support",
     ],
-    deliverables: [
+    outputsLabel: "Typical outputs",
+    outputs: [
       "EIA / EMP reports",
       "Thematic environmental maps",
-      "Stakeholder and regulatory-ready documentation",
+      "Stakeholder- and regulator-ready documentation",
     ],
   },
   {
     id: "dmp",
     number: "03",
     title: "Disaster Management Plan (DMP) Preparation",
+    card: "Risk-informed planning support through hazard, exposure and vulnerability mapping, GIS-based risk visualisation, preparedness and response planning.",
     summary:
-      "Robust Disaster Management Plans to enhance preparedness, response, and recovery for industrial, infrastructure, and urban projects.",
+      "Risk-informed planning support through hazard, exposure and vulnerability mapping, GIS-based risk visualisation, and inputs for preparedness, mitigation and response planning.",
     capabilities: [
-      "Hazard, vulnerability, and risk assessment (HVRA)",
+      "Hazard, vulnerability and risk assessment (HVRA)",
       "Natural and technological disaster mapping",
       "Emergency response planning and SOPs",
       "Resource and evacuation planning",
       "GIS-based risk and emergency maps",
-      "Alignment with national disaster management frameworks",
+      "Alignment with relevant national disaster management frameworks",
     ],
-    deliverables: [
-      "Disaster Management Plans (on-site and off-site)",
+    outputsLabel: "Typical outputs",
+    outputs: [
+      "On-site and off-site Disaster Management Plans",
       "Risk and emergency response maps",
       "Human settlement analysis",
     ],
@@ -324,71 +112,208 @@ export const services = [
     id: "drone-surveys",
     number: "04",
     title: "Drone & Aerial Surveys",
+    card: "UAV-based data capture and mapping, including orthomosaics, elevation products and spatial datasets that help organisations inspect sites and understand ground conditions.",
     summary:
-      "Professional drone-based data acquisition and analysis/analytics services to support geospatial analysis, environmental studies, and project monitoring.",
+      "UAV-based data capture and mapping, including orthomosaics, elevation products and spatial datasets that help organisations inspect sites, measure change and understand ground conditions.",
     capabilities: [
-      "High-resolution aerial mapping and orthophoto generation",
-      "Digital Elevation Models (DEM)",
-      "Digital Surface and Terrain Models (DSM/DTM) and contour mapping",
-      "Cut & fill analysis",
-      "Feature extraction",
+      "High-resolution aerial mapping and orthophotos",
+      "DEM, DSM / DTM and contour mapping",
+      "Cut-and-fill analysis and feature extraction",
       "Solar site inspection and layout validation",
       "Environmental monitoring and change detection",
       "Crop identification and damage assessment",
       "Disaster damage assessment and rapid surveys",
     ],
-    deliverables: [
-      "Ortho mosaic maps",
+    outputsLabel: "Typical outputs",
+    outputs: [
+      "Orthomosaic maps",
       "3D terrain and surface models",
       "Geo-referenced imagery for GIS integration",
-      "Engineering contours",
-      "Thematic maps",
-      "Temporal change detection",
+      "Engineering contours, thematic maps and change-detection outputs",
     ],
   },
   {
     id: "ai-ml",
     number: "05",
-    title: "Artificial Intelligence (AI) & Machine Learning (ML) Enabled Solutions",
+    title: "AI & Machine Learning-Enabled Solutions",
+    card: "Applied AI and machine learning for image classification, feature extraction, change detection, object recognition and workflow automation.",
     summary:
-      "Leveraging AI and ML to enhance accuracy, speed, and predictive capability across geospatial, environmental, and disaster management services.",
+      "Applied AI and machine learning for image classification, feature extraction, change detection, object recognition and workflow automation using geospatial and other relevant data.",
     capabilities: [
-      "Automated land-use / land-cover (LULC) classification",
-      "Solar potential estimation, crop yield prediction, and damage assessment",
-      "Site suitability optimization using ML algorithms",
+      "Automated LULC classification",
+      "Solar potential estimation",
+      "Crop yield prediction and damage assessment",
+      "Site suitability optimisation using ML",
       "Environmental change detection and trend analysis",
       "Image and video analytics from satellite and drone data",
       "Anomaly detection for environmental and safety monitoring",
     ],
-    applications: [
-      "Industrial & Solar Site Suitability — AI-driven multi-criteria ranking and constraint optimization",
-      "Environmental Impact Analysis — Predictive impact assessment and mitigation scenario modeling",
-      "Disaster Management — Early warning indicators, damage assessment, and response optimization",
-      "Drone & Aerial Surveys — Image and video analytics, automated processes, alert management, project monitoring",
-    ],
-    deliverables: [
-      "Higher accuracy",
-      "Faster project turnaround time",
-      "Data-driven, informed, and objective decision-making",
-      "AI-driven chatbots, predictions, and forecasts",
+    outputsLabel: "Typical outcomes",
+    outputs: [
+      "Higher accuracy and faster turnaround where validated",
+      "Data-driven decisions",
+      "AI-driven chatbots",
+      "Relevant predictions and forecasts",
     ],
   },
   {
-    id: "data-analytics",
+    id: "analytics",
     number: "06",
     title: "Data Analytics & Decision Intelligence",
+    card: "Transform spatial and non-spatial datasets into clear analysis, visualisations and decision-support outputs.",
     summary:
-      "Transforming complex spatial and non-spatial data into actionable insights through advanced analytics and visualization.",
+      "Transform spatial and non-spatial datasets into clear analysis, visualisations and decision-support outputs that help teams identify patterns, compare options and plan next steps.",
     capabilities: [
       "Spatial and non-spatial data integration",
-      "Predictive and scenario-based analysis, multi-criteria decision analysis (MCDA)",
-      "Risk modeling and impact forecasting",
-      "Interactive dashboards and dynamic report designing",
+      "Predictive and scenario-based analysis",
+      "Multi-criteria decision analysis (MCDA)",
+      "Risk modelling and impact forecasting",
+      "Interactive dashboards and dynamic reports",
     ],
-    deliverables: [
-      "Faster, evidence-based decision-making",
+    outputsLabel: "Typical outcomes",
+    outputs: [
+      "Faster evidence-based decisions",
       "Reduced project risk and uncertainty",
-      "Monitoring dashboards for improved planning accuracy and compliance",
+      "Monitoring dashboards for planning accuracy and compliance",
     ],
   },
 ];
+
+export const supportingCapabilities = [
+  {
+    title: "Satellite Imagery & Earth Observation",
+    points: [
+      "Wide-area coverage",
+      "Repeat observation",
+      "Multispectral insight",
+      "Historic archives",
+    ],
+  },
+  {
+    title: "GIS & Remote Sensing",
+    points: [
+      "Spatial data creation and standardisation",
+      "Image processing",
+      "Classification",
+      "Prediction",
+    ],
+  },
+  {
+    title: "AI/ML & Visual Applications",
+    points: [
+      "AI-driven ranking and constraint optimisation for site suitability",
+      "Predictive impact assessment and mitigation scenarios for EIA",
+      "Early warning indicators and damage assessment for disaster management",
+      "Image and video analytics and automated monitoring for drone workflows",
+      "Satellite imagery, thematic maps, drone visuals, 3D models, GIS risk maps and analytics dashboards",
+    ],
+  },
+];
+
+export const sectors = [
+  {
+    id: "renewable-energy",
+    name: "Renewable Energy (Solar & Wind)",
+    card: "Geospatial screening and site suitability insights considering land characteristics, terrain, access and environmental constraints.",
+    description:
+      "Geospatial screening and site suitability insights for renewable energy projects, considering land characteristics, terrain, access, environmental constraints and location context.",
+    themes: ["Site suitability", "Solar analysis", "Drone inspection", "Change monitoring"],
+    services: ["site-suitability", "drone-surveys", "ai-ml"],
+  },
+  {
+    id: "industrial",
+    name: "Industrial & Manufacturing",
+    card: "Location intelligence and spatial analysis for site assessment, environmental planning and infrastructure considerations.",
+    description:
+      "Location intelligence and spatial analysis to support industrial site assessment, environmental planning, operational context and infrastructure considerations.",
+    themes: ["Site selection", "EIA support", "Proximity analysis", "Monitoring"],
+    services: ["site-suitability", "eia", "analytics"],
+  },
+  {
+    id: "infrastructure",
+    name: "Infrastructure & Urban Development",
+    card: "Spatial insights for land, infrastructure and urban planning, including accessibility, land-use and development suitability.",
+    description:
+      "Spatial insights for land, infrastructure and urban planning, including terrain, land-use context, accessibility, environmental constraints and development suitability.",
+    themes: ["Cadastral intelligence", "Land-use planning", "GIS applications", "Dashboards"],
+    services: ["site-suitability", "analytics", "dmp"],
+  },
+  {
+    id: "mining",
+    name: "Mining & Natural Resources",
+    card: "Remote-sensing support for terrain, land-cover monitoring, resource-area context and environmental change analysis.",
+    description:
+      "Geospatial and remote-sensing support for terrain understanding, land-cover monitoring, resource-area context, environmental assessment and change analysis.",
+    themes: ["Drone surveys", "Terrain models", "LULC", "Impact analysis"],
+    services: ["drone-surveys", "eia", "ai-ml"],
+  },
+  {
+    id: "power",
+    name: "Power",
+    card: "Spatial analysis for power-sector planning, site assessment, asset and corridor context, and risk-aware decisions.",
+    description:
+      "Spatial analysis to support power-sector planning, site assessment, asset and corridor context, environmental considerations and risk-aware decision-making.",
+    themes: ["Corridor mapping", "Site suitability", "Risk analysis", "Monitoring"],
+    services: ["site-suitability", "eia", "dmp"],
+  },
+  {
+    id: "government",
+    name: "Government & Public Sector",
+    card: "GIS-based planning and decision support for land, public assets, environmental management and disaster preparedness.",
+    description:
+      "GIS-based planning and decision support for public-sector programmes, land and asset information, environmental management, urban development and disaster preparedness.",
+    themes: ["Land intelligence", "Planning layers", "Public dashboards", "DMP support"],
+    services: ["dmp", "analytics", "eia"],
+  },
+];
+
+// Proposed process language from the blueprint; adjust if the delivery workflow differs.
+export const howWeWork = [
+  {
+    title: "Understand the requirement",
+    description: "Clarify the project objective, location, constraints and expected outputs.",
+  },
+  {
+    title: "Analyse data and context",
+    description: "Review spatial, environmental, operational and available reference datasets.",
+  },
+  {
+    title: "Develop geospatial / AI insights",
+    description: "Apply suitable GIS, remote-sensing, analytical and AI-enabled methods.",
+  },
+  {
+    title: "Deliver decision-ready outputs",
+    description: "Present maps, reports, dashboards and practical findings for next steps.",
+  },
+];
+
+export const featuredCapability = {
+  title: "City Master Plan & Urban Land Intelligence",
+  status: "In development",
+  summary:
+    "Bringing cadastral information, land-use planning and geospatial technology together to support smarter, more informed urban development.",
+  points: ["Parcel data", "Planning layers", "Interactive GIS", "Reports", "Web and mobile access"],
+};
+
+// Public satellite imagery examples; always shown with the "illustrative" caption.
+export const demonstrations = [
+  { title: "Bhadla Solar Park, Rajasthan", theme: "Land transformation, 2016 vs January 2025" },
+  { title: "Delhi and the Yamuna River", theme: "Urban and infrastructure mapping" },
+  { title: "Singrauli coalfield", theme: "Mining and natural-resource mapping" },
+];
+
+export const illustrativeCaption =
+  "Public imagery shown for illustration; not client project work.";
+
+export const whyChooseUs = [
+  "Integrated geospatial and environmental expertise.",
+  "Technology-based, compliant and transparent approach.",
+  "Customised solutions for project-specific needs.",
+  "High-quality maps, reports and decision tools.",
+  "Mobile and web solutions for anytime, anywhere monitoring.",
+];
+
+export const contactInvitation = {
+  heading: "Have a location, project or challenge to explore?",
+  body: "Tell us what you are planning. We can discuss the geospatial, environmental or technology approach that may help.",
+};

@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 
-export default function Reveal({ children, delay = 0, y = 24, className = "" }) {
+export default function Reveal({ children, delay = 0, y = 24, className = "", as = "div" }) {
+  const Tag = motion[as];
   return (
-    <motion.div
+    <Tag
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
@@ -10,6 +11,6 @@ export default function Reveal({ children, delay = 0, y = 24, className = "" }) 
       className={className}
     >
       {children}
-    </motion.div>
+    </Tag>
   );
 }
