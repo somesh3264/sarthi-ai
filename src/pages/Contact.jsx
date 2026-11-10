@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import PageHero from "../components/PageHero";
 import { focusRing } from "../components/ui";
+import { Field } from "../components/FormField";
+import { inputBase as inputClass } from "../components/formUtils";
 import { contactInfo } from "../data/site";
 import { services, sectors } from "../data/content";
 
@@ -11,9 +13,6 @@ const ENDPOINT = import.meta.env.VITE_CONTACT_ENDPOINT;
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_RE = /^\+?[\d\s()-]{7,20}$/;
-
-const inputClass =
-  "mt-1 w-full rounded-lg border px-4 py-2.5 text-sm focus:border-teal focus:outline-none focus:ring-2 focus:ring-azure/30";
 
 function validate(form) {
   const errors = {};
@@ -29,32 +28,6 @@ function validate(form) {
   if (!form.message.trim()) errors.message = "Please describe your project or challenge.";
   if (!form.consent) errors.consent = "Please confirm you have read the privacy notice.";
   return errors;
-}
-
-function Field({ id, label, required, error, hint, children }) {
-  return (
-    <div>
-      <label htmlFor={id} className="text-sm font-medium text-grey-dark/85">
-        {label}
-        {required && (
-          <span className="text-red-700" aria-hidden="true">
-            {" "}*
-          </span>
-        )}
-      </label>
-      {children}
-      {hint && !error && (
-        <p id={`${id}-hint`} className="mt-1 text-xs text-grey-dark/60">
-          {hint}
-        </p>
-      )}
-      {error && (
-        <p id={`${id}-error`} className="mt-1 text-xs font-medium text-red-700">
-          {error}
-        </p>
-      )}
-    </div>
-  );
 }
 
 export default function Contact() {
