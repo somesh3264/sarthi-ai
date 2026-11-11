@@ -26,7 +26,14 @@ export const featuredPlatform = {
   },
 };
 
-// Add client-approved case studies here: { title, location, challenge, approach, outputs: [], image }
+// Add client-approved case studies here (shown at /projects/<slug>). Shape:
+// {
+//   slug: "solar-site-screening-rajasthan",   // URL-safe, unique
+//   title, sector, location,                    // location only where the client permits
+//   challenge, studyArea, approach, outcome,    // short paragraphs
+//   tools: ["QGIS", "Sentinel-2"], outputs: ["Suitability maps", "Technical report"],
+//   image, imageAlt, imageCredit,               // approved visual (import it from src/assets)
+// }
 export const caseStudies = [];
 
 export const demonstrationTypes = [
@@ -109,9 +116,10 @@ export const careerAreas = [
   },
 ];
 
-// Only add management-approved, active requisitions. Shape:
-// { id, title, area, type: "Full-time" | "Internship", location, mode, experience,
-//   status: "Open" | "Closing soon", summary }
+// Only add management-approved, active requisitions (shown at /careers/<id>). Shape:
+// { id: "gis-analyst-2027", title, area, type: "Full-time" | "Internship", location,
+//   mode: "On-site" | "Hybrid" | "Remote", experience, status: "Open" | "Closing soon",
+//   summary, responsibilities: [], skills: [] }
 export const openings = [];
 
 export const internshipAreas = [
@@ -180,5 +188,12 @@ export const newsletterCategories = [
   },
 ];
 
-// Add published articles here: { slug, category (id above), title, date: "YYYY-MM-DD", summary, image }
+// Add published articles here (shown at /newsletter/<slug>). Shape:
+// {
+//   slug: "what-is-lulc-classification", category: "gis" (an id above), title,
+//   date: "YYYY-MM-DD", author: "Sarthi AI editorial team" (only if approved), summary,
+//   image, imageAlt, imageCredit,
+//   body: [{ heading: "Optional section heading", paragraphs: ["...", "..."] }],
+//   sources: [{ label: "Source name", url: "https://..." }],
+// }
 export const articles = [];

@@ -74,8 +74,14 @@ function OpeningCard({ job }) {
         {[job.location, job.mode, job.experience].filter(Boolean).join(" · ")}
       </p>
       <p className="mt-3 flex-1 text-sm leading-relaxed text-grey-dark/75">{job.summary}</p>
-      <div className="mt-5">
+      <div className="mt-5 flex flex-wrap items-center gap-3">
         <ButtonLink to={`/careers/apply?position=${job.id}`}>Apply Now</ButtonLink>
+        <Link
+          to={`/careers/${job.id}`}
+          className={`rounded-full px-4 py-3 text-sm font-semibold text-navy underline-offset-4 hover:underline ${focusRing}`}
+        >
+          View Details<span className="sr-only">: {job.title}</span>
+        </Link>
       </div>
     </li>
   );

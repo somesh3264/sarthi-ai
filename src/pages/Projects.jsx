@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/graphics/Reveal";
 import ContourLines from "../components/graphics/ContourLines";
 import { GlobeIcon, LayersIcon } from "../components/graphics/PointIcons";
-import { CheckIcon } from "../components/Icons";
-import { ButtonLink, SectionHeading, StatusBadge } from "../components/ui";
+import { CheckIcon, ArrowRightIcon } from "../components/Icons";
+import { ButtonLink, SectionHeading, StatusBadge, focusRing } from "../components/ui";
 import cityNight from "../assets/photos/city-night.jpg";
 import {
   projectsIntro,
@@ -120,16 +121,24 @@ function CaseStudies() {
         ) : (
           <ul className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {caseStudies.map((cs) => (
-              <li key={cs.title} className="overflow-hidden rounded-2xl bg-white shadow-sm">
+              <li
+                key={cs.slug}
+                className="group relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm transition-shadow focus-within:shadow-lg hover:shadow-lg"
+              >
                 {cs.image && <img src={cs.image} alt="" className="h-44 w-full object-cover" />}
-                <div className="p-6">
+                <div className="flex flex-1 flex-col p-6">
                   <StatusBadge tone="teal">Case study</StatusBadge>
-                  <h3 className="mt-3 font-heading text-lg font-semibold text-navy">{cs.title}</h3>
+                  <h3 className="mt-3 font-heading text-lg font-semibold text-navy">
+                    {/* Stretched link: the whole card opens the case study. */}
+                    <Link to={`/projects/${cs.slug}`} className={`after:absolute after:inset-0 ${focusRing}`}>
+                      {cs.title}
+                    </Link>
+                  </h3>
                   {cs.location && <p className="text-xs text-grey-dark/60">{cs.location}</p>}
                   <p className="mt-3 text-sm text-grey-dark/75">
                     <strong className="text-navy">Challenge:</strong> {cs.challenge}
                   </p>
-                  <p className="mt-2 text-sm text-grey-dark/75">
+                  <p className="mt-2 flex-1 text-sm text-grey-dark/75">
                     <strong className="text-navy">Approach:</strong> {cs.approach}
                   </p>
                   <ul className="mt-3 flex flex-wrap gap-1.5">
@@ -137,6 +146,9 @@ function CaseStudies() {
                       <li key={o} className="rounded-full bg-grey-light px-2.5 py-0.5 text-xs">{o}</li>
                     ))}
                   </ul>
+                  <span aria-hidden="true" className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-teal">
+                    Read Case Study <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </span>
                 </div>
               </li>
             ))}

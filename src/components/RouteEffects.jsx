@@ -1,16 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { pageMeta, notFoundMeta } from "../data/site";
-
-function setMetaDescription(content) {
-  let tag = document.querySelector('meta[name="description"]');
-  if (!tag) {
-    tag = document.createElement("meta");
-    tag.setAttribute("name", "description");
-    document.head.appendChild(tag);
-  }
-  tag.setAttribute("content", content);
-}
+import { DYNAMIC_ROUTE_PREFIXES, setMetaDescription } from "./documentMeta";
 
 // Updates the page title / description and handles scroll position on navigation:
 // scroll to the #anchor when there is one, otherwise to the top of the new page.
@@ -19,6 +10,8 @@ export default function RouteEffects() {
 
   useEffect(() => {
     const path = pathname.length > 1 ? pathname.replace(/\/$/, "") : pathname;
+    // Detail pages (articles, case studies, vacancies) set their own title via useDocumentMeta.
+    if (!pageMeta[path] && DYNAMIC_ROUTE_PREFIXES.some((prefix) => path.startsWith(prefix))) return;
     const meta = pageMeta[path] ?? notFoundMeta;
     document.title = meta.title;
     setMetaDescription(meta.description);

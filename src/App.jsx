@@ -4,9 +4,12 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Competency from "./pages/Competency";
 import Projects from "./pages/Projects";
+import CaseStudy from "./pages/CaseStudy";
 import Careers from "./pages/Careers";
+import Vacancy from "./pages/Vacancy";
 import CareersApply from "./pages/CareersApply";
 import Newsletter from "./pages/Newsletter";
+import Article from "./pages/Article";
 import Contact from "./pages/Contact";
 import Legal from "./pages/Legal";
 import Placeholder from "./pages/Placeholder";
@@ -19,9 +22,12 @@ function App() {
         <Route path="about" element={<About />} />
         <Route path="competency" element={<Competency />} />
         <Route path="projects" element={<Projects />} />
+        <Route path="projects/:slug" element={<CaseStudy />} />
         <Route path="careers" element={<Careers />} />
         <Route path="careers/apply" element={<CareersApply />} />
+        <Route path="careers/:id" element={<Vacancy />} />
         <Route path="newsletter" element={<Newsletter />} />
+        <Route path="newsletter/:slug" element={<Article />} />
         <Route path="contact" element={<Contact />} />
         <Route path="privacy" element={<Legal doc="privacy" />} />
         <Route path="terms" element={<Legal doc="terms" />} />

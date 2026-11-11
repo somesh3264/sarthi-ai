@@ -1,27 +1,34 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/graphics/Reveal";
 import { DocumentChartIcon } from "../components/graphics/PointIcons";
 import { ButtonLink, SectionHeading, focusRing } from "../components/ui";
 import { newsletterHero, newsletterCategories, articles } from "../data/pages";
+import { formatDate } from "../data/format";
+import { ArrowRightIcon } from "../components/Icons";
 
 const categoryName = Object.fromEntries(newsletterCategories.map((c) => [c.id, c.title]));
 
-function formatDate(iso) {
-  return new Date(`${iso}T00:00:00`).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
-}
-
 function ArticleCard({ article }) {
   return (
-    <li className="flex flex-col overflow-hidden rounded-2xl border border-grey-dark/10 bg-white shadow-sm">
+    <li className="group relative flex flex-col overflow-hidden rounded-2xl border border-grey-dark/10 bg-white shadow-sm transition-shadow focus-within:shadow-lg hover:shadow-lg">
       {article.image && <img src={article.image} alt="" className="h-44 w-full object-cover" loading="lazy" />}
       <div className="flex flex-1 flex-col p-6">
         <p className="text-xs font-semibold uppercase tracking-widest text-teal">{categoryName[article.category]}</p>
-        <h3 className="mt-2 font-heading text-lg font-semibold text-navy">{article.title}</h3>
+        <h3 className="mt-2 font-heading text-lg font-semibold text-navy">
+          {/* The stretched link makes the whole card clickable while keeping one link per card. */}
+          <Link to={`/newsletter/${article.slug}`} className={`after:absolute after:inset-0 ${focusRing}`}>
+            {article.title}
+          </Link>
+        </h3>
         <time dateTime={article.date} className="mt-1 text-xs text-grey-dark/60">
           {formatDate(article.date)}
         </time>
         <p className="mt-3 flex-1 text-sm leading-relaxed text-grey-dark/75">{article.summary}</p>
+        <span aria-hidden="true" className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-teal">
+          Read More <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+        </span>
       </div>
     </li>
   );
