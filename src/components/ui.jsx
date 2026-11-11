@@ -42,7 +42,8 @@ export function SectionHeading({ index, label, title, intro, dark = false, cente
 
 export function StatusBadge({ children, tone = "amber" }) {
   const tones = {
-    amber: "bg-emerald/15 text-emerald ring-emerald/30",
+    amber: "bg-emerald/15 text-[#7a5210] ring-emerald/40",
+    amberOnDark: "bg-emerald/30 text-[#f6d38c] ring-emerald/50",
     teal: "bg-teal/10 text-teal ring-teal/30",
     light: "bg-white/15 text-white ring-white/30",
   };

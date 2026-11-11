@@ -38,7 +38,7 @@ export default function ServiceAccordion({ service, defaultOpen = false }) {
           aria-expanded={open}
           aria-controls={panelId}
         >
-          <span className="font-mono text-3xl font-bold text-azure">{service.number}</span>
+          <span className="font-mono text-3xl font-bold text-teal">{service.number}</span>
           <span className="flex-1">
             <span className="block font-heading text-lg font-semibold text-navy">{service.title}</span>
             <span className="mt-1 block text-sm leading-relaxed text-grey-dark/70">{service.summary}</span>

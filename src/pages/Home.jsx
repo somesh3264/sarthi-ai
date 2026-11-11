@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { motion, useReducedMotion } from "framer-motion";
-import logo from "../assets/sarthi-logo.svg";
+import BrandIntro from "../components/BrandIntro";
 import cityNight from "../assets/photos/city-night.jpg";
 import ContourLines from "../components/graphics/ContourLines";
 import ProcessWorkflow from "../components/graphics/ProcessWorkflow";
@@ -9,9 +8,9 @@ import { CheckIcon, ArrowRightIcon } from "../components/Icons";
 import { RadarIcon, LayersIcon, NetworkIcon, DocumentChartIcon, GlobeIcon } from "../components/graphics/PointIcons";
 import FilmReel from "../components/FilmReel";
 import { ButtonLink, SectionHeading, StatusBadge, focusRing } from "../components/ui";
-import { sectorVideos } from "../data/media";
+import { sectorVideos, sectorPosters } from "../data/media";
+import InViewVideo from "../components/InViewVideo";
 import {
-  company,
   homeFilm,
   whoWeAre,
   services,
@@ -25,49 +24,6 @@ import {
 } from "../data/content";
 
 const PROCESS_ICONS = [RadarIcon, LayersIcon, NetworkIcon, DocumentChartIcon];
-
-function BrandIntro() {
-  const reduce = useReducedMotion();
-  const fade = (delay) =>
-    reduce
-      ? {}
-      : {
-          initial: { opacity: 0, y: 16 },
-          animate: { opacity: 1, y: 0 },
-          transition: { duration: 0.8, ease: "easeOut", delay },
-        };
-
-  return (
-    <section
-      aria-labelledby="intro-heading"
-      className="relative flex min-h-[calc(100svh-5rem)] items-center overflow-hidden bg-navy"
-    >
-      <ContourLines opacity={0.18} />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,_rgba(63,182,192,0.22),_transparent_60%)]" />
-      <div className="relative mx-auto flex max-w-5xl flex-col items-center px-6 py-24 text-center lg:px-8">
-        <motion.div {...fade(0)} className="flex flex-col items-center">
-          <div className="rounded-2xl bg-white/90 px-6 py-4 shadow-lg">
-            <img src={logo} alt="" className="h-20 w-auto sm:h-24" />
-          </div>
-          <p className="mt-6 text-xs font-semibold uppercase tracking-[0.3em] text-white/70">
-            {company.name}
-          </p>
-        </motion.div>
-        <motion.h1
-          id="intro-heading"
-          {...fade(0.5)}
-          className="mt-8 font-heading text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl"
-        >
-          We turn Geospatial Data into Resilient{" "}
-          <span className="font-serif-accent italic font-normal text-azure">Decisions</span>.
-        </motion.h1>
-        <motion.p {...fade(1)} className="mt-6 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">
-          {company.intro}
-        </motion.p>
-      </div>
-    </section>
-  );
-}
 
 function FilmSection() {
   return (
@@ -114,7 +70,7 @@ function CoreServices() {
                   to={`/competency#${service.id}`}
                   className={`group flex h-full flex-col rounded-2xl border border-grey-dark/10 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-teal/40 hover:shadow-lg ${focusRing}`}
                 >
-                  <span className="font-mono text-2xl font-bold text-azure">{service.number}</span>
+                  <span className="font-mono text-2xl font-bold text-teal">{service.number}</span>
                   <h3 className="mt-3 font-heading text-lg font-semibold text-navy">{service.title}</h3>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-grey-dark/70">{service.card}</p>
                   <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-teal">
@@ -147,14 +103,9 @@ function Sectors() {
                 to={`/competency#${sector.id}`}
                 className={`group relative block h-72 overflow-hidden rounded-2xl shadow-sm transition-shadow hover:shadow-xl ${focusRing}`}
               >
-                <video
+                <InViewVideo
                   src={sectorVideos[sector.id]}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  aria-hidden="true"
+                  poster={sectorPosters[sector.id]}
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/55 to-navy/10" />
@@ -213,7 +164,7 @@ function SelectedWork() {
               <div className="relative flex h-full flex-col justify-end p-6 sm:p-8">
                 <div className="flex flex-wrap gap-2">
                   <StatusBadge tone="light">Featured capability</StatusBadge>
-                  <StatusBadge>{featuredCapability.status}</StatusBadge>
+                  <StatusBadge tone="amberOnDark">{featuredCapability.status}</StatusBadge>
                 </div>
                 <h3 className="mt-4 font-heading text-2xl font-semibold">{featuredCapability.title}</h3>
                 <p className="mt-2 max-w-xl text-sm leading-relaxed text-white/75">

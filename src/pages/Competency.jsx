@@ -4,7 +4,8 @@ import ServiceAccordion from "../components/ServiceAccordion";
 import Reveal from "../components/graphics/Reveal";
 import { SatelliteIcon, DroneIcon, AIIcon } from "../components/graphics/ThemeIcons";
 import { ButtonLink, SectionHeading, focusRing } from "../components/ui";
-import { sectorVideos } from "../data/media";
+import { sectorVideos, sectorPosters } from "../data/media";
+import InViewVideo from "../components/InViewVideo";
 import {
   competencyIntro,
   serviceGroups,
@@ -89,14 +90,9 @@ function SectorPanel({ sector, reverse }) {
       className="scroll-mt-6 grid grid-cols-1 overflow-hidden rounded-3xl border border-grey-dark/10 bg-white shadow-sm lg:grid-cols-2"
     >
       <div className={`relative min-h-60 ${reverse ? "lg:order-2" : ""}`}>
-        <video
+        <InViewVideo
           src={sectorVideos[sector.id]}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          aria-hidden="true"
+          poster={sectorPosters[sector.id]}
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent" />

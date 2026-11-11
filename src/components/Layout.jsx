@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Outlet } from "react-router-dom";
+import { MotionConfig } from "framer-motion";
 import Header from "./Header";
 import Footer from "./Footer";
 import FloatingContact from "./FloatingContact";
@@ -18,6 +19,7 @@ export default function Layout() {
   }, []);
 
   return (
+    <MotionConfig reducedMotion="user">
     <div className="flex min-h-screen flex-col">
       <RouteEffects />
       <a
@@ -33,5 +35,6 @@ export default function Layout() {
       <Footer />
       <FloatingContact visible={!headerVisible} />
     </div>
+    </MotionConfig>
   );
 }

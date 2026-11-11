@@ -17,7 +17,7 @@ export default function ProcessWorkflow({ steps, icons = [] }) {
                     <Icon className="h-5 w-5" />
                   </div>
                 )}
-                <h4 className="text-base font-semibold text-navy">{step.title}</h4>
+                <h3 className="text-base font-semibold text-navy">{step.title}</h3>
                 <p className="mt-1.5 text-sm leading-relaxed text-grey-dark/70">
                   {step.description}
                 </p>

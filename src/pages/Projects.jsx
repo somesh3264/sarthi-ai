@@ -53,7 +53,7 @@ function FeaturedCapability() {
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/70 to-transparent" />
                 <div className="absolute bottom-4 left-4 flex flex-wrap gap-2">
                   <StatusBadge tone="light">Featured capability</StatusBadge>
-                  <StatusBadge>{featuredPlatform.status}</StatusBadge>
+                  <StatusBadge tone="amberOnDark">{featuredPlatform.status}</StatusBadge>
                 </div>
                 <span className="absolute right-4 bottom-4 text-[11px] text-white/70">Illustrative image</span>
               </div>
