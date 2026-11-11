@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 
-// Compact Contact Us action, shown only while the header is scrolled out of view.
+// Compact Contact Us action, shown once the visitor has scrolled past most of the first screen.
 // Hidden on the Contact page itself so it never sits over the enquiry form.
 export default function FloatingContact({ visible }) {
   const { pathname } = useLocation();

@@ -18,6 +18,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Keep anchored sections clear of the sticky header (h-20). */
+  scroll-padding-top: 5rem;
 }
 
 * {

@@ -24,7 +24,7 @@ function MenuIcon({ open }) {
   );
 }
 
-export default function Header({ ref }) {
+export default function Header({ scrolled = false }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const { pathname } = useLocation();
 
@@ -43,7 +43,11 @@ export default function Header({ ref }) {
   const links = primaryNav.filter((item) => item.to !== "/contact");
 
   return (
-    <header ref={ref} className="relative z-40 border-b border-grey-dark/10 bg-white">
+    <header
+      className={`sticky top-0 z-40 border-b bg-white/95 backdrop-blur-sm transition-shadow duration-300 ${
+        scrolled ? "border-grey-dark/10 shadow-[0_6px_20px_-12px_rgba(15,42,34,0.35)]" : "border-grey-dark/10"
+      }`}
+    >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 lg:px-8">
         <Link to="/" className={`shrink-0 rounded-md ${focusRing}`} aria-label="Sarthi AI Solutions — Home">
           <img src={logo} alt="Sarthi AI Solutions" className="h-12 w-auto" />

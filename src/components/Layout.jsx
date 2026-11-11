@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { MotionConfig } from "framer-motion";
 import Header from "./Header";
@@ -7,15 +7,23 @@ import FloatingContact from "./FloatingContact";
 import RouteEffects from "./RouteEffects";
 
 export default function Layout() {
-  const headerRef = useRef(null);
-  const [headerVisible, setHeaderVisible] = useState(true);
+  const [scrolled, setScrolled] = useState(false);
+  const [pastFirstScreen, setPastFirstScreen] = useState(false);
 
+  // The header is sticky; the floating Contact Us appears once the visitor scrolls past most of
+  // the first screen (handy on phones, where the header's Contact Us sits inside the menu).
   useEffect(() => {
-    const el = headerRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(([entry]) => setHeaderVisible(entry.isIntersecting));
-    observer.observe(el);
-    return () => observer.disconnect();
+    const onScroll = () => {
+      setScrolled(window.scrollY > 8);
+      setPastFirstScreen(window.scrollY > window.innerHeight * 0.6);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   return (
@@ -28,12 +36,12 @@ export default function Layout() {
       >
         Skip to content
       </a>
-      <Header ref={headerRef} />
+      <Header scrolled={scrolled} />
       <main id="main" tabIndex={-1} className="flex-1 focus:outline-none">
         <Outlet />
       </main>
       <Footer />
-      <FloatingContact visible={!headerVisible} />
+      <FloatingContact visible={pastFirstScreen} />
     </div>
     </MotionConfig>
   );
