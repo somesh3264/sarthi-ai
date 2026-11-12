@@ -186,10 +186,15 @@ function Demonstrations({ index }) {
               className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition-all duration-300 hover:border-azure/50 hover:shadow-[0_0_0_4px_rgba(63,182,192,0.15),0_20px_44px_-18px_rgba(0,0,0,0.6)]"
             >
               <div className="relative h-36 overflow-hidden">
-                <img src={ex.image} alt="" aria-hidden="true" loading="lazy" className="h-full w-full object-cover" />
+                <img
+                  src={ex.image}
+                  alt={`Sentinel-2 satellite image of ${ex.title}, ${ex.captured}`}
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/70 to-transparent" />
-                <span className="absolute top-3 right-3 rounded-full bg-navy/75 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-white ring-1 ring-white/25 backdrop-blur-sm">
-                  Illustrative
+                <span className="absolute top-3 right-3 rounded-full bg-navy/75 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-white ring-1 ring-white/25 backdrop-blur-sm">
+                  Sentinel-2 · {ex.captured}
                 </span>
               </div>
               <div className="p-5">

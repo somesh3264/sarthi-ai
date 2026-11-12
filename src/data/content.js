@@ -295,9 +295,6 @@ export const featuredCapability = {
   points: ["Parcel data", "Planning layers", "Interactive GIS", "Reports", "Web and mobile access"],
 };
 
-export const illustrativeCaption =
-  "Public imagery shown for illustration; not client project work.";
-
 export const whyChooseUs = [
   "Integrated geospatial and environmental expertise.",
   "Technology-based, compliant and transparent approach.",

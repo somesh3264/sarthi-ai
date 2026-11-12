@@ -1,10 +1,10 @@
-import solarFarm from "../assets/photos/solar-farm.jpg";
-import cityNight from "../assets/photos/city-night.jpg";
-import miningQuarry from "../assets/photos/mining-quarry.jpg";
-import topoMap from "../assets/photos/topo-map.jpg";
-import earthIndia from "../assets/photos/earth-india.jpg";
-import forestCanopy from "../assets/photos/forest-canopy.jpg";
-import earthSatellite from "../assets/photos/earth-satellite.jpg";
+import satBhadla from "../assets/satellite/bhadla-solar-park.jpg";
+import satDelhi from "../assets/satellite/delhi-yamuna.jpg";
+import satSingrauli from "../assets/satellite/singrauli-coalfield.jpg";
+import satPunjab from "../assets/satellite/punjab-bathinda.jpg";
+import satMajuli from "../assets/satellite/brahmaputra-majuli.jpg";
+import satSundarbans from "../assets/satellite/sundarbans.jpg";
+import satMumbai from "../assets/satellite/mumbai-thane-creek.jpg";
 
 // Copy for Projects, Careers and Newsletter, from the website blueprint (v1.0).
 // Blueprint rule: never present suggested roles as live vacancies, illustrative imagery as client
@@ -53,25 +53,27 @@ export const demonstrationTypes = [
   "Technical demos",
 ];
 
-// `image` is an illustrative stock photo matched to each theme, NOT imagery of the named place.
-// Replace with the real public satellite images (with source and licence credits) when supplied.
+// Real true-colour Sentinel-2 L2A images of each named place (Copernicus open data, free for
+// commercial use with attribution), cut from the public AWS archive. `captured` is the scene date.
 export const imageryExamples = [
   {
     title: "Bhadla Solar Park, Rajasthan",
     theme: "Land transformation and site monitoring",
-    detail: "Same-area comparison between 2016 and January 2025.",
-    image: solarFarm,
+    detail: "Same-area comparison: February 2017 (left) and January 2025 (right).",
+    image: satBhadla,
+    captured: "Feb 2017 · Jan 2025",
   },
-  { title: "Delhi and the Yamuna River", theme: "Urban and infrastructure mapping", image: cityNight },
-  { title: "Singrauli coalfield", theme: "Mining and natural-resource mapping", image: miningQuarry },
-  { title: "Punjab plains near Bathinda", theme: "Agriculture and land use", image: topoMap },
-  { title: "Brahmaputra River at Majuli", theme: "Flood and river risk", image: earthIndia },
-  { title: "Sundarbans", theme: "Forest and coastal ecosystems", image: forestCanopy },
-  { title: "Mumbai and Thane Creek", theme: "Coastal city and infrastructure", image: earthSatellite },
+  { title: "Delhi and the Yamuna River", theme: "Urban and infrastructure mapping", image: satDelhi, captured: "Oct 2024" },
+  { title: "Singrauli coalfield", theme: "Mining and natural-resource mapping", image: satSingrauli, captured: "Mar 2025" },
+  { title: "Punjab plains near Bathinda", theme: "Agriculture and land use", image: satPunjab, captured: "Mar 2025" },
+  { title: "Brahmaputra River at Majuli", theme: "Flood and river risk", image: satMajuli, captured: "Dec 2024" },
+  { title: "Sundarbans", theme: "Forest and coastal ecosystems", image: satSundarbans, captured: "Feb 2025" },
+  { title: "Mumbai and Thane Creek", theme: "Coastal city and infrastructure", image: satMumbai, captured: "Dec 2024" },
 ];
 
-export const imageryCaption =
-  "Public imagery shown for illustration; not client project work. Source and licence credits are retained with each image.";
+export const imageryCredit = "Contains modified Copernicus Sentinel data (2017, 2024–2025).";
+
+export const imageryCaption = `Public Sentinel-2 satellite images of each named place, shown as examples; not client project work. ${imageryCredit}`;
 
 /* ---------------------------------- Careers ---------------------------------- */
 
