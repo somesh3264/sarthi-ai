@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import BrandIntro from "../components/BrandIntro";
-import cityNight from "../assets/photos/city-night.jpg";
+import topoMap from "../assets/photos/topo-map.jpg";
 import ContourLines from "../components/graphics/ContourLines";
 import ProcessWorkflow from "../components/graphics/ProcessWorkflow";
 import Reveal from "../components/graphics/Reveal";
@@ -168,7 +168,7 @@ function SelectedWork() {
         <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-5">
           <Reveal className="lg:col-span-3">
             <article className="relative h-full min-h-80 overflow-hidden rounded-2xl">
-              <img src={cityNight} alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+              <img src={topoMap} alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/70 to-navy/20" />
               <div className="relative flex h-full flex-col justify-end p-6 sm:p-8">
                 <div className="flex flex-wrap gap-2">
