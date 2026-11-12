@@ -1,3 +1,5 @@
+import { sampleArticles } from "./sampleArticles";
+
 // Copy for Projects, Careers and Newsletter, from the website blueprint (v1.0).
 // Blueprint rule: never present suggested roles as live vacancies, illustrative imagery as client
 // work, or an in-development platform as a finished product.
@@ -196,4 +198,5 @@ export const newsletterCategories = [
 //   body: [{ heading: "Optional section heading", paragraphs: ["...", "..."] }],
 //   sources: [{ label: "Source name", url: "https://..." }],
 // }
-export const articles = [];
+// TODO before launch: remove the sample articles (and src/data/sampleArticles.js) and add real ones.
+export const articles = [...sampleArticles];

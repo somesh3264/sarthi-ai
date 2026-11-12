@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/graphics/Reveal";
 import { DocumentChartIcon } from "../components/graphics/PointIcons";
-import { ButtonLink, SectionHeading, focusRing } from "../components/ui";
+import { ButtonLink, SectionHeading, StatusBadge, focusRing } from "../components/ui";
 import { newsletterHero, newsletterCategories, articles } from "../data/pages";
 import { formatDate } from "../data/format";
 import { ArrowRightIcon } from "../components/Icons";
@@ -15,7 +15,10 @@ function ArticleCard({ article }) {
     <li className="group relative flex flex-col overflow-hidden rounded-2xl border border-grey-dark/10 bg-white shadow-sm transition-shadow focus-within:shadow-lg hover:shadow-lg">
       {article.image && <img src={article.image} alt="" className="h-44 w-full object-cover" loading="lazy" />}
       <div className="flex flex-1 flex-col p-6">
-        <p className="text-xs font-semibold uppercase tracking-widest text-teal">{categoryName[article.category]}</p>
+        <div className="flex flex-wrap items-center gap-2">
+          <p className="text-xs font-semibold uppercase tracking-widest text-teal">{categoryName[article.category]}</p>
+          {article.sample && <StatusBadge>Sample</StatusBadge>}
+        </div>
         <h3 className="mt-2 font-heading text-lg font-semibold text-navy">
           {/* The stretched link makes the whole card clickable while keeping one link per card. */}
           <Link to={`/newsletter/${article.slug}`} className={`after:absolute after:inset-0 ${focusRing}`}>
@@ -75,6 +78,11 @@ export default function Newsletter() {
                   </button>
                 ))}
               </div>
+              {articles.some((a) => a.sample) && (
+                <p role="note" className="mt-6 rounded-lg border border-emerald/40 bg-emerald/10 px-4 py-3 text-sm text-grey-dark">
+                  <strong>Sample articles</strong> are shown to preview the layout. They are not published content.
+                </p>
+              )}
               <ul className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {visible.map((a) => (
                   <ArticleCard key={a.slug} article={a} />
