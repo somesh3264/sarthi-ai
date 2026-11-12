@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 
-// Line icons for the six core services and six sectors. Each one draws itself, stroke by stroke,
-// the first time its card scrolls into view; visitors who prefer reduced motion see the finished icon.
+// Line icons for the six core services. Each one draws itself, stroke by stroke, the first time
+// its card scrolls into view; visitors who prefer reduced motion see the finished icon.
 const SHAPES = {
   // Folded map with a location pin
   "site-suitability": [
@@ -56,49 +56,6 @@ const SHAPES = {
     { d: "M33 10 H39 V16" },
   ],
 
-  /* ----- Sectors ----- */
-  // Sun over a solar panel
-  "renewable-energy": [
-    { circle: [14, 13, 4.5] },
-    { d: "M14 4 V6 M14 20 V22 M5 13 H7 M21 13 H23" },
-    { d: "M20 26 H42 L38 40 H16 Z" },
-    { d: "M27.3 26 L23.3 40 M34.7 26 L30.7 40 M18 33 H40" },
-    { d: "M27 40 V44 M22 44 H32" },
-  ],
-  // Factory with a chimney
-  industrial: [
-    { d: "M6 42 V24 L16 30 V24 L26 30 V24 L36 30 V10 H42 V42 Z" },
-    { d: "M11 36 H15 M21 36 H25 M31 36 H35" },
-    { d: "M39 6 C37 4 40 2 38 0" },
-  ],
-  // City buildings
-  infrastructure: [
-    { d: "M5 42 H43" },
-    { d: "M9 42 V16 H19 V42" },
-    { d: "M19 42 V26 H28 V42" },
-    { d: "M28 42 V8 H39 V42" },
-    { d: "M13 22 V24 M13 30 V32 M23.5 32 V34 M33 14 V16 M33 22 V24 M33 30 V32" },
-  ],
-  // Mountain with a pickaxe
-  mining: [
-    { d: "M4 40 L18 18 L26 28 L32 20 L44 40 Z" },
-    { d: "M22 8 Q31 3 40 9" },
-    { d: "M31 5.5 L27 18" },
-  ],
-  // Electricity pylon
-  power: [
-    { d: "M24 4 L14 44 M24 4 L34 44" },
-    { d: "M10 14 H38 M13 24 H35" },
-    { d: "M17 30 L31 38 M31 30 L17 38" },
-    { d: "M9 44 H39" },
-  ],
-  // Columned public building
-  government: [
-    { d: "M6 18 L24 6 L42 18 Z" },
-    { d: "M8 21 H40" },
-    { d: "M12 24 V37 M20 24 V37 M28 24 V37 M36 24 V37" },
-    { d: "M6 40 H42 M4 44 H44" },
-  ],
 };
 
 const draw = {
