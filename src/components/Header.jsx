@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import logo from "../assets/sarthi-logo.svg";
+// Header version of the logo: same artwork without the small tagline line.
+import logo from "../assets/sarthi-logo-header.svg";
 import { primaryNav } from "../data/site";
 
 const focusRing =
@@ -50,7 +51,7 @@ export default function Header({ scrolled = false }) {
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 lg:px-8">
         <Link to="/" className={`shrink-0 rounded-md ${focusRing}`} aria-label="Sarthi AI Solutions — Home">
-          <img src={logo} alt="Sarthi AI Solutions" className="h-14 w-auto" />
+          <img src={logo} alt="Sarthi AI Solutions" className="h-16 w-auto" />
         </Link>
 
         <nav aria-label="Primary" className="hidden lg:block">

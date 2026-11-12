@@ -1,0 +1,31 @@
+<svg width="260" height="220" viewBox="210 162 260 220" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="ridgeGradH" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#0C447C"/>
+<stop offset="0.5" stop-color="#1D6FA5"/>
+<stop offset="1" stop-color="#6FB3DC"/>
+</linearGradient>
+<linearGradient id="pinGradH" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#0C447C"/>
+<stop offset="1" stop-color="#6FB3DC"/>
+</linearGradient>
+<clipPath id="pinClipFinalH"><path d="M340 220.5 C323.2 220.5 309.9 233.8 309.9 250.6 C309.9 273 340 297.5 340 297.5 C340 297.5 370.1 273 370.1 250.6 C370.1 233.8 356.8 220.5 340 220.5 Z"/></clipPath>
+</defs>
+<path d="M260 200 Q340 140 420 200 L420 210 Q340 155 260 210 Z" fill="url(#ridgeGradH)"/>
+<path d="M240 222 Q340 150 440 222 L440 234 Q340 165 240 234 Z" fill="url(#ridgeGradH)" opacity="0.85"/>
+<path d="M220 244 Q340 160 460 244 L460 258 Q340 176 220 258 Z" fill="url(#ridgeGradH)" opacity="0.65"/>
+<path d="M340 220.5 C323.2 220.5 309.9 233.8 309.9 250.6 C309.9 273 340 297.5 340 297.5 C340 297.5 370.1 273 370.1 250.6 C370.1 233.8 356.8 220.5 340 220.5 Z" fill="url(#pinGradH)" stroke="#0C447C" stroke-width="2"/>
+<g clip-path="url(#pinClipFinalH)">
+<line x1="309.9" y1="235.5" x2="370.1" y2="235.5" stroke="#EAF3F8" stroke-width="0.8" opacity="0.45"/>
+<line x1="309.9" y1="250.5" x2="370.1" y2="250.5" stroke="#EAF3F8" stroke-width="0.8" opacity="0.45"/>
+<line x1="309.9" y1="265.5" x2="370.1" y2="265.5" stroke="#EAF3F8" stroke-width="0.8" opacity="0.45"/>
+<line x1="309.9" y1="280.5" x2="370.1" y2="280.5" stroke="#EAF3F8" stroke-width="0.8" opacity="0.45"/>
+<line x1="325" y1="220.5" x2="325" y2="297.5" stroke="#EAF3F8" stroke-width="0.8" opacity="0.45"/>
+<line x1="340" y1="220.5" x2="340" y2="297.5" stroke="#EAF3F8" stroke-width="0.8" opacity="0.45"/>
+<line x1="355" y1="220.5" x2="355" y2="297.5" stroke="#EAF3F8" stroke-width="0.8" opacity="0.45"/>
+<circle cx="340" cy="253.5" r="10" fill="#D64545" opacity="0.3"/>
+<circle cx="340" cy="253.5" r="5" fill="#D64545"/>
+</g>
+<text x="340" y="341" text-anchor="middle" font-family="Arial, sans-serif" font-size="44" font-weight="700" fill="#0C447C">SĀRTHI</text>
+<text x="340" y="369" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="3" fill="#185FA5">AI SOLUTIONS</text>
+</svg>
