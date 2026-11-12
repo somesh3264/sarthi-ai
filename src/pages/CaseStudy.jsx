@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import ContourLines from "../components/graphics/ContourLines";
 import DetailNotFound from "../components/DetailNotFound";
 import { useDocumentMeta } from "../components/documentMeta";
-import { ButtonLink, SampleNote, StatusBadge, focusRing } from "../components/ui";
+import { ButtonLink, StatusBadge, focusRing } from "../components/ui";
 import { caseStudies } from "../data/pages";
 
 function Block({ title, children }) {
@@ -40,7 +40,6 @@ function CaseStudyView({ cs }) {
           <div className="mt-6">
             <div className="flex flex-wrap gap-2">
               <StatusBadge tone="light">Case study</StatusBadge>
-              {cs.sample && <StatusBadge tone="light">Sample</StatusBadge>}
             </div>
           </div>
           <h1 className="mt-4 font-heading text-3xl font-bold leading-tight sm:text-4xl">{cs.title}</h1>
@@ -58,11 +57,6 @@ function CaseStudyView({ cs }) {
       )}
 
       <div className="mx-auto max-w-3xl px-6 pb-16 lg:px-8">
-        {cs.sample && (
-          <SampleNote className="mt-10">
-            <strong>Sample case study.</strong> This page previews the layout and is not a real client project.
-          </SampleNote>
-        )}
         <Block title="The challenge"><p>{cs.challenge}</p></Block>
         {cs.studyArea && <Block title="Study area"><p>{cs.studyArea}</p></Block>}
         <Block title="Our approach"><p>{cs.approach}</p></Block>

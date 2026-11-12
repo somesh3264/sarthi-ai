@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import ContourLines from "../components/graphics/ContourLines";
 import DetailNotFound from "../components/DetailNotFound";
 import { useDocumentMeta } from "../components/documentMeta";
-import { StatusBadge, focusRing } from "../components/ui";
+import { focusRing } from "../components/ui";
 import { articles, newsletterCategories } from "../data/pages";
 import { formatDate } from "../data/format";
 
@@ -29,7 +29,6 @@ function ArticleView({ article }) {
             <p className="text-xs font-semibold uppercase tracking-widest text-azure">
               {categoryName[article.category]}
             </p>
-            {article.sample && <StatusBadge tone="amberOnDark">Sample</StatusBadge>}
           </div>
           <h1 className="mt-3 font-heading text-3xl font-bold leading-tight sm:text-4xl">{article.title}</h1>
           <p className="mt-4 text-sm text-white/70">
@@ -49,11 +48,6 @@ function ArticleView({ article }) {
       )}
 
       <div className="mx-auto max-w-3xl px-6 py-12 lg:px-8">
-        {article.sample && (
-          <p role="note" className="mb-8 rounded-lg border border-emerald/40 bg-emerald/10 px-4 py-3 text-sm text-grey-dark">
-            <strong>Sample article.</strong> This page previews the article layout and is not published content.
-          </p>
-        )}
         <p className="text-lg leading-relaxed text-grey-dark/85">{article.summary}</p>
         {article.body?.map((section, i) => (
           <section key={section.heading ?? i} className="mt-8">

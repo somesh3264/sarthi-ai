@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/graphics/Reveal";
 import { DocumentChartIcon } from "../components/graphics/PointIcons";
-import { ButtonLink, SampleNote, SectionHeading, StatusBadge, focusRing } from "../components/ui";
+import { ButtonLink, SectionHeading, focusRing } from "../components/ui";
 import { newsletterHero, newsletterCategories, articles } from "../data/pages";
 import { formatDate } from "../data/format";
 import { ArrowRightIcon } from "../components/Icons";
@@ -17,7 +17,6 @@ function ArticleCard({ article }) {
       <div className="flex flex-1 flex-col p-6">
         <div className="flex flex-wrap items-center gap-2">
           <p className="text-xs font-semibold uppercase tracking-widest text-teal">{categoryName[article.category]}</p>
-          {article.sample && <StatusBadge tone="sample">Sample</StatusBadge>}
         </div>
         <h3 className="mt-2 font-heading text-lg font-semibold text-navy">
           {/* The stretched link makes the whole card clickable while keeping one link per card. */}
@@ -78,11 +77,6 @@ export default function Newsletter() {
                   </button>
                 ))}
               </div>
-              {articles.some((a) => a.sample) && (
-                <SampleNote className="mt-6">
-                  <strong>Sample articles</strong> are shown to preview the layout. They are not published content.
-                </SampleNote>
-              )}
               <ul className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {visible.map((a) => (
                   <ArticleCard key={a.slug} article={a} />
