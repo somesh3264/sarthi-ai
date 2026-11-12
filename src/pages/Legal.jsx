@@ -33,7 +33,10 @@ export default function Legal({ doc }) {
         <section className="mt-10">
           <h2 className="font-heading text-xl font-semibold text-navy">Contact us</h2>
           <p className="mt-3 text-base leading-relaxed text-grey-dark/80">
-            Email: {contactInfo.email}
+            Email:{" "}
+            <a href={`mailto:${contactInfo.email}`} className={`text-teal underline underline-offset-2 ${focusRing}`}>
+              {contactInfo.email}
+            </a>
             <br />
             Address: {contactInfo.address}
           </p>

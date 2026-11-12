@@ -72,8 +72,12 @@ export default function Footer() {
         </Column>
 
         <Column title="Contact">
-          <li className="text-white/60">Phone: {contactInfo.phone}</li>
-          <li className="text-white/60">Email: {contactInfo.email}</li>
+          <li className="text-white/60">
+            Phone: <a href={contactInfo.phoneHref} className={linkClass}>{contactInfo.phone}</a>
+          </li>
+          <li className="text-white/60">
+            Email: <a href={`mailto:${contactInfo.email}`} className={`break-all ${linkClass}`}>{contactInfo.email}</a>
+          </li>
           <li className="text-white/60">Address: {contactInfo.address}</li>
           <li className="pt-2">
             <Link to="/contact" className={`font-semibold text-white ${linkClass}`}>

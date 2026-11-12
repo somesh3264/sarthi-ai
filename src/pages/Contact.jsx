@@ -108,11 +108,15 @@ export default function Contact() {
         <div id="details" className="scroll-mt-6 space-y-8 lg:col-span-2">
           <div>
             <h2 className="text-sm font-semibold uppercase tracking-widest text-teal">Phone</h2>
-            <p className="mt-2 text-lg text-grey-dark">{contactInfo.phone}</p>
+            <p className="mt-2 text-lg text-grey-dark">
+              <a href={contactInfo.phoneHref} className={`hover:text-teal hover:underline ${focusRing}`}>{contactInfo.phone}</a>
+            </p>
           </div>
           <div>
             <h2 className="text-sm font-semibold uppercase tracking-widest text-teal">Email</h2>
-            <p className="mt-2 text-lg text-grey-dark">{contactInfo.email}</p>
+            <p className="mt-2 text-lg text-grey-dark">
+              <a href={`mailto:${contactInfo.email}`} className={`break-all hover:text-teal hover:underline ${focusRing}`}>{contactInfo.email}</a>
+            </p>
           </div>
           <div>
             <h2 className="text-sm font-semibold uppercase tracking-widest text-teal">Office</h2>

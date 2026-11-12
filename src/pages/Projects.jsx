@@ -169,13 +169,13 @@ function CaseStudies() {
   );
 }
 
-function Demonstrations() {
+function Demonstrations({ index }) {
   return (
     <section id="demonstrations" className="scroll-mt-6 bg-navy py-20 text-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <Reveal>
           <SectionHeading
-            index="03"
+            index={index}
             label="Demonstrations & applications"
             title="Satellite imagery applications"
             intro="Examples of how satellite imagery and geospatial analysis reveal change, risk and opportunity across very different landscapes."
@@ -221,8 +221,9 @@ export default function Projects() {
     <>
       <PageHero eyebrow="Projects" title="Projects, case studies and applications" description={projectsIntro} />
       <FeaturedCapability />
-      <CaseStudies />
-      <Demonstrations />
+      {/* Hidden until Sarthi AI has client-approved case studies (client call, 12 Nov 2026). */}
+      {caseStudies.length > 0 && <CaseStudies />}
+      <Demonstrations index={caseStudies.length > 0 ? "03" : "02"} />
       <section className="py-16 text-center">
         <ButtonLink to="/contact">Discuss Your Project</ButtonLink>
       </section>

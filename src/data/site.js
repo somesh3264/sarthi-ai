@@ -32,11 +32,12 @@ export const legalLinks = [
   { label: "Recruitment Privacy Notice", to: "/recruitment-privacy" },
 ];
 
-// Placeholders until Sarthi AI verifies the brochure details (see blueprint, Contact Us page).
+// Confirmed by Sarthi AI on the client call (12 Nov 2026).
 export const contactInfo = {
-  email: "[your email address]",
-  phone: "[your phone number]",
-  address: "[your office address]",
+  email: "admin@getsarthiai.com",
+  phone: "+91 99813 37606",
+  phoneHref: "tel:+919981337606",
+  address: "M-300, 1st Floor, Arvind Vihar, Bagmugaliya, Bhopal, Huzur, Madhya Pradesh, India, 462043",
 };
 
 // Only add verified official profiles, e.g. { label: "LinkedIn", href: "https://..." }.
