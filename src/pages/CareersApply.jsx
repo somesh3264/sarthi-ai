@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import PageHero from "../components/PageHero";
-import { focusRing } from "../components/ui";
+import { SampleNote, focusRing } from "../components/ui";
 import { Field, Fieldset } from "../components/FormField";
 import { inputClass, fieldA11y } from "../components/formUtils";
 import { openings } from "../data/pages";
@@ -217,6 +217,12 @@ export default function CareersApply() {
       />
 
       <section className="mx-auto max-w-4xl px-6 py-16 lg:px-8">
+        {openings.find((j) => j.id === form.position)?.sample && (
+          <SampleNote className="mb-8">
+            <strong>Sample vacancy selected.</strong> This position is a layout preview and is not open;
+            applications for it won't be considered.
+          </SampleNote>
+        )}
         <form onSubmit={onSubmit} noValidate className="space-y-8">
           <p className="text-xs text-grey-dark/60">
             Fields marked <span className="text-red-700">*</span> are required.

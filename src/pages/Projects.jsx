@@ -4,7 +4,7 @@ import Reveal from "../components/graphics/Reveal";
 import ContourLines from "../components/graphics/ContourLines";
 import { GlobeIcon, LayersIcon } from "../components/graphics/PointIcons";
 import { CheckIcon, ArrowRightIcon } from "../components/Icons";
-import { ButtonLink, SectionHeading, StatusBadge, focusRing } from "../components/ui";
+import { ButtonLink, SampleNote, SectionHeading, StatusBadge, focusRing } from "../components/ui";
 import cityNight from "../assets/photos/city-night.jpg";
 import {
   projectsIntro,
@@ -119,7 +119,13 @@ function CaseStudies() {
             </div>
           </Reveal>
         ) : (
-          <ul className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <>
+          {caseStudies.some((c) => c.sample) && (
+            <SampleNote className="mt-8">
+              <strong>Sample case studies</strong> are shown to preview the layout. They are not real client projects.
+            </SampleNote>
+          )}
+          <ul className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {caseStudies.map((cs) => (
               <li
                 key={cs.slug}
@@ -127,7 +133,10 @@ function CaseStudies() {
               >
                 {cs.image && <img src={cs.image} alt="" className="h-44 w-full object-cover" />}
                 <div className="flex flex-1 flex-col p-6">
-                  <StatusBadge tone="teal">Case study</StatusBadge>
+                  <div className="flex flex-wrap gap-2">
+                    <StatusBadge tone="teal">Case study</StatusBadge>
+                    {cs.sample && <StatusBadge tone="sample">Sample</StatusBadge>}
+                  </div>
                   <h3 className="mt-3 font-heading text-lg font-semibold text-navy">
                     {/* Stretched link: the whole card opens the case study. */}
                     <Link to={`/projects/${cs.slug}`} className={`after:absolute after:inset-0 ${focusRing}`}>
@@ -153,6 +162,7 @@ function CaseStudies() {
               </li>
             ))}
           </ul>
+          </>
         )}
       </div>
     </section>

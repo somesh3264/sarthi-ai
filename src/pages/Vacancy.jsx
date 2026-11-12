@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import ContourLines from "../components/graphics/ContourLines";
 import DetailNotFound from "../components/DetailNotFound";
 import { useDocumentMeta } from "../components/documentMeta";
-import { ButtonLink, StatusBadge, focusRing } from "../components/ui";
+import { ButtonLink, SampleNote, StatusBadge, focusRing } from "../components/ui";
 import { openings } from "../data/pages";
 
 function List({ title, items }) {
@@ -44,6 +44,7 @@ function VacancyView({ job }) {
           <div className="mt-6 flex flex-wrap gap-2">
             <StatusBadge tone="light">{job.type}</StatusBadge>
             <StatusBadge tone="amberOnDark">{job.status}</StatusBadge>
+            {job.sample && <StatusBadge tone="light">Sample</StatusBadge>}
           </div>
           <h1 className="mt-4 font-heading text-3xl font-bold leading-tight sm:text-4xl">{job.title}</h1>
           <div className="mt-8">
@@ -54,6 +55,11 @@ function VacancyView({ job }) {
 
       <div className="mx-auto grid max-w-5xl grid-cols-1 gap-12 px-6 py-14 lg:grid-cols-3 lg:px-8">
         <div className="lg:col-span-2">
+          {job.sample && (
+            <SampleNote className="mb-8">
+              <strong>Sample vacancy.</strong> This page previews the layout; this position is not open.
+            </SampleNote>
+          )}
           <section>
             <h2 className="font-heading text-xl font-semibold text-navy">About the role</h2>
             <p className="mt-3 text-base leading-relaxed text-grey-dark/80">{job.summary}</p>

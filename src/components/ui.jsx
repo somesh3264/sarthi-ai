@@ -46,6 +46,7 @@ export function StatusBadge({ children, tone = "amber" }) {
     amberOnDark: "bg-emerald/30 text-[#f6d38c] ring-emerald/50",
     teal: "bg-teal/10 text-teal ring-teal/30",
     light: "bg-white/15 text-white ring-white/30",
+    sample: "bg-grey-dark/85 text-white ring-grey-dark/20",
   };
   return (
     <span
@@ -53,5 +54,14 @@ export function StatusBadge({ children, tone = "amber" }) {
     >
       {children}
     </span>
+  );
+}
+
+// Note shown wherever sample (preview-only) content appears. Remove with the samples before launch.
+export function SampleNote({ children, className = "" }) {
+  return (
+    <p role="note" className={`rounded-lg border border-emerald/40 bg-emerald/10 px-4 py-3 text-sm text-grey-dark ${className}`}>
+      {children}
+    </p>
   );
 }

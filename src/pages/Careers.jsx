@@ -13,7 +13,7 @@ import {
   DocumentChartIcon,
   PeopleIcon,
 } from "../components/graphics/PointIcons";
-import { ButtonLink, SectionHeading, StatusBadge, focusRing } from "../components/ui";
+import { ButtonLink, SampleNote, SectionHeading, StatusBadge, focusRing } from "../components/ui";
 import aiDataStreams from "../assets/photos/ai-data-streams.jpg";
 import {
   careersHero,
@@ -67,6 +67,7 @@ function OpeningCard({ job }) {
       <div className="flex flex-wrap items-center gap-2">
         <StatusBadge tone="teal">{job.type}</StatusBadge>
         <StatusBadge>{job.status}</StatusBadge>
+        {job.sample && <StatusBadge tone="sample">Sample</StatusBadge>}
       </div>
       <h3 className="mt-3 font-heading text-lg font-semibold text-navy">{job.title}</h3>
       <p className="text-xs text-grey-dark/60">{job.area}</p>
@@ -119,7 +120,12 @@ function Openings() {
           </Reveal>
         ) : (
           <>
-            <div role="group" aria-label="Filter openings" className="mt-8 flex flex-wrap gap-2">
+            {openings.some((j) => j.sample) && (
+              <SampleNote className="mt-8">
+                <strong>Sample vacancies</strong> are shown to preview the layout. They are not open positions.
+              </SampleNote>
+            )}
+            <div role="group" aria-label="Filter openings" className="mt-6 flex flex-wrap gap-2">
               {FILTERS.map((f) => (
                 <button
                   key={f}

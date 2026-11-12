@@ -1,4 +1,4 @@
-import { sampleArticles } from "./sampleArticles";
+import { sampleArticles, sampleCaseStudies, sampleOpenings } from "./sampleContent";
 
 // Copy for Projects, Careers and Newsletter, from the website blueprint (v1.0).
 // Blueprint rule: never present suggested roles as live vacancies, illustrative imagery as client
@@ -36,7 +36,8 @@ export const featuredPlatform = {
 //   tools: ["QGIS", "Sentinel-2"], outputs: ["Suitability maps", "Technical report"],
 //   image, imageAlt, imageCredit,               // approved visual (import it from src/assets)
 // }
-export const caseStudies = [];
+// TODO before launch: remove the sample case studies and add client-approved ones.
+export const caseStudies = [...sampleCaseStudies];
 
 export const demonstrationTypes = [
   "Sample parcel mapping",
@@ -122,7 +123,8 @@ export const careerAreas = [
 // { id: "gis-analyst-2027", title, area, type: "Full-time" | "Internship", location,
 //   mode: "On-site" | "Hybrid" | "Remote", experience, status: "Open" | "Closing soon",
 //   summary, responsibilities: [], skills: [] }
-export const openings = [];
+// TODO before launch: remove the sample vacancies; list only approved, active requisitions.
+export const openings = [...sampleOpenings];
 
 export const internshipAreas = [
   {
@@ -198,5 +200,5 @@ export const newsletterCategories = [
 //   body: [{ heading: "Optional section heading", paragraphs: ["...", "..."] }],
 //   sources: [{ label: "Source name", url: "https://..." }],
 // }
-// TODO before launch: remove the sample articles (and src/data/sampleArticles.js) and add real ones.
+// TODO before launch: remove the sample articles and add real ones (then delete src/data/sampleContent.js).
 export const articles = [...sampleArticles];
