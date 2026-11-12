@@ -295,13 +295,6 @@ export const featuredCapability = {
   points: ["Parcel data", "Planning layers", "Interactive GIS", "Reports", "Web and mobile access"],
 };
 
-// Public satellite imagery examples; always shown with the "illustrative" caption.
-export const demonstrations = [
-  { title: "Bhadla Solar Park, Rajasthan", theme: "Land transformation, 2016 vs January 2025" },
-  { title: "Delhi and the Yamuna River", theme: "Urban and infrastructure mapping" },
-  { title: "Singrauli coalfield", theme: "Mining and natural-resource mapping" },
-];
-
 export const illustrativeCaption =
   "Public imagery shown for illustration; not client project work.";
 

@@ -5,9 +5,13 @@ import ContourLines from "../components/graphics/ContourLines";
 import ProcessWorkflow from "../components/graphics/ProcessWorkflow";
 import Reveal from "../components/graphics/Reveal";
 import { CheckIcon, ArrowRightIcon } from "../components/Icons";
-import { RadarIcon, LayersIcon, NetworkIcon, DocumentChartIcon, GlobeIcon } from "../components/graphics/PointIcons";
+import { RadarIcon, LayersIcon, NetworkIcon, DocumentChartIcon } from "../components/graphics/PointIcons";
 import FilmReel from "../components/FilmReel";
 import ServiceIcon from "../components/graphics/ServiceIcons";
+import { imageryExamples } from "../data/pages";
+
+// First three Projects imagery examples, with the same illustrative photos.
+const homeDemonstrations = imageryExamples.slice(0, 3);
 import { ButtonLink, SectionHeading, StatusBadge, focusRing } from "../components/ui";
 import { sectorVideos, sectorPosters } from "../data/media";
 import InViewVideo from "../components/InViewVideo";
@@ -18,7 +22,6 @@ import {
   sectors,
   howWeWork,
   featuredCapability,
-  demonstrations,
   illustrativeCaption,
   whyChooseUs,
   contactInvitation,
@@ -193,9 +196,15 @@ function SelectedWork() {
               <StatusBadge tone="light">Demonstrations</StatusBadge>
               <h3 className="mt-4 font-heading text-lg font-semibold">Satellite imagery applications</h3>
               <ul className="mt-4 flex-1 space-y-4">
-                {demonstrations.map((d) => (
-                  <li key={d.title} className="flex gap-3">
-                    <GlobeIcon className="mt-0.5 h-5 w-5 shrink-0 text-azure" />
+                {homeDemonstrations.map((d) => (
+                  <li key={d.title} className="flex items-center gap-4">
+                    <img
+                      src={d.image}
+                      alt=""
+                      aria-hidden="true"
+                      loading="lazy"
+                      className="h-14 w-20 shrink-0 rounded-lg object-cover ring-1 ring-white/15"
+                    />
                     <span>
                       <span className="block text-sm font-semibold">{d.title}</span>
                       <span className="block text-sm text-white/65">{d.theme}</span>
