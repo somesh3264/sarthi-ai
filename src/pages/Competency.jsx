@@ -96,7 +96,6 @@ function SectorPanel({ sector, reverse }) {
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent" />
-        <span className="absolute bottom-3 left-4 text-[11px] text-white/70">Illustrative footage</span>
       </div>
       <div className="p-6 sm:p-8">
         <h3 className="font-heading text-2xl font-semibold text-navy">{sector.name}</h3>
