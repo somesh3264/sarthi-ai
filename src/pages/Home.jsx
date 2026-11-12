@@ -7,6 +7,7 @@ import Reveal from "../components/graphics/Reveal";
 import { CheckIcon, ArrowRightIcon } from "../components/Icons";
 import { RadarIcon, LayersIcon, NetworkIcon, DocumentChartIcon, GlobeIcon } from "../components/graphics/PointIcons";
 import FilmReel from "../components/FilmReel";
+import ServiceIcon from "../components/graphics/ServiceIcons";
 import { ButtonLink, SectionHeading, StatusBadge, focusRing } from "../components/ui";
 import { sectorVideos, sectorPosters } from "../data/media";
 import InViewVideo from "../components/InViewVideo";
@@ -68,10 +69,15 @@ function CoreServices() {
             <Reveal as="li" key={service.id} delay={(i % 3) * 0.06} className="h-full">
                 <Link
                   to={`/competency#${service.id}`}
-                  className={`group flex h-full flex-col rounded-2xl border border-grey-dark/10 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-teal/40 hover:shadow-lg ${focusRing}`}
+                  className={`group flex h-full flex-col rounded-2xl border border-grey-dark/10 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-teal/40 hover:shadow-[0_0_0_4px_rgba(63,182,192,0.12),0_18px_40px_-16px_rgba(47,111,94,0.45)] focus-visible:shadow-[0_0_0_4px_rgba(63,182,192,0.12),0_18px_40px_-16px_rgba(47,111,94,0.45)] ${focusRing}`}
                 >
-                  <span className="font-mono text-2xl font-bold text-teal">{service.number}</span>
-                  <h3 className="mt-3 font-heading text-lg font-semibold text-navy">{service.title}</h3>
+                  <div className="flex items-start justify-between">
+                    <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-teal/10 text-teal transition-colors duration-300 group-hover:bg-teal/15 group-focus-visible:bg-teal/15">
+                      <ServiceIcon id={service.id} delay={(i % 3) * 0.12} className="h-9 w-9" />
+                    </span>
+                    <span className="font-mono text-sm font-semibold text-teal">{service.number}</span>
+                  </div>
+                  <h3 className="mt-5 font-heading text-lg font-semibold text-navy">{service.title}</h3>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-grey-dark/70">{service.card}</p>
                   <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-teal">
                     View details
