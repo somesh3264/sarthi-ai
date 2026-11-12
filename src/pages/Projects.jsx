@@ -5,7 +5,7 @@ import ContourLines from "../components/graphics/ContourLines";
 import { LayersIcon } from "../components/graphics/PointIcons";
 import { CheckIcon, ArrowRightIcon } from "../components/Icons";
 import { ButtonLink, SectionHeading, StatusBadge, focusRing } from "../components/ui";
-import cityNight from "../assets/photos/city-night.jpg";
+import topoMap from "../assets/photos/topo-map.jpg";
 import {
   projectsIntro,
   featuredPlatform,
@@ -50,7 +50,7 @@ function FeaturedCapability() {
           <Reveal className="lg:col-span-3">
             <article className="h-full overflow-hidden rounded-3xl border border-grey-dark/10 bg-white shadow-sm">
               <div className="relative h-56">
-                <img src={cityNight} alt="" aria-hidden="true" loading="lazy" className="h-full w-full object-cover" />
+                <img src={topoMap} alt="" aria-hidden="true" loading="lazy" className="h-full w-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/70 to-transparent" />
                 <div className="absolute bottom-4 left-4 flex flex-wrap gap-2">
                   <StatusBadge tone="light">Featured capability</StatusBadge>
