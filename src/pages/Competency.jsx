@@ -6,6 +6,7 @@ import { SatelliteIcon, DroneIcon, AIIcon } from "../components/graphics/ThemeIc
 import { ButtonLink, SectionHeading, focusRing } from "../components/ui";
 import { sectorVideos, sectorPosters } from "../data/media";
 import InViewVideo from "../components/InViewVideo";
+import ServiceIcon from "../components/graphics/ServiceIcons";
 import {
   competencyIntro,
   serviceGroups,
@@ -87,7 +88,7 @@ function SectorPanel({ sector, reverse }) {
   return (
     <article
       id={sector.id}
-      className="scroll-mt-6 grid grid-cols-1 overflow-hidden rounded-3xl border border-grey-dark/10 bg-white shadow-sm lg:grid-cols-2"
+      className="group scroll-mt-6 grid grid-cols-1 overflow-hidden rounded-3xl border border-grey-dark/10 bg-white shadow-sm transition-all duration-300 hover:border-teal/40 hover:shadow-[0_0_0_4px_rgba(63,182,192,0.12),0_20px_44px_-18px_rgba(47,111,94,0.45)] focus-within:border-teal/40 focus-within:shadow-[0_0_0_4px_rgba(63,182,192,0.12),0_20px_44px_-18px_rgba(47,111,94,0.45)] lg:grid-cols-2"
     >
       <div className={`relative min-h-60 ${reverse ? "lg:order-2" : ""}`}>
         <InViewVideo
@@ -96,6 +97,9 @@ function SectorPanel({ sector, reverse }) {
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent" />
+        <span className="absolute top-5 left-5 flex h-16 w-16 items-center justify-center rounded-xl bg-navy/60 text-white shadow-lg ring-1 ring-white/25 backdrop-blur-sm transition-colors duration-300 group-hover:bg-teal/80 group-hover:ring-azure/60 group-focus-within:bg-teal/80 group-focus-within:ring-azure/60">
+          <ServiceIcon id={sector.id} className="h-10 w-10" />
+        </span>
         <span className="absolute bottom-3 left-4 text-[11px] text-white/70">Illustrative footage</span>
       </div>
       <div className="p-6 sm:p-8">
