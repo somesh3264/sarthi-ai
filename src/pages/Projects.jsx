@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/graphics/Reveal";
 import ContourLines from "../components/graphics/ContourLines";
-import { GlobeIcon, LayersIcon } from "../components/graphics/PointIcons";
+import { LayersIcon } from "../components/graphics/PointIcons";
 import { CheckIcon, ArrowRightIcon } from "../components/Icons";
 import { ButtonLink, SectionHeading, StatusBadge, focusRing } from "../components/ui";
 import cityNight from "../assets/photos/city-night.jpg";
@@ -179,14 +179,24 @@ function Demonstrations({ index }) {
 
         <ul className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {imageryExamples.map((ex, i) => (
-            <Reveal as="li" key={ex.title} delay={(i % 4) * 0.05} className="rounded-2xl border border-white/10 bg-white/5 p-5">
-              <div className="flex items-center justify-between">
-                <GlobeIcon className="h-5 w-5 text-azure" />
-                <StatusBadge tone="light">Illustrative</StatusBadge>
+            <Reveal
+              as="li"
+              key={ex.title}
+              delay={(i % 4) * 0.05}
+              className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition-all duration-300 hover:border-azure/50 hover:shadow-[0_0_0_4px_rgba(63,182,192,0.15),0_20px_44px_-18px_rgba(0,0,0,0.6)]"
+            >
+              <div className="relative h-36 overflow-hidden">
+                <img src={ex.image} alt="" aria-hidden="true" loading="lazy" className="h-full w-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/70 to-transparent" />
+                <span className="absolute top-3 right-3 rounded-full bg-navy/75 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-white ring-1 ring-white/25 backdrop-blur-sm">
+                  Illustrative
+                </span>
               </div>
-              <h3 className="mt-4 font-heading text-base font-semibold">{ex.title}</h3>
-              <p className="mt-1 text-sm text-white/70">{ex.theme}</p>
-              {ex.detail && <p className="mt-2 text-xs text-white/55">{ex.detail}</p>}
+              <div className="p-5">
+                <h3 className="font-heading text-base font-semibold">{ex.title}</h3>
+                <p className="mt-1 text-sm text-white/70">{ex.theme}</p>
+                {ex.detail && <p className="mt-2 text-xs text-white/55">{ex.detail}</p>}
+              </div>
             </Reveal>
           ))}
         </ul>

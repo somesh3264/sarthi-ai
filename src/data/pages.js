@@ -1,3 +1,11 @@
+import solarFarm from "../assets/photos/solar-farm.jpg";
+import cityNight from "../assets/photos/city-night.jpg";
+import miningQuarry from "../assets/photos/mining-quarry.jpg";
+import topoMap from "../assets/photos/topo-map.jpg";
+import earthIndia from "../assets/photos/earth-india.jpg";
+import forestCanopy from "../assets/photos/forest-canopy.jpg";
+import earthSatellite from "../assets/photos/earth-satellite.jpg";
+
 // Copy for Projects, Careers and Newsletter, from the website blueprint (v1.0).
 // Blueprint rule: never present suggested roles as live vacancies, illustrative imagery as client
 // work, or an in-development platform as a finished product.
@@ -45,18 +53,21 @@ export const demonstrationTypes = [
   "Technical demos",
 ];
 
+// `image` is an illustrative stock photo matched to each theme, NOT imagery of the named place.
+// Replace with the real public satellite images (with source and licence credits) when supplied.
 export const imageryExamples = [
   {
     title: "Bhadla Solar Park, Rajasthan",
     theme: "Land transformation and site monitoring",
     detail: "Same-area comparison between 2016 and January 2025.",
+    image: solarFarm,
   },
-  { title: "Delhi and the Yamuna River", theme: "Urban and infrastructure mapping" },
-  { title: "Singrauli coalfield", theme: "Mining and natural-resource mapping" },
-  { title: "Punjab plains near Bathinda", theme: "Agriculture and land use" },
-  { title: "Brahmaputra River at Majuli", theme: "Flood and river risk" },
-  { title: "Sundarbans", theme: "Forest and coastal ecosystems" },
-  { title: "Mumbai and Thane Creek", theme: "Coastal city and infrastructure" },
+  { title: "Delhi and the Yamuna River", theme: "Urban and infrastructure mapping", image: cityNight },
+  { title: "Singrauli coalfield", theme: "Mining and natural-resource mapping", image: miningQuarry },
+  { title: "Punjab plains near Bathinda", theme: "Agriculture and land use", image: topoMap },
+  { title: "Brahmaputra River at Majuli", theme: "Flood and river risk", image: earthIndia },
+  { title: "Sundarbans", theme: "Forest and coastal ecosystems", image: forestCanopy },
+  { title: "Mumbai and Thane Creek", theme: "Coastal city and infrastructure", image: earthSatellite },
 ];
 
 export const imageryCaption =
