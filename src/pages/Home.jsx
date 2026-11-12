@@ -103,11 +103,11 @@ function Sectors() {
           <SectionHeading index="03" label="Sectors we support" title="Insight for critical industries" />
         </Reveal>
         <ul className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {sectors.map((sector) => (
+          {sectors.map((sector, i) => (
             <li key={sector.id}>
               <Link
                 to={`/competency#${sector.id}`}
-                className={`group relative block h-72 overflow-hidden rounded-2xl shadow-sm transition-shadow hover:shadow-xl ${focusRing}`}
+                className={`group relative block h-72 overflow-hidden rounded-2xl shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_4px_rgba(63,182,192,0.22),0_20px_44px_-16px_rgba(15,42,34,0.6)] focus-visible:shadow-[0_0_0_4px_rgba(63,182,192,0.22),0_20px_44px_-16px_rgba(15,42,34,0.6)] ${focusRing}`}
               >
                 <InViewVideo
                   src={sectorVideos[sector.id]}
@@ -115,6 +115,9 @@ function Sectors() {
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/55 to-navy/10" />
+                <span className="absolute top-5 left-5 flex h-14 w-14 items-center justify-center rounded-xl bg-navy/60 text-white shadow-lg ring-1 ring-white/25 backdrop-blur-sm transition-colors duration-300 group-hover:bg-teal/80 group-hover:ring-azure/60 group-focus-visible:bg-teal/80 group-focus-visible:ring-azure/60">
+                  <ServiceIcon id={sector.id} delay={(i % 3) * 0.12} className="h-9 w-9" />
+                </span>
                 <div className="relative flex h-full flex-col justify-end p-6">
                   <h3 className="font-heading text-lg font-semibold text-white">{sector.name}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-white/80">{sector.card}</p>
