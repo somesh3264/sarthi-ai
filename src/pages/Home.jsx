@@ -185,7 +185,6 @@ function SelectedWork() {
                     </li>
                   ))}
                 </ul>
-                <p className="mt-4 text-[11px] text-white/50">Illustrative image.</p>
               </div>
             </article>
           </Reveal>

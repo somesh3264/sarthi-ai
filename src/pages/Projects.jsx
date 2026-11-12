@@ -56,7 +56,6 @@ function FeaturedCapability() {
                   <StatusBadge tone="light">Featured capability</StatusBadge>
                   <StatusBadge tone="amberOnDark">{featuredPlatform.status}</StatusBadge>
                 </div>
-                <span className="absolute right-4 bottom-4 text-[11px] text-white/70">Illustrative image</span>
               </div>
               <div className="p-6 sm:p-8">
                 <p className="font-heading text-lg font-semibold text-navy">{featuredPlatform.tagline}</p>
