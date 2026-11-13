@@ -9,9 +9,6 @@ import film720 from "../assets/video/earth-to-bhopal-720.mp4";
 const DESCRIPTION =
   "A short film zooming from Earth to Asia, India, Madhya Pradesh and Bhopal's Upper Lake, ending on the Sarthi AI logo.";
 
-const CREDIT =
-  "Imagery: NASA Earth Observatory (Blue Marble) · Contains modified Copernicus Sentinel data";
-
 function prefersReducedMotion() {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
@@ -88,10 +85,7 @@ export default function FilmReel() {
           </button>
         )}
       </div>
-      <figcaption className="mt-3 text-center text-xs leading-relaxed text-grey-dark/55">
-        <span className="sr-only">{DESCRIPTION} </span>
-        {CREDIT}
-      </figcaption>
+      <figcaption className="sr-only">{DESCRIPTION}</figcaption>
     </figure>
   );
 }
