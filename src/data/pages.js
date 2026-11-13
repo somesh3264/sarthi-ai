@@ -71,10 +71,6 @@ export const imageryExamples = [
   { title: "Mumbai and Thane Creek", theme: "Coastal city and infrastructure", image: satMumbai, captured: "Dec 2024" },
 ];
 
-export const imageryCredit = "Contains modified Copernicus Sentinel data (2017, 2024–2025).";
-
-export const imageryCaption = `Public Sentinel-2 satellite images of each named place, shown as examples; not client project work. ${imageryCredit}`;
-
 /* ---------------------------------- Careers ---------------------------------- */
 
 export const careersHero = {

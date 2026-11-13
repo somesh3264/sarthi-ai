@@ -12,7 +12,6 @@ import {
   caseStudies,
   demonstrationTypes,
   imageryExamples,
-  imageryCaption,
 } from "../data/pages";
 
 function PhonePreview() {
@@ -204,7 +203,6 @@ function Demonstrations({ index }) {
             </Reveal>
           ))}
         </ul>
-        <p className="mt-6 text-xs text-white/55">{imageryCaption}</p>
 
         <div className="mt-12 rounded-2xl border border-white/10 p-6">
           <div className="flex flex-wrap items-center gap-3">

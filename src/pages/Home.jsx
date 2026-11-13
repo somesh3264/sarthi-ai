@@ -8,7 +8,7 @@ import { CheckIcon, ArrowRightIcon } from "../components/Icons";
 import { RadarIcon, LayersIcon, NetworkIcon, DocumentChartIcon } from "../components/graphics/PointIcons";
 import FilmReel from "../components/FilmReel";
 import ServiceIcon from "../components/graphics/ServiceIcons";
-import { imageryExamples, imageryCaption } from "../data/pages";
+import { imageryExamples } from "../data/pages";
 
 // First three Projects imagery examples, with the same Sentinel-2 images.
 const homeDemonstrations = imageryExamples.slice(0, 3);
@@ -210,7 +210,6 @@ function SelectedWork() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-6 text-xs text-white/50">{imageryCaption}</p>
             </div>
           </Reveal>
         </div>
