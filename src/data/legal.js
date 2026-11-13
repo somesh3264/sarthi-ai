@@ -70,6 +70,13 @@ export const legalDocs = {
         ],
       },
       {
+        heading: "Image credits",
+        paragraphs: [
+          "Homepage film: imagery from NASA Earth Observatory (Blue Marble). Contains modified Copernicus Sentinel data.",
+          "Satellite imagery examples (Home and Projects pages): contains modified Copernicus Sentinel data (2017, 2024–2025), Sentinel-2 Level-2A.",
+        ],
+      },
+      {
         heading: "Acceptable use",
         paragraphs: [
           "You agree not to misuse the site, including by attempting to disrupt it, gain unauthorised access, or submit false, harmful or unlawful information through its forms.",
