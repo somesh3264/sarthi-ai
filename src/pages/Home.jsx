@@ -1,12 +1,18 @@
-import { useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { AnimatePresence, animate, motion, useInView, useReducedMotion } from "framer-motion";
 import ServiceIcon from "../components/graphics/ServiceIcons";
 import ContourLines from "../components/graphics/ContourLines";
 import { ArrowRightIcon } from "../components/Icons";
 import { focusRing } from "../components/ui";
 import { home, services, sectors } from "../data/content";
 import { imageryExamples } from "../data/pages";
+import { sectorVideos, sectorPosters } from "../data/media";
+import { CountUp, Reveal } from "../components/motion";
+import { useCanHover } from "../components/useCanHover";
 import satBhadla from "../assets/satellite/bhadla-solar-park.jpg";
+import earthFilm from "../assets/video/earth-to-bhopal-720.mp4";
+import earthPoster from "../assets/photos/earth-to-bhopal-poster.jpg";
 
 /* ------------------------------- Small pieces ------------------------------- */
 
@@ -25,7 +31,7 @@ function Eyebrow({ children, dark = false }) {
 
 function SectionHead({ eyebrow, title, body, dark = false, id }) {
   return (
-    <div className="max-w-3xl">
+    <Reveal className="max-w-3xl">
       <Eyebrow dark={dark}>{eyebrow}</Eyebrow>
       <h2
         id={id}
@@ -36,7 +42,7 @@ function SectionHead({ eyebrow, title, body, dark = false, id }) {
       {body && (
         <p className={`mt-5 text-lg leading-relaxed ${dark ? "text-white/75" : "text-muted"}`}>{body}</p>
       )}
-    </div>
+    </Reveal>
   );
 }
 
@@ -81,9 +87,25 @@ function NeedsInput({ children, className = "" }) {
 
 // Before/after comparison of one Sentinel-2 composite (left half 2017, right half 2025).
 // A native range input drives it, so it works with keyboard, touch and screen readers.
-function ChangeSlider({ plate }) {
+// When `sweep` turns true it glides across once to show the change, unless the visitor has
+// already moved it.
+function ChangeSlider({ plate, sweep = false }) {
   const [pos, setPos] = useState(55);
   const inputId = useId();
+  const touched = useRef(false);
+
+  useEffect(() => {
+    if (!sweep || touched.current) return;
+    const controls = animate(55, [55, 12, 88, 50], {
+      duration: 4.2,
+      times: [0, 0.32, 0.78, 1],
+      ease: "easeInOut",
+      onUpdate: (v) => {
+        if (!touched.current) setPos(v);
+      },
+    });
+    return () => controls.stop();
+  }, [sweep]);
 
   // Each layer shows the full composite at twice the frame width, so one half fills the frame.
   const layer = "absolute inset-y-0 h-full w-[200%] max-w-none object-cover select-none";
@@ -120,8 +142,13 @@ function ChangeSlider({ plate }) {
         type="range"
         min="0"
         max="100"
-        value={pos}
-        onChange={(e) => setPos(Number(e.target.value))}
+        value={Math.round(pos)}
+        onPointerDown={() => (touched.current = true)}
+        onKeyDown={() => (touched.current = true)}
+        onChange={(e) => {
+          touched.current = true;
+          setPos(Number(e.target.value));
+        }}
         className="peer absolute inset-0 h-full w-full cursor-ew-resize touch-pan-y opacity-0"
       />
       {/* Focus ring for the invisible range input */}
@@ -143,13 +170,89 @@ function ChangeSlider({ plate }) {
   );
 }
 
+// The hero opens with a short zoom from orbit down to Bhopal, then hands over to the
+// before/after slider, which sweeps once on its own. Reduced-motion visitors go straight to a
+// still slider. The film can be skipped and replayed.
+function HeroMedia({ plate }) {
+  const reduce = useReducedMotion();
+  const [phase, setPhase] = useState(reduce ? "slider" : "film");
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, amount: 0.4 });
+
+  // A film that cannot play (blocked autoplay, data saver, error) gives way to the slider.
+  const videoRef = useRef(null);
+  useEffect(() => {
+    if (phase !== "film") return;
+    const v = videoRef.current;
+    if (!v) return;
+    // The film is 16.7 s; played a little faster it hands over in about 10 s.
+    v.currentTime = 0;
+    v.playbackRate = 1.6;
+    v.play().catch(() => setPhase("slider"));
+    const guard = setTimeout(() => setPhase("slider"), 20000);
+    return () => clearTimeout(guard);
+  }, [phase]);
+
+  const film = phase === "film";
+  return (
+    <div ref={ref} className="relative h-full w-full">
+      <ChangeSlider plate={plate} sweep={!reduce && !film && inView} />
+      <AnimatePresence>
+        {film && (
+          <motion.div
+            key="film"
+            className="absolute inset-0 bg-ink"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0, scale: 1.04 }}
+            transition={{ duration: 0.9, ease: "easeInOut" }}
+          >
+            <video
+              ref={videoRef}
+              className="h-full w-full object-cover"
+              src={earthFilm}
+              poster={earthPoster}
+              muted
+              playsInline
+              preload="auto"
+              onEnded={() => setPhase("slider")}
+              onError={() => setPhase("slider")}
+              aria-hidden="true"
+            />
+            <p className="absolute right-0 bottom-0 left-0 bg-ink/90 px-4 py-3 font-mono text-[11px] text-white/80 sm:px-5">
+              <span className="font-medium text-white">Earth → Bhopal</span>
+              <span className="mx-2 text-white/40">·</span>
+              From orbit to the ground we work on
+            </p>
+            <button
+              type="button"
+              onClick={() => setPhase("slider")}
+              className={`absolute top-4 right-4 rounded bg-ink/85 px-3 py-1.5 font-mono text-[11px] font-medium text-white hover:bg-ink ${focusRing} focus-visible:outline-brand-light`}
+            >
+              Skip intro
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      {!film && !reduce && (
+        <button
+          type="button"
+          onClick={() => setPhase("film")}
+          className={`absolute top-14 right-4 rounded bg-ink/70 px-2 py-1 font-mono text-[10px] font-medium text-white/80 hover:bg-ink hover:text-white ${focusRing} focus-visible:outline-brand-light`}
+        >
+          Replay intro
+        </button>
+      )}
+    </div>
+  );
+}
+
 function Hero() {
   const { hero } = home;
   return (
     <section aria-labelledby="hero-heading" className="relative overflow-hidden bg-ink text-white">
       <ContourLines opacity={0.1} className="lg:w-1/2" />
       <div className="container-page relative grid lg:min-h-[min(calc(100svh-4.5rem),46rem)] lg:grid-cols-12">
-        <div className="flex flex-col justify-center py-10 sm:py-20 lg:col-span-5 lg:py-24 lg:pr-10">
+        <Reveal className="flex flex-col justify-center py-10 sm:py-20 lg:col-span-5 lg:py-24 lg:pr-10" y={16}>
           <Eyebrow dark>{hero.eyebrow}</Eyebrow>
           <h1
             id="hero-heading"
@@ -166,11 +269,11 @@ function Hero() {
               {hero.secondaryCta.label}
             </Button>
           </div>
-        </div>
+        </Reveal>
       </div>
       {/* Imagery: bleeds to the right edge on desktop, full width under the text on phones. */}
       <div className="relative h-[24rem] sm:h-[30rem] lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:w-[54%]">
-        <ChangeSlider plate={hero.plate} />
+        <HeroMedia plate={hero.plate} />
       </div>
     </section>
   );
@@ -187,7 +290,9 @@ function ProofStrip() {
             {home.proof.map((item) => (
               <div key={item.label}>
                 <dt className="text-sm text-muted">{item.label}</dt>
-                <dd className="mt-1 font-heading text-3xl font-bold text-ink">{item.value}</dd>
+                <dd className="mt-1 font-heading text-3xl font-bold text-ink">
+                  <CountUp value={item.value} />
+                </dd>
               </div>
             ))}
           </dl>
@@ -215,10 +320,10 @@ function Services() {
           </div>
         </div>
         <ol className="border-t border-line lg:col-span-8">
-          {services.map((service) => {
+          {services.map((service, i) => {
             const item = copy.items[service.id];
             return (
-              <li key={service.id} className="border-b border-line">
+              <Reveal as="li" key={service.id} delay={Math.min(i, 3) * 0.06} className="border-b border-line">
                 <Link
                   to={`/competency#${service.id}`}
                   className={`group grid gap-4 py-7 sm:grid-cols-[3rem_1fr_auto] sm:gap-6 ${focusRing}`}
@@ -240,7 +345,7 @@ function Services() {
                   </span>
                   <ArrowRightIcon className="hidden h-5 w-5 self-center text-brand transition-transform group-hover:translate-x-1 sm:block" />
                 </Link>
-              </li>
+              </Reveal>
             );
           })}
         </ol>
@@ -253,6 +358,38 @@ function Services() {
 
 const IMAGERY = ["Delhi and the Yamuna River", "Singrauli coalfield", "Brahmaputra River at Majuli", "Punjab plains near Bathinda", "Sundarbans"];
 
+// Approximate scene centres, shown in the hover overlay.
+const SCENE_COORDS = {
+  "Delhi and the Yamuna River": "28.61° N · 77.25° E",
+  "Singrauli coalfield": "24.20° N · 82.67° E",
+  "Brahmaputra River at Majuli": "26.95° N · 94.17° E",
+  "Punjab plains near Bathinda": "30.21° N · 74.95° E",
+  Sundarbans: "21.95° N · 89.18° E",
+};
+
+// Map-style frame drawn over a scene on hover or focus: corner ticks, a crosshair and the
+// scene's coordinates, like the edge of a printed map sheet.
+function MapOverlay({ coords }) {
+  const tick = "absolute h-3 w-3 border-white/90";
+  return (
+    <span
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100"
+    >
+      <span className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.14)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.14)_1px,transparent_1px)] bg-[size:25%_25%]" />
+      <span className={`${tick} top-3 left-3 border-t-2 border-l-2`} />
+      <span className={`${tick} top-3 right-3 border-t-2 border-r-2`} />
+      <span className={`${tick} bottom-3 left-3 border-b-2 border-l-2`} />
+      <span className={`${tick} right-3 bottom-3 border-r-2 border-b-2`} />
+      <span className="absolute top-1/2 left-1/2 h-6 w-px -translate-1/2 bg-white/90" />
+      <span className="absolute top-1/2 left-1/2 h-px w-6 -translate-1/2 bg-white/90" />
+      <span className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded bg-ink/85 px-2 py-1 font-mono text-[11px] whitespace-nowrap text-white">
+        {coords}
+      </span>
+    </span>
+  );
+}
+
 function Imagery() {
   const copy = home.imagery;
   const scenes = IMAGERY.map((t) => imageryExamples.find((e) => e.title === t)).filter(Boolean);
@@ -262,10 +399,17 @@ function Imagery() {
         <SectionHead id="imagery-heading" eyebrow={copy.eyebrow} title={copy.title} body={copy.body} />
         <ul className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {scenes.map((scene, i) => (
-            <li key={scene.title} className={i === 0 ? "sm:col-span-2 lg:row-span-2" : ""}>
-              <figure className="flex h-full flex-col">
-                <div className={`overflow-hidden rounded-lg ${i === 0 ? "aspect-[3/2] lg:aspect-auto lg:flex-1" : "aspect-[3/2]"}`}>
-                  <img src={scene.image} alt={`Satellite image: ${scene.title}`} loading="lazy" className="h-full w-full object-cover" />
+            <Reveal as="li" key={scene.title} delay={i * 0.08} className={i === 0 ? "sm:col-span-2 lg:row-span-2" : ""}>
+              <figure className="group flex h-full flex-col">
+                <div className={`relative overflow-hidden rounded-lg ${i === 0 ? "aspect-[3/2] lg:aspect-auto lg:flex-1" : "aspect-[3/2]"}`}>
+                  <img
+                    src={scene.image}
+                    alt={`Satellite image: ${scene.title}`}
+                    loading="lazy"
+                    className="drift h-full w-full object-cover"
+                    style={{ animationDelay: `${-i * 4}s` }}
+                  />
+                  <MapOverlay coords={SCENE_COORDS[scene.title]} />
                 </div>
                 <figcaption className="mt-3">
                   <span className="block font-semibold text-ink">{scene.theme}</span>
@@ -274,7 +418,7 @@ function Imagery() {
                   </span>
                 </figcaption>
               </figure>
-            </li>
+            </Reveal>
           ))}
         </ul>
         <p className="mt-8 font-mono text-xs text-muted">{copy.credit}</p>
@@ -285,6 +429,68 @@ function Imagery() {
 
 /* --------------------------------- Sectors ---------------------------------- */
 
+// A sector's short clip. On desktop it plays while the tile is hovered or focused; on touch
+// screens it plays while the tile is on screen. Reduced-motion visitors see the still poster.
+function SectorClip({ id, active }) {
+  const reduce = useReducedMotion();
+  const canHover = useCanHover();
+  const ref = useRef(null);
+  const inView = useInView(ref, { amount: 0.6 });
+  const playing = !reduce && (canHover ? active : inView);
+
+  useEffect(() => {
+    const v = ref.current;
+    if (!v || reduce) return;
+    if (playing) v.play().catch(() => {});
+    else v.pause();
+  }, [playing, reduce]);
+
+  if (reduce) {
+    return <img src={sectorPosters[id]} alt="" loading="lazy" className="h-full w-full object-cover" />;
+  }
+  return (
+    <video
+      ref={ref}
+      src={sectorVideos[id]}
+      poster={sectorPosters[id]}
+      muted
+      loop
+      playsInline
+      preload="none"
+      aria-hidden="true"
+      className={`h-full w-full object-cover transition-transform duration-700 ${playing ? "scale-105" : "scale-100"}`}
+    />
+  );
+}
+
+function SectorTile({ sector, index, text }) {
+  const [active, setActive] = useState(false);
+  return (
+    <Link
+      to={`/competency#${sector.id}`}
+      onMouseEnter={() => setActive(true)}
+      onMouseLeave={() => setActive(false)}
+      onFocus={() => setActive(true)}
+      onBlur={() => setActive(false)}
+      className={`group flex h-full flex-col transition-colors hover:bg-brand-tint ${focusRing} focus-visible:-outline-offset-2`}
+    >
+      <span className="relative block aspect-[16/9] overflow-hidden bg-ink">
+        <SectorClip id={sector.id} active={active} />
+        <span className="absolute top-3 left-3 rounded bg-ink/85 px-2 py-1 font-mono text-[11px] font-medium text-white">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+      </span>
+      <span className="flex flex-1 flex-col p-6 lg:p-8">
+        <h3 className="text-xl font-semibold text-ink">{sector.name}</h3>
+        <span className="mt-3 block flex-1 leading-relaxed text-graphite">{text}</span>
+        <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand">
+          How we help <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+        </span>
+      </span>
+    </Link>
+  );
+}
+
 function Sectors() {
   const copy = home.sectors;
   return (
@@ -293,19 +499,9 @@ function Sectors() {
         <SectionHead id="sectors-heading" eyebrow={copy.eyebrow} title={copy.title} />
         <ul className="mt-12 grid grid-cols-1 border-t border-l border-line sm:grid-cols-2 lg:grid-cols-3">
           {sectors.map((sector, i) => (
-            <li key={sector.id} className="border-r border-b border-line">
-              <Link
-                to={`/competency#${sector.id}`}
-                className={`group flex h-full flex-col p-6 transition-colors hover:bg-brand-tint lg:p-8 ${focusRing} focus-visible:-outline-offset-2`}
-              >
-                <span className="font-mono text-xs font-medium text-muted">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="mt-3 text-xl font-semibold text-ink">{sector.name}</h3>
-                <p className="mt-3 flex-1 leading-relaxed text-graphite">{copy.items[sector.id]}</p>
-                <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand">
-                  How we help <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </span>
-              </Link>
-            </li>
+            <Reveal as="li" key={sector.id} delay={(i % 3) * 0.08} className="border-r border-b border-line">
+              <SectorTile sector={sector} index={i} text={copy.items[sector.id]} />
+            </Reveal>
           ))}
         </ul>
       </div>
@@ -314,6 +510,36 @@ function Sectors() {
 }
 
 /* --------------------------------- Process ---------------------------------- */
+
+// The process band draws itself step by step: each dot lands, then its line runs on to the next.
+function ProcessDot({ delay }) {
+  const reduce = useReducedMotion();
+  if (reduce) return <span className="h-2.5 w-2.5 rounded-full bg-accent" />;
+  return (
+    <motion.span
+      className="h-2.5 w-2.5 rounded-full bg-accent"
+      initial={{ scale: 0 }}
+      whileInView={{ scale: [0, 1.6, 1] }}
+      viewport={{ once: true, margin: "0px 0px -80px 0px" }}
+      transition={{ duration: 0.5, delay }}
+    />
+  );
+}
+
+function ProcessLine({ delay }) {
+  const reduce = useReducedMotion();
+  const cls = "absolute inset-0 origin-left bg-brand-light/70";
+  if (reduce) return <span className={cls} />;
+  return (
+    <motion.span
+      className={cls}
+      initial={{ scaleX: 0 }}
+      whileInView={{ scaleX: 1 }}
+      viewport={{ once: true, margin: "0px 0px -80px 0px" }}
+      transition={{ duration: 0.6, delay, ease: "easeOut" }}
+    />
+  );
+}
 
 function Process() {
   const copy = home.process;
@@ -324,17 +550,19 @@ function Process() {
         <SectionHead id="process-heading" eyebrow={copy.eyebrow} title={copy.title} dark />
         <ol className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {copy.steps.map((step, i) => (
-            <li key={step.label}>
+            <Reveal as="li" key={step.label} delay={i * 0.35} y={12}>
               <div className="flex items-center gap-3" aria-hidden="true">
-                <span className="h-2.5 w-2.5 rounded-full bg-accent" />
-                <span className="h-px flex-1 bg-white/20" />
+                <ProcessDot delay={i * 0.35} />
+                <span className="relative h-px flex-1 bg-white/10">
+                  <ProcessLine delay={i * 0.35 + 0.2} />
+                </span>
               </div>
               <p className="mt-5 font-mono text-xs font-medium text-brand-light">
                 Step {String(i + 1).padStart(2, "0")}
               </p>
               <h3 className="mt-2 text-xl font-semibold text-white">{step.label}</h3>
               <p className="mt-3 leading-relaxed text-white/75">{step.body}</p>
-            </li>
+            </Reveal>
           ))}
         </ol>
       </div>
@@ -352,11 +580,11 @@ function Why() {
         <div className="lg:col-span-7">
           <SectionHead id="why-heading" eyebrow={copy.eyebrow} title={copy.title} />
           <ul className="mt-10 grid gap-x-8 gap-y-8 sm:grid-cols-2">
-            {copy.points.map((p) => (
-              <li key={p.title} className="border-t-2 border-brand pt-5">
+            {copy.points.map((p, i) => (
+              <Reveal as="li" key={p.title} delay={i * 0.08} className="border-t-2 border-brand pt-5">
                 <h3 className="text-lg font-semibold text-ink">{p.title}</h3>
                 <p className="mt-2 leading-relaxed text-graphite">{p.body}</p>
-              </li>
+              </Reveal>
             ))}
           </ul>
         </div>

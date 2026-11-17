@@ -83,7 +83,26 @@
   }
 }
 
+/* Slow drift on satellite scenes, like a camera passing over the ground. */
+@keyframes drift {
+  0% {
+    transform: scale(1.02) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.1) translate(-1.5%, -1%);
+  }
+}
+
+.drift {
+  animation: drift 24s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .drift {
+    animation: none;
+  }
+
   *,
   *::before,
   *::after {
