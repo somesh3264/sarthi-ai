@@ -1,7 +1,7 @@
-export default function ContourLines({ className = "", opacity = 0.12, color = "#00AEEF" }) {
+export default function ContourLines({ className = "", opacity = 0.12, color = "currentColor" }) {
   return (
     <svg
-      className={`pointer-events-none absolute inset-0 h-full w-full ${className}`}
+      className={`pointer-events-none absolute inset-0 h-full w-full text-brand-light ${className}`}
       viewBox="0 0 1200 800"
       preserveAspectRatio="xMidYMid slice"
       fill="none"

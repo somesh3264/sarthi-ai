@@ -1,8 +1,8 @@
 export const inputBase =
-  "mt-1 w-full rounded-lg border px-4 py-2.5 text-sm focus:border-teal focus:outline-none focus:ring-2 focus:ring-azure/30";
+  "mt-1 w-full rounded-lg border px-4 py-2.5 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand-light/30";
 
 export function inputClass(hasError) {
-  return `${inputBase} ${hasError ? "border-red-700" : "border-grey-dark/20"}`;
+  return `${inputBase} ${hasError ? "border-red-700" : "border-graphite/20"}`;
 }
 
 // Props to wire an input to its hint / error text for screen readers.

@@ -3,13 +3,13 @@ import SectionLabel from "./graphics/SectionLabel";
 import { ArrowRightIcon } from "./Icons";
 
 export const focusRing =
-  "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-azure";
+  "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand";
 
 export function ButtonLink({ to, children, variant = "primary", className = "" }) {
   const styles = {
-    primary: "bg-navy text-white hover:bg-teal",
-    secondary: "border border-navy/20 text-navy hover:bg-grey-light",
-    light: "bg-white text-navy hover:bg-azure hover:text-navy",
+    primary: "bg-ink text-white hover:bg-brand",
+    secondary: "border border-ink/20 text-ink hover:bg-surface",
+    light: "bg-white text-ink hover:bg-brand-light hover:text-ink",
   };
   return (
     <Link
@@ -27,12 +27,12 @@ export function SectionHeading({ index, label, title, intro, dark = false, cente
     <div className={center ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
       <SectionLabel index={index} label={label} dark={dark} className={center ? "justify-center" : ""} />
       <h2
-        className={`mt-4 font-heading text-3xl font-bold sm:text-4xl ${dark ? "text-white" : "text-navy"}`}
+        className={`mt-4 font-heading text-3xl font-bold sm:text-4xl ${dark ? "text-white" : "text-ink"}`}
       >
         {title}
       </h2>
       {intro && (
-        <p className={`mt-4 text-base leading-relaxed ${dark ? "text-white/70" : "text-grey-dark/70"}`}>
+        <p className={`mt-4 text-base leading-relaxed ${dark ? "text-white/70" : "text-graphite/70"}`}>
           {intro}
         </p>
       )}
@@ -42,9 +42,9 @@ export function SectionHeading({ index, label, title, intro, dark = false, cente
 
 export function StatusBadge({ children, tone = "amber" }) {
   const tones = {
-    amber: "bg-emerald/15 text-[#7a5210] ring-emerald/40",
-    amberOnDark: "bg-emerald/30 text-[#f6d38c] ring-emerald/50",
-    teal: "bg-teal/10 text-teal ring-teal/30",
+    amber: "bg-accent/15 text-accent-strong ring-accent/40",
+    amberOnDark: "bg-accent/30 text-accent ring-accent/50",
+    brand: "bg-brand/10 text-brand ring-brand/30",
     light: "bg-white/15 text-white ring-white/30",
   };
   return (

@@ -8,8 +8,8 @@ import { caseStudies } from "../data/pages";
 function Block({ title, children }) {
   return (
     <section className="mt-10">
-      <h2 className="font-heading text-xl font-semibold text-navy">{title}</h2>
-      <div className="mt-3 text-base leading-relaxed text-grey-dark/80">{children}</div>
+      <h2 className="font-heading text-xl font-semibold text-ink">{title}</h2>
+      <div className="mt-3 text-base leading-relaxed text-graphite/80">{children}</div>
     </section>
   );
 }
@@ -18,7 +18,7 @@ function Chips({ items }) {
   return (
     <ul className="flex flex-wrap gap-2">
       {items.map((item) => (
-        <li key={item} className="rounded-full bg-grey-light px-3 py-1 text-sm text-navy">
+        <li key={item} className="rounded-full bg-surface px-3 py-1 text-sm text-ink">
           {item}
         </li>
       ))}
@@ -31,10 +31,10 @@ function CaseStudyView({ cs }) {
 
   return (
     <article>
-      <header className="relative overflow-hidden bg-navy text-white">
+      <header className="relative overflow-hidden bg-ink text-white">
         <ContourLines opacity={0.15} />
         <div className="relative mx-auto max-w-4xl px-6 py-16 lg:px-8">
-          <Link to="/projects#case-studies" className={`text-sm font-semibold text-azure hover:underline ${focusRing}`}>
+          <Link to="/projects#case-studies" className={`text-sm font-semibold text-brand-light hover:underline ${focusRing}`}>
             ← All case studies
           </Link>
           <div className="mt-6">
@@ -52,7 +52,7 @@ function CaseStudyView({ cs }) {
       {cs.image && (
         <figure className="mx-auto max-w-5xl px-6 pt-10 lg:px-8">
           <img src={cs.image} alt={cs.imageAlt ?? ""} className="w-full rounded-2xl object-cover shadow-sm" />
-          {cs.imageCredit && <figcaption className="mt-2 text-xs text-grey-dark/60">{cs.imageCredit}</figcaption>}
+          {cs.imageCredit && <figcaption className="mt-2 text-xs text-graphite/60">{cs.imageCredit}</figcaption>}
         </figure>
       )}
 
@@ -64,8 +64,8 @@ function CaseStudyView({ cs }) {
         {cs.outputs?.length > 0 && <Block title="Key outputs"><Chips items={cs.outputs} /></Block>}
         {cs.outcome && <Block title="Outcome"><p>{cs.outcome}</p></Block>}
 
-        <div className="mt-14 rounded-2xl bg-grey-light p-6 text-center sm:p-8">
-          <p className="font-heading text-lg font-semibold text-navy">Planning something similar?</p>
+        <div className="mt-14 rounded-2xl bg-surface p-6 text-center sm:p-8">
+          <p className="font-heading text-lg font-semibold text-ink">Planning something similar?</p>
           <div className="mt-4">
             <ButtonLink to="/contact">Discuss Your Project</ButtonLink>
           </div>

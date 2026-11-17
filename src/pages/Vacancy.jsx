@@ -9,11 +9,11 @@ function List({ title, items }) {
   if (!items?.length) return null;
   return (
     <section className="mt-10">
-      <h2 className="font-heading text-xl font-semibold text-navy">{title}</h2>
+      <h2 className="font-heading text-xl font-semibold text-ink">{title}</h2>
       <ul className="mt-4 space-y-2">
         {items.map((item) => (
-          <li key={item} className="flex gap-3 text-base leading-relaxed text-grey-dark/80">
-            <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-teal" />
+          <li key={item} className="flex gap-3 text-base leading-relaxed text-graphite/80">
+            <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
             <span>{item}</span>
           </li>
         ))}
@@ -35,10 +35,10 @@ function VacancyView({ job }) {
 
   return (
     <article>
-      <header className="relative overflow-hidden bg-navy text-white">
+      <header className="relative overflow-hidden bg-ink text-white">
         <ContourLines opacity={0.15} />
         <div className="relative mx-auto max-w-4xl px-6 py-16 lg:px-8">
-          <Link to="/careers#openings" className={`text-sm font-semibold text-azure hover:underline ${focusRing}`}>
+          <Link to="/careers#openings" className={`text-sm font-semibold text-brand-light hover:underline ${focusRing}`}>
             ← All openings
           </Link>
           <div className="mt-6 flex flex-wrap gap-2">
@@ -55,20 +55,20 @@ function VacancyView({ job }) {
       <div className="mx-auto grid max-w-5xl grid-cols-1 gap-12 px-6 py-14 lg:grid-cols-3 lg:px-8">
         <div className="lg:col-span-2">
           <section>
-            <h2 className="font-heading text-xl font-semibold text-navy">About the role</h2>
-            <p className="mt-3 text-base leading-relaxed text-grey-dark/80">{job.summary}</p>
+            <h2 className="font-heading text-xl font-semibold text-ink">About the role</h2>
+            <p className="mt-3 text-base leading-relaxed text-graphite/80">{job.summary}</p>
           </section>
           <List title="What you'll do" items={job.responsibilities} />
           <List title="Skills we're looking for" items={job.skills} />
         </div>
 
-        <aside className="h-fit rounded-2xl bg-grey-light p-6">
-          <h2 className="text-sm font-semibold uppercase tracking-widest text-teal">Role details</h2>
+        <aside className="h-fit rounded-2xl bg-surface p-6">
+          <h2 className="text-sm font-semibold uppercase tracking-widest text-brand">Role details</h2>
           <dl className="mt-4 space-y-3 text-sm">
             {facts.map(([label, value]) => (
               <div key={label}>
-                <dt className="text-grey-dark/60">{label}</dt>
-                <dd className="font-medium text-navy">{value}</dd>
+                <dt className="text-graphite/60">{label}</dt>
+                <dd className="font-medium text-ink">{value}</dd>
               </div>
             ))}
           </dl>

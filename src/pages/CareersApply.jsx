@@ -191,7 +191,7 @@ export default function CareersApply() {
         type="file"
         accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
         onChange={onChange}
-        className={`${inputClass(errors[id])} cursor-pointer bg-white file:mr-3 file:rounded-full file:border-0 file:bg-grey-light file:px-3 file:py-1 file:text-xs file:font-semibold file:text-navy`}
+        className={`${inputClass(errors[id])} cursor-pointer bg-white file:mr-3 file:rounded-full file:border-0 file:bg-surface file:px-3 file:py-1 file:text-xs file:font-semibold file:text-ink`}
       />
     </Field>
   );
@@ -201,14 +201,14 @@ export default function CareersApply() {
       <>
         <PageHero eyebrow="Careers" title="Application received" />
         <section role="status" className="mx-auto max-w-2xl px-6 py-20 text-center">
-          <h2 className="font-heading text-2xl font-semibold text-navy">Thank you for applying to Sarthi AI</h2>
-          <p className="mt-3 text-grey-dark/75">
+          <h2 className="font-heading text-2xl font-semibold text-ink">Thank you for applying to Sarthi AI</h2>
+          <p className="mt-3 text-graphite/75">
             We've received your application. Your reference number is{" "}
-            <strong className="font-mono text-navy">{reference}</strong>; please quote it if you contact us
+            <strong className="font-mono text-ink">{reference}</strong>; please quote it if you contact us
             about this application.
           </p>
           <div className="mt-8">
-            <Link to="/careers" className={`font-semibold text-teal underline underline-offset-4 ${focusRing}`}>
+            <Link to="/careers" className={`font-semibold text-brand underline underline-offset-4 ${focusRing}`}>
               Back to Careers
             </Link>
           </div>
@@ -227,7 +227,7 @@ export default function CareersApply() {
 
       <section className="mx-auto max-w-4xl px-6 py-16 lg:px-8">
         <form onSubmit={onSubmit} noValidate className="space-y-8">
-          <p className="text-xs text-grey-dark/60">
+          <p className="text-xs text-graphite/60">
             Fields marked <span className="text-red-700">*</span> are required.
           </p>
           <input
@@ -330,12 +330,12 @@ export default function CareersApply() {
                 aria-required="true"
                 aria-invalid={!!errors.consent}
                 aria-describedby={errors.consent ? "consent-error" : undefined}
-                className="mt-0.5 h-4 w-4 shrink-0 accent-teal"
+                className="mt-0.5 h-4 w-4 shrink-0 accent-brand"
               />
-              <label htmlFor="consent" className="text-sm text-grey-dark/80">
+              <label htmlFor="consent" className="text-sm text-graphite/80">
                 I consent to Sarthi AI using the information I've submitted for recruitment purposes, as
                 described in the{" "}
-                <Link to="/recruitment-privacy" className={`font-medium text-teal underline underline-offset-2 ${focusRing}`}>
+                <Link to="/recruitment-privacy" className={`font-medium text-brand underline underline-offset-2 ${focusRing}`}>
                   Recruitment Privacy Notice
                 </Link>
                 .<span className="text-red-700" aria-hidden="true"> *</span>
@@ -359,7 +359,7 @@ export default function CareersApply() {
           <button
             type="submit"
             disabled={status === "sending"}
-            className={`cursor-pointer rounded-full bg-navy px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal disabled:cursor-wait disabled:opacity-70 ${focusRing}`}
+            className={`cursor-pointer rounded-full bg-ink px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand disabled:cursor-wait disabled:opacity-70 ${focusRing}`}
           >
             {status === "sending" ? "Submitting…" : "Submit Application"}
           </button>

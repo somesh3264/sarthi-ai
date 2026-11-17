@@ -21,7 +21,7 @@ export default function About() {
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 lg:grid-cols-2 lg:px-8">
           <Reveal>
             <SectionHeading index="01" label="Who we are" title="A geospatial intelligence and technology company" />
-            <p className="mt-6 text-base leading-relaxed text-grey-dark/75">{company.about}</p>
+            <p className="mt-6 text-base leading-relaxed text-graphite/75">{company.about}</p>
             <div className="mt-8">
               <ButtonLink to="/competency">Explore Our Competency</ButtonLink>
             </div>
@@ -38,24 +38,24 @@ export default function About() {
       </section>
 
       {/* Vision and mission */}
-      <section id="vision-mission" className="scroll-mt-6 bg-grey-light py-20">
+      <section id="vision-mission" className="scroll-mt-6 bg-surface py-20">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 px-6 lg:grid-cols-2 lg:px-8">
           <Reveal className="h-full">
             <div className="h-full rounded-2xl bg-white p-8 shadow-sm">
-              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-teal/10 text-teal">
+              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-brand/10 text-brand">
                 <GlobeIcon className="h-5 w-5" />
               </div>
-              <h2 className="font-heading text-xl font-bold text-navy">Our Vision</h2>
-              <p className="mt-4 leading-relaxed text-grey-dark/75">{company.vision}</p>
+              <h2 className="font-heading text-xl font-bold text-ink">Our Vision</h2>
+              <p className="mt-4 leading-relaxed text-graphite/75">{company.vision}</p>
             </div>
           </Reveal>
           <Reveal delay={0.1} className="h-full">
             <div className="h-full rounded-2xl bg-white p-8 shadow-sm">
-              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-teal/10 text-teal">
+              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-brand/10 text-brand">
                 <PrecisionIcon className="h-5 w-5" />
               </div>
-              <h2 className="font-heading text-xl font-bold text-navy">Our Mission</h2>
-              <p className="mt-4 leading-relaxed text-grey-dark/75">{company.mission}</p>
+              <h2 className="font-heading text-xl font-bold text-ink">Our Mission</h2>
+              <p className="mt-4 leading-relaxed text-graphite/75">{company.mission}</p>
             </div>
           </Reveal>
         </div>
@@ -66,7 +66,7 @@ export default function About() {
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 lg:grid-cols-2 lg:px-8">
           <Reveal className="lg:order-2">
             <SectionHeading index="02" label="Our approach" title="Data, context and technology, together" />
-            <p className="mt-6 text-base leading-relaxed text-grey-dark/75">{company.approach}</p>
+            <p className="mt-6 text-base leading-relaxed text-graphite/75">{company.approach}</p>
             <div className="mt-8">
               <ButtonLink to="/projects" variant="secondary">View Projects</ButtonLink>
             </div>
@@ -85,7 +85,7 @@ export default function About() {
       {/* Sustainability banner */}
       <section id="sustainability" className="relative scroll-mt-6 overflow-hidden py-24 text-white">
         <img src={forestCanopy} alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-navy/80" />
+        <div className="absolute inset-0 bg-ink/80" />
         <Reveal className="relative mx-auto max-w-3xl px-6 text-center lg:px-8">
           <SectionHeading label="Commitment to sustainability" title="Responsible development, by design" dark center />
           <p className="mt-6 text-lg leading-relaxed text-white/80">{company.sustainability}</p>

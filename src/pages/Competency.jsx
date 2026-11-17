@@ -26,7 +26,7 @@ function ServiceGroups() {
       <div className="mt-12 space-y-14">
         {serviceGroups.map((group) => (
           <div key={group.name}>
-            <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-teal">
+            <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-brand">
               {group.name}
             </p>
             <div className="mt-4 space-y-4">
@@ -45,7 +45,7 @@ function ServiceGroups() {
 
 function SupportingCapabilities() {
   return (
-    <section id="capabilities" className="scroll-mt-6 bg-navy py-20 text-white">
+    <section id="capabilities" className="scroll-mt-6 bg-ink py-20 text-white">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <Reveal>
           <SectionHeading
@@ -61,14 +61,14 @@ function SupportingCapabilities() {
             return (
               <Reveal key={cap.title} delay={i * 0.08} className="h-full">
                 <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-6">
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-azure/15 text-azure">
+                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-brand-light/15 text-brand-light">
                     <Icon className="h-5 w-5" />
                   </div>
                   <h3 className="font-heading text-lg font-semibold">{cap.title}</h3>
                   <ul className="mt-4 space-y-2">
                     {cap.points.map((p) => (
                       <li key={p} className="flex gap-2 text-sm leading-relaxed text-white/70">
-                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-azure" />
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-light" />
                         <span>{p}</span>
                       </li>
                     ))}
@@ -87,7 +87,7 @@ function SectorPanel({ sector, reverse }) {
   return (
     <article
       id={sector.id}
-      className="group scroll-mt-6 grid grid-cols-1 overflow-hidden rounded-3xl border border-grey-dark/10 bg-white shadow-sm transition-all duration-300 hover:border-teal/40 hover:shadow-[0_0_0_4px_rgba(63,182,192,0.12),0_20px_44px_-18px_rgba(47,111,94,0.45)] focus-within:border-teal/40 focus-within:shadow-[0_0_0_4px_rgba(63,182,192,0.12),0_20px_44px_-18px_rgba(47,111,94,0.45)] lg:grid-cols-2"
+      className="group scroll-mt-6 grid grid-cols-1 overflow-hidden rounded-3xl border border-graphite/10 bg-white shadow-sm transition-all duration-300 hover:border-brand/40 hover:shadow-[0_0_0_4px_rgba(29,111,165,0.12),0_20px_44px_-18px_rgba(12,68,124,0.45)] focus-within:border-brand/40 focus-within:shadow-[0_0_0_4px_rgba(29,111,165,0.12),0_20px_44px_-18px_rgba(12,68,124,0.45)] lg:grid-cols-2"
     >
       <div className={`relative min-h-60 ${reverse ? "lg:order-2" : ""}`}>
         <InViewVideo
@@ -95,28 +95,28 @@ function SectorPanel({ sector, reverse }) {
           poster={sectorPosters[sector.id]}
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/40 to-transparent" />
       </div>
       <div className="p-6 sm:p-8">
-        <h3 className="font-heading text-2xl font-semibold text-navy">{sector.name}</h3>
-        <p className="mt-3 text-sm leading-relaxed text-grey-dark/75">{sector.description}</p>
+        <h3 className="font-heading text-2xl font-semibold text-ink">{sector.name}</h3>
+        <p className="mt-3 text-sm leading-relaxed text-graphite/75">{sector.description}</p>
 
-        <h4 className="mt-6 text-xs font-semibold uppercase tracking-widest text-teal">Typical support</h4>
+        <h4 className="mt-6 text-xs font-semibold uppercase tracking-widest text-brand">Typical support</h4>
         <ul className="mt-3 flex flex-wrap gap-2">
           {sector.themes.map((t) => (
-            <li key={t} className="rounded-full bg-grey-light px-3 py-1 text-xs font-medium text-grey-dark/80">
+            <li key={t} className="rounded-full bg-surface px-3 py-1 text-xs font-medium text-graphite/80">
               {t}
             </li>
           ))}
         </ul>
 
-        <h4 className="mt-6 text-xs font-semibold uppercase tracking-widest text-teal">Relevant services</h4>
+        <h4 className="mt-6 text-xs font-semibold uppercase tracking-widest text-brand">Relevant services</h4>
         <ul className="mt-3 space-y-1.5">
           {sector.services.map((id) => (
             <li key={id}>
               <Link
                 to={`/competency#${id}`}
-                className={`rounded-sm text-sm font-medium text-navy underline decoration-teal/40 underline-offset-4 hover:decoration-teal ${focusRing}`}
+                className={`rounded-sm text-sm font-medium text-ink underline decoration-brand/40 underline-offset-4 hover:decoration-brand ${focusRing}`}
               >
                 {serviceById[id].title}
               </Link>
@@ -134,7 +134,7 @@ function SectorPanel({ sector, reverse }) {
 
 function SectorsSection() {
   return (
-    <section id="sectors" className="scroll-mt-6 bg-grey-light py-20">
+    <section id="sectors" className="scroll-mt-6 bg-surface py-20">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <Reveal>
           <SectionHeading

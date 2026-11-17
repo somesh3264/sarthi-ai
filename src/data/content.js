@@ -1,5 +1,6 @@
-// Website copy, taken from the Sarthi AI website blueprint (v1.0, 04 November 2026).
-// Items the blueprint marks "proposed" or "needs confirmation" should be approved before launch.
+// Website copy. Facts come from the Sarthi AI website blueprint (v1.0, 04 November 2026).
+// The homepage copy (`home`, at the end) was rewritten for the redesign; other pages still use
+// the blueprint wording until they are rebuilt.
 
 export const company = {
   name: "Sarthi AI Solutions",
@@ -16,16 +17,6 @@ export const company = {
     "We bring geospatial data, environmental context and intelligent technology together to help organisations understand locations, assess conditions and evaluate options. Our work may combine field data, satellite and aerial imagery, spatial analysis, software and decision-support outputs according to the needs of each engagement.",
   sustainability:
     "Promoting environmentally responsible development, nurturing young talent, minimising ecological impact and strengthening resilience against disasters through innovation and best practice.",
-};
-
-export const homeFilm = {
-  heading: "See the world through a geospatial lens.",
-  body: "From satellite and aerial imagery to location intelligence, we turn the view from above into insight for decisions on the ground.",
-};
-
-export const whoWeAre = {
-  heading: "Geospatial intelligence. Real-world impact.",
-  body: "We bring together geospatial science, environmental understanding and intelligent technology to help organisations assess places, understand risk and make informed decisions.",
 };
 
 export const competencyIntro =
@@ -267,43 +258,129 @@ export const sectors = [
   },
 ];
 
-// Proposed process language from the blueprint; adjust if the delivery workflow differs.
-export const howWeWork = [
-  {
-    title: "Understand the requirement",
-    description: "Clarify the project objective, location, constraints and expected outputs.",
-  },
-  {
-    title: "Analyse data and context",
-    description: "Review spatial, environmental, operational and available reference datasets.",
-  },
-  {
-    title: "Develop geospatial / AI insights",
-    description: "Apply suitable GIS, remote-sensing, analytical and AI-enabled methods.",
-  },
-  {
-    title: "Deliver decision-ready outputs",
-    description: "Present maps, reports, dashboards and practical findings for next steps.",
-  },
-];
+/* --------------------------------- Homepage --------------------------------- */
+// Rewritten for the redesign. Anything in `needsClient` (and every `placeholder: true` item)
+// is a gap only the client can fill: it renders as a marked placeholder and must be replaced
+// or removed before launch.
 
-export const featuredCapability = {
-  title: "City Master Plan & Urban Land Intelligence",
-  status: "In development",
-  summary:
-    "Bringing cadastral information, land-use planning and geospatial technology together to support smarter, more informed urban development.",
-  points: ["Parcel data", "Planning layers", "Interactive GIS", "Reports", "Web and mobile access"],
-};
+export const home = {
+  hero: {
+    eyebrow: "Geospatial & environmental intelligence · Bhopal, India",
+    title: "Know the ground before you build on it.",
+    body: "We map terrain, land use, environmental constraints and risk from satellite, drone and field data, then hand your team the suitability maps, EIA reports and dashboards it needs to approve, plan and monitor a project.",
+    primaryCta: { label: "Discuss your project", to: "/contact" },
+    secondaryCta: { label: "See what we deliver", to: "#services" },
+    plate: {
+      place: "Bhadla Solar Park, Rajasthan",
+      coords: "27.53° N · 71.92° E",
+      sensor: "Sentinel-2 true colour",
+      before: "Feb 2017",
+      after: "Jan 2025",
+      note: "Public satellite imagery shown as an example of change analysis.",
+    },
+  },
 
-export const whyChooseUs = [
-  "Integrated geospatial and environmental expertise.",
-  "Technology-based, compliant and transparent approach.",
-  "Customised solutions for project-specific needs.",
-  "High-quality maps, reports and decision tools.",
-  "Mobile and web solutions for anytime, anywhere monitoring.",
-];
+  // Proof strip: figures must come from the client. Do not publish the placeholders.
+  proof: [
+    { value: "[ ## ]", label: "Projects delivered", placeholder: true },
+    { value: "[ ## km² ]", label: "Area mapped and analysed", placeholder: true },
+    { value: "[ ## ]", label: "States / districts covered", placeholder: true },
+    { value: "[ #### ]", label: "Year founded", placeholder: true },
+  ],
 
-export const contactInvitation = {
-  heading: "Have a location, project or challenge to explore?",
-  body: "Tell us what you are planning. We can discuss the geospatial, environmental or technology approach that may help.",
+  services: {
+    eyebrow: "What you get",
+    title: "Six services. Each ends in something your team can use.",
+    body: "Every engagement finishes with a map, a report or a tool, not a slide deck. Pick one service or combine them across a project's life, from site selection to monitoring.",
+    items: {
+      "site-suitability": {
+        title: "Site suitability for solar and industrial projects",
+        outcome: "Rank candidate sites on terrain, slope, irradiance, land use, access and exclusion zones before you commit to land.",
+        deliverables: ["Suitability maps", "Site ranking report", "Feasibility dashboard"],
+      },
+      eia: {
+        title: "Environmental Impact Assessment",
+        outcome: "Baseline studies, impact prediction and an Environmental Management Plan, documented the way regulators expect to read them.",
+        deliverables: ["EIA / EMP report", "Thematic maps", "Compliance documents"],
+      },
+      dmp: {
+        title: "Disaster Management Plans",
+        outcome: "Hazard, vulnerability and risk mapped for your site and its surroundings, turned into on-site and off-site plans with evacuation routes and SOPs.",
+        deliverables: ["On-site / off-site DMP", "Risk maps", "Emergency SOPs"],
+      },
+      "drone-surveys": {
+        title: "Drone and aerial surveys",
+        outcome: "High-resolution orthomosaics, elevation models and contours of your site, ready to load into GIS or CAD.",
+        deliverables: ["Orthomosaics", "DEM / DSM / DTM", "Contours and cut-fill"],
+      },
+      "ai-ml": {
+        title: "AI and machine learning on imagery",
+        outcome: "Models that classify land cover, detect change and flag anomalies across satellite and drone imagery, so monitoring scales beyond what a team can check by eye.",
+        deliverables: ["Land-cover classification", "Change detection", "Yield and damage estimates"],
+      },
+      analytics: {
+        title: "Dashboards and decision analytics",
+        outcome: "Spatial and project data combined into dashboards and scenario models that let you compare options and track progress.",
+        deliverables: ["Web dashboards", "Multi-criteria scenarios", "Risk forecasts"],
+      },
+    },
+  },
+
+  imagery: {
+    eyebrow: "The view from above",
+    title: "Change you can measure, from orbit.",
+    body: "Multispectral satellites revisit the same ground every few days and their archives go back years. That is how we see what a site was, what it is now and what is changing around it. These are public Sentinel-2 scenes of the kinds of places our clients work.",
+    credit: "Contains modified Copernicus Sentinel data, processed for display.",
+  },
+
+  sectors: {
+    eyebrow: "Who we work with",
+    title: "For teams accountable for land, assets and risk.",
+    items: {
+      "renewable-energy": "Screen land for solar and wind before acquisition, then monitor construction from above.",
+      industrial: "Choose plant sites, map environmental constraints and prepare for environmental clearance.",
+      infrastructure: "Land-use, access and terrain layers for master plans, corridors and urban growth.",
+      mining: "Terrain models, land-cover change and impact monitoring around lease areas.",
+      power: "Corridor mapping, site assessment and hazard exposure for power assets.",
+      government: "Planning layers, public dashboards and disaster preparedness for departments and districts.",
+    },
+  },
+
+  process: {
+    eyebrow: "How a project runs",
+    title: "From your question to an answer on a map.",
+    steps: [
+      { label: "Brief", body: "We agree the decision you need to make, the area of interest, the constraints and what the output must look like." },
+      { label: "Data", body: "We gather satellite, drone, field and reference data, and check it is fit for the question." },
+      { label: "Analysis", body: "GIS, remote-sensing and AI methods produce the layers and models behind the answer." },
+      { label: "Delivery", body: "You receive maps, reports and dashboards your team can act on, and we walk you through them." },
+    ],
+  },
+
+  why: {
+    eyebrow: "Why Sarthi AI",
+    title: "One team from the first map to the final report.",
+    points: [
+      { title: "Geospatial and environmental under one roof", body: "The team that maps the site also writes the environmental assessment, so nothing is lost between consultants." },
+      { title: "Documented, compliance-ready methods", body: "Data sources and methods are recorded, and reports are prepared for regulatory review." },
+      { title: "Scoped to your project", body: "No packaged product: the analysis is designed around your site, your decision and your timeline." },
+      { title: "Monitoring on web and mobile", body: "Dashboards and map apps let your team check progress and site conditions from anywhere." },
+    ],
+    featured: {
+      status: "In development",
+      title: "City Master Plan & Urban Land Intelligence",
+      body: "Cadastral parcels, planning layers and geospatial analysis in one interactive GIS for urban planners, on web and mobile.",
+    },
+    testimonial: {
+      placeholder: true,
+      quote: "[ Client quote: one or two sentences on a result Sarthi AI delivered. ]",
+      who: "[ Name, role, organisation: with written permission to publish ]",
+    },
+  },
+
+  cta: {
+    title: "Tell us about your site.",
+    body: "Share a location, a deadline and the decision you need to make. We will come back with an approach, the data we would use and what you would receive.",
+    primary: { label: "Discuss your project", to: "/contact" },
+  },
 };

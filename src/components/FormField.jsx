@@ -1,7 +1,7 @@
 export function Field({ id, label, required, error, hint, children }) {
   return (
     <div>
-      <label htmlFor={id} className="text-sm font-medium text-grey-dark/85">
+      <label htmlFor={id} className="text-sm font-medium text-graphite/85">
         {label}
         {required && (
           <span className="text-red-700" aria-hidden="true">
@@ -11,7 +11,7 @@ export function Field({ id, label, required, error, hint, children }) {
       </label>
       {children}
       {hint && !error && (
-        <p id={`${id}-hint`} className="mt-1 text-xs text-grey-dark/60">
+        <p id={`${id}-hint`} className="mt-1 text-xs text-graphite/60">
           {hint}
         </p>
       )}
@@ -26,8 +26,8 @@ export function Field({ id, label, required, error, hint, children }) {
 
 export function Fieldset({ legend, children }) {
   return (
-    <fieldset className="rounded-2xl border border-grey-dark/10 p-5 sm:p-6">
-      <legend className="px-2 font-heading text-base font-semibold text-navy">{legend}</legend>
+    <fieldset className="rounded-2xl border border-graphite/10 p-5 sm:p-6">
+      <legend className="px-2 font-heading text-base font-semibold text-ink">{legend}</legend>
       <div className="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2">{children}</div>
     </fieldset>
   );

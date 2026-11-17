@@ -12,23 +12,23 @@ const categoryName = Object.fromEntries(newsletterCategories.map((c) => [c.id, c
 
 function ArticleCard({ article }) {
   return (
-    <li className="group relative flex flex-col overflow-hidden rounded-2xl border border-grey-dark/10 bg-white shadow-sm transition-shadow focus-within:shadow-lg hover:shadow-lg">
+    <li className="group relative flex flex-col overflow-hidden rounded-2xl border border-graphite/10 bg-white shadow-sm transition-shadow focus-within:shadow-lg hover:shadow-lg">
       {article.image && <img src={article.image} alt="" className="h-44 w-full object-cover" loading="lazy" />}
       <div className="flex flex-1 flex-col p-6">
         <div className="flex flex-wrap items-center gap-2">
-          <p className="text-xs font-semibold uppercase tracking-widest text-teal">{categoryName[article.category]}</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-brand">{categoryName[article.category]}</p>
         </div>
-        <h3 className="mt-2 font-heading text-lg font-semibold text-navy">
+        <h3 className="mt-2 font-heading text-lg font-semibold text-ink">
           {/* The stretched link makes the whole card clickable while keeping one link per card. */}
           <Link to={`/newsletter/${article.slug}`} className={`after:absolute after:inset-0 ${focusRing}`}>
             {article.title}
           </Link>
         </h3>
-        <time dateTime={article.date} className="mt-1 text-xs text-grey-dark/60">
+        <time dateTime={article.date} className="mt-1 text-xs text-graphite/60">
           {formatDate(article.date)}
         </time>
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-grey-dark/75">{article.summary}</p>
-        <span aria-hidden="true" className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-teal">
+        <p className="mt-3 flex-1 text-sm leading-relaxed text-graphite/75">{article.summary}</p>
+        <span aria-hidden="true" className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand">
           Read More <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
         </span>
       </div>
@@ -52,10 +52,10 @@ export default function Newsletter() {
           </Reveal>
 
           {articles.length === 0 ? (
-            <Reveal className="mt-10 rounded-3xl border border-dashed border-grey-dark/20 bg-grey-light p-8 text-center sm:p-12">
-              <DocumentChartIcon className="mx-auto h-8 w-8 text-teal" />
-              <h3 className="mt-4 font-heading text-xl font-semibold text-navy">First articles coming soon</h3>
-              <p className="mx-auto mt-3 max-w-xl text-base text-grey-dark/75">
+            <Reveal className="mt-10 rounded-3xl border border-dashed border-graphite/20 bg-surface p-8 text-center sm:p-12">
+              <DocumentChartIcon className="mx-auto h-8 w-8 text-brand" />
+              <h3 className="mt-4 font-heading text-xl font-semibold text-ink">First articles coming soon</h3>
+              <p className="mx-auto mt-3 max-w-xl text-base text-graphite/75">
                 We're preparing articles on geospatial technology, remote sensing, AI and sustainable
                 development. Browse the topics we'll cover below.
               </p>
@@ -70,7 +70,7 @@ export default function Newsletter() {
                     aria-pressed={category === c.id}
                     onClick={() => setCategory(c.id)}
                     className={`cursor-pointer rounded-full px-4 py-2 text-sm font-medium transition-colors ${focusRing} ${
-                      category === c.id ? "bg-navy text-white" : "bg-grey-light text-grey-dark hover:bg-grey-dark/10"
+                      category === c.id ? "bg-ink text-white" : "bg-surface text-graphite hover:bg-graphite/10"
                     }`}
                   >
                     {c.title}
@@ -87,7 +87,7 @@ export default function Newsletter() {
         </div>
       </section>
 
-      <section id="categories" className="scroll-mt-6 bg-grey-light py-20">
+      <section id="categories" className="scroll-mt-6 bg-surface py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
             <SectionHeading index="02" label="Categories" title="What we write about" />
@@ -95,8 +95,8 @@ export default function Newsletter() {
           <ul className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {newsletterCategories.map((c, i) => (
               <Reveal as="li" key={c.id} delay={(i % 3) * 0.06} className="rounded-2xl bg-white p-6 shadow-sm">
-                <h3 className="font-heading text-lg font-semibold text-navy">{c.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-grey-dark/70">{c.themes}</p>
+                <h3 className="font-heading text-lg font-semibold text-ink">{c.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-graphite/70">{c.themes}</p>
               </Reveal>
             ))}
           </ul>
@@ -106,7 +106,7 @@ export default function Newsletter() {
       {/* Subscription stays switched off until the mailing list owner, cadence, sending platform
           and unsubscribe process are approved (blueprint, Sarthi Newsletter page). */}
       <section id="subscribe" className="scroll-mt-6 px-4 py-20 sm:px-6 lg:px-8">
-        <Reveal className="mx-auto max-w-4xl rounded-3xl bg-navy px-6 py-14 text-center text-white sm:px-12">
+        <Reveal className="mx-auto max-w-4xl rounded-3xl bg-ink px-6 py-14 text-center text-white sm:px-12">
           <h2 className="font-heading text-3xl font-bold">Get Sarthi AI insights and updates in your inbox</h2>
           <p className="mx-auto mt-3 max-w-2xl text-white/75">
             Email subscriptions are coming soon. In the meantime, get in touch if you'd like to hear

@@ -16,16 +16,17 @@ export default function ServiceEcosystem({ hub, items }) {
               y1="50"
               x2={x}
               y2={y}
-              stroke="#00AEEF"
+              stroke="currentColor"
+              className="text-brand-light"
               strokeWidth="0.4"
               opacity="0.4"
             />
           );
         })}
-        <circle cx="50" cy="50" r="16" fill="#081C3D" />
+        <circle cx="50" cy="50" r="16" fill="currentColor" className="text-ink" />
       </svg>
 
-      <div className="absolute left-1/2 top-1/2 flex h-[32%] w-[32%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-navy px-3 text-center">
+      <div className="absolute left-1/2 top-1/2 flex h-[32%] w-[32%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-ink px-3 text-center">
         <span className="font-heading text-xs font-semibold leading-tight text-white sm:text-sm">
           {hub}
         </span>
@@ -41,8 +42,8 @@ export default function ServiceEcosystem({ hub, items }) {
             className="absolute flex w-24 -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1.5 text-center sm:w-28"
             style={{ left: `${x}%`, top: `${y}%` }}
           >
-            <span className="h-2.5 w-2.5 rounded-full bg-emerald ring-4 ring-emerald/15" />
-            <span className="text-[11px] font-medium leading-snug text-grey-dark sm:text-xs">
+            <span className="h-2.5 w-2.5 rounded-full bg-accent ring-4 ring-accent/15" />
+            <span className="text-[11px] font-medium leading-snug text-graphite sm:text-xs">
               {item}
             </span>
           </div>

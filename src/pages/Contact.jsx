@@ -107,35 +107,35 @@ export default function Contact() {
       <section className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-6 py-20 lg:grid-cols-5 lg:px-8">
         <div id="details" className="scroll-mt-6 space-y-8 lg:col-span-2">
           <div>
-            <h2 className="text-sm font-semibold uppercase tracking-widest text-teal">Phone</h2>
-            <p className="mt-2 text-lg text-grey-dark">
-              <a href={contactInfo.phoneHref} className={`hover:text-teal hover:underline ${focusRing}`}>{contactInfo.phone}</a>
+            <h2 className="text-sm font-semibold uppercase tracking-widest text-brand">Phone</h2>
+            <p className="mt-2 text-lg text-graphite">
+              <a href={contactInfo.phoneHref} className={`hover:text-brand hover:underline ${focusRing}`}>{contactInfo.phone}</a>
             </p>
           </div>
           <div>
-            <h2 className="text-sm font-semibold uppercase tracking-widest text-teal">Email</h2>
-            <p className="mt-2 text-lg text-grey-dark">
-              <a href={`mailto:${contactInfo.email}`} className={`break-all hover:text-teal hover:underline ${focusRing}`}>{contactInfo.email}</a>
+            <h2 className="text-sm font-semibold uppercase tracking-widest text-brand">Email</h2>
+            <p className="mt-2 text-lg text-graphite">
+              <a href={`mailto:${contactInfo.email}`} className={`break-all hover:text-brand hover:underline ${focusRing}`}>{contactInfo.email}</a>
             </p>
           </div>
           <div>
-            <h2 className="text-sm font-semibold uppercase tracking-widest text-teal">Office</h2>
-            <p className="mt-2 text-lg text-grey-dark">{contactInfo.address}</p>
+            <h2 className="text-sm font-semibold uppercase tracking-widest text-brand">Office</h2>
+            <p className="mt-2 text-lg text-graphite">{contactInfo.address}</p>
           </div>
         </div>
 
         <div id="enquiry-form" className="scroll-mt-6 lg:col-span-3">
           {status === "success" ? (
-            <div role="status" className="rounded-2xl border border-azure/30 bg-grey-light p-8 text-center">
-              <h2 className="font-heading text-xl font-semibold text-navy">Thank you for contacting Sarthi AI</h2>
-              <p className="mt-2 text-grey-dark/75">
+            <div role="status" className="rounded-2xl border border-brand-light/30 bg-surface p-8 text-center">
+              <h2 className="font-heading text-xl font-semibold text-ink">Thank you for contacting Sarthi AI</h2>
+              <p className="mt-2 text-graphite/75">
                 Your enquiry has been received. Our team will review the information and contact you
                 using the details provided.
               </p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} noValidate className="space-y-5">
-              <h2 className="font-heading text-xl font-semibold text-navy">Project enquiry</h2>
+              <h2 className="font-heading text-xl font-semibold text-ink">Project enquiry</h2>
               <input
                 type="text"
                 name="_gotcha"
@@ -146,7 +146,7 @@ export default function Contact() {
                 aria-hidden="true"
                 className="hidden"
               />
-              <p className="text-xs text-grey-dark/60">
+              <p className="text-xs text-graphite/60">
                 Fields marked <span className="text-red-700">*</span> are required.
               </p>
 
@@ -161,7 +161,7 @@ export default function Contact() {
                     aria-required="true"
                     aria-invalid={!!errors.name}
                     aria-describedby={describedBy("name")}
-                    className={`${inputClass} ${errors.name ? "border-red-700" : "border-grey-dark/20"}`}
+                    className={`${inputClass} ${errors.name ? "border-red-700" : "border-graphite/20"}`}
                   />
                 </Field>
                 <Field id="organisation" label="Organisation / designation">
@@ -171,7 +171,7 @@ export default function Contact() {
                     autoComplete="organization"
                     value={form.organisation}
                     onChange={handleChange}
-                    className={`${inputClass} border-grey-dark/20`}
+                    className={`${inputClass} border-graphite/20`}
                   />
                 </Field>
                 <Field
@@ -189,7 +189,7 @@ export default function Contact() {
                     onChange={handleChange}
                     aria-invalid={!!errors.email}
                     aria-describedby={describedBy("email", true)}
-                    className={`${inputClass} ${errors.email ? "border-red-700" : "border-grey-dark/20"}`}
+                    className={`${inputClass} ${errors.email ? "border-red-700" : "border-graphite/20"}`}
                   />
                 </Field>
                 <Field id="phone" label="Phone" error={errors.phone}>
@@ -202,7 +202,7 @@ export default function Contact() {
                     onChange={handleChange}
                     aria-invalid={!!errors.phone}
                     aria-describedby={describedBy("phone")}
-                    className={`${inputClass} ${errors.phone ? "border-red-700" : "border-grey-dark/20"}`}
+                    className={`${inputClass} ${errors.phone ? "border-red-700" : "border-graphite/20"}`}
                   />
                 </Field>
                 <Field id="service" label="Service of interest">
@@ -211,7 +211,7 @@ export default function Contact() {
                     name="service"
                     value={form.service}
                     onChange={handleChange}
-                    className={`${inputClass} border-grey-dark/20 bg-white`}
+                    className={`${inputClass} border-graphite/20 bg-white`}
                   >
                     <option value="">Select a service</option>
                     {services.map((s) => (
@@ -226,7 +226,7 @@ export default function Contact() {
                     name="sector"
                     value={form.sector}
                     onChange={handleChange}
-                    className={`${inputClass} border-grey-dark/20 bg-white`}
+                    className={`${inputClass} border-graphite/20 bg-white`}
                   >
                     <option value="">Select a sector</option>
                     {sectors.map((s) => (
@@ -244,7 +244,7 @@ export default function Contact() {
                   value={form.location}
                   onChange={handleChange}
                   aria-describedby={describedBy("location", true)}
-                  className={`${inputClass} border-grey-dark/20`}
+                  className={`${inputClass} border-graphite/20`}
                 />
               </Field>
 
@@ -264,7 +264,7 @@ export default function Contact() {
                   aria-required="true"
                   aria-invalid={!!errors.message}
                   aria-describedby={describedBy("message", true)}
-                  className={`${inputClass} ${errors.message ? "border-red-700" : "border-grey-dark/20"}`}
+                  className={`${inputClass} ${errors.message ? "border-red-700" : "border-graphite/20"}`}
                 />
               </Field>
 
@@ -279,12 +279,12 @@ export default function Contact() {
                     aria-required="true"
                     aria-invalid={!!errors.consent}
                     aria-describedby={errors.consent ? "consent-error" : undefined}
-                    className="mt-0.5 h-4 w-4 shrink-0 accent-teal"
+                    className="mt-0.5 h-4 w-4 shrink-0 accent-brand"
                   />
-                  <label htmlFor="consent" className="text-sm text-grey-dark/80">
+                  <label htmlFor="consent" className="text-sm text-graphite/80">
                     I agree that Sarthi AI may use these details to respond to my enquiry, as described
                     in the{" "}
-                    <Link to="/privacy" className={`font-medium text-teal underline underline-offset-2 ${focusRing}`}>
+                    <Link to="/privacy" className={`font-medium text-brand underline underline-offset-2 ${focusRing}`}>
                       Privacy Policy
                     </Link>
                     .<span className="text-red-700" aria-hidden="true"> *</span>
@@ -309,7 +309,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className={`cursor-pointer rounded-full bg-navy px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal disabled:cursor-wait disabled:opacity-70 ${focusRing}`}
+                className={`cursor-pointer rounded-full bg-ink px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand disabled:cursor-wait disabled:opacity-70 ${focusRing}`}
               >
                 {status === "sending" ? "Sending…" : "Send Enquiry"}
               </button>

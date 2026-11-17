@@ -40,11 +40,11 @@ function CheckCircle({ className }) {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-navy text-white">
+    <section className="relative overflow-hidden bg-ink text-white">
       <img src={aiDataStreams} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full object-cover opacity-40" />
-      <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-navy/40" />
+      <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/40" />
       <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-azure">Careers</p>
+        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-light">Careers</p>
         <h1 className="mt-3 max-w-2xl font-heading text-4xl font-bold sm:text-5xl">{careersHero.title}</h1>
         <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/80">{careersHero.body}</p>
         <div className="mt-8 flex flex-wrap gap-4">
@@ -63,22 +63,22 @@ function Hero() {
 
 function OpeningCard({ job }) {
   return (
-    <li className="flex flex-col rounded-2xl border border-grey-dark/10 bg-white p-6 shadow-sm">
+    <li className="flex flex-col rounded-2xl border border-graphite/10 bg-white p-6 shadow-sm">
       <div className="flex flex-wrap items-center gap-2">
-        <StatusBadge tone="teal">{job.type}</StatusBadge>
+        <StatusBadge tone="brand">{job.type}</StatusBadge>
         <StatusBadge>{job.status}</StatusBadge>
       </div>
-      <h3 className="mt-3 font-heading text-lg font-semibold text-navy">{job.title}</h3>
-      <p className="text-xs text-grey-dark/60">{job.area}</p>
-      <p className="mt-2 text-xs text-grey-dark/70">
+      <h3 className="mt-3 font-heading text-lg font-semibold text-ink">{job.title}</h3>
+      <p className="text-xs text-graphite/60">{job.area}</p>
+      <p className="mt-2 text-xs text-graphite/70">
         {[job.location, job.mode, job.experience].filter(Boolean).join(" · ")}
       </p>
-      <p className="mt-3 flex-1 text-sm leading-relaxed text-grey-dark/75">{job.summary}</p>
+      <p className="mt-3 flex-1 text-sm leading-relaxed text-graphite/75">{job.summary}</p>
       <div className="mt-5 flex flex-wrap items-center gap-3">
         <ButtonLink to={`/careers/apply?position=${job.id}`}>Apply Now</ButtonLink>
         <Link
           to={`/careers/${job.id}`}
-          className={`rounded-full px-4 py-3 text-sm font-semibold text-navy underline-offset-4 hover:underline ${focusRing}`}
+          className={`rounded-full px-4 py-3 text-sm font-semibold text-ink underline-offset-4 hover:underline ${focusRing}`}
         >
           View Details<span className="sr-only">: {job.title}</span>
         </Link>
@@ -99,16 +99,16 @@ function Openings() {
         </Reveal>
 
         {openings.length === 0 ? (
-          <Reveal className="mt-10 rounded-3xl border border-dashed border-grey-dark/20 bg-grey-light p-8 text-center sm:p-12">
-            <h3 className="font-heading text-xl font-semibold text-navy">No Current Openings</h3>
-            <p className="mx-auto mt-3 max-w-xl text-base text-grey-dark/75">
+          <Reveal className="mt-10 rounded-3xl border border-dashed border-graphite/20 bg-surface p-8 text-center sm:p-12">
+            <h3 className="font-heading text-xl font-semibold text-ink">No Current Openings</h3>
+            <p className="mx-auto mt-3 max-w-xl text-base text-graphite/75">
               We don't have active vacancies right now, but we're interested in connecting with
               talented people.
             </p>
             <div className="mt-6">
               <ButtonLink to="/careers/apply">Submit Your Resume</ButtonLink>
             </div>
-            <p className="mx-auto mt-4 max-w-xl text-xs text-grey-dark/60">
+            <p className="mx-auto mt-4 max-w-xl text-xs text-graphite/60">
               With your consent, we may keep your application on file for future opportunities, as
               described in our{" "}
               <Link to="/recruitment-privacy" className={`underline underline-offset-2 ${focusRing}`}>
@@ -127,7 +127,7 @@ function Openings() {
                   aria-pressed={filter === f}
                   onClick={() => setFilter(f)}
                   className={`cursor-pointer rounded-full px-4 py-2 text-sm font-medium transition-colors ${focusRing} ${
-                    filter === f ? "bg-navy text-white" : "bg-grey-light text-grey-dark hover:bg-grey-dark/10"
+                    filter === f ? "bg-ink text-white" : "bg-surface text-graphite hover:bg-graphite/10"
                   }`}
                 >
                   {f}
@@ -141,7 +141,7 @@ function Openings() {
                 ))}
               </ul>
             ) : (
-              <p className="mt-8 text-grey-dark/70">No {filter.toLowerCase()} openings right now.</p>
+              <p className="mt-8 text-graphite/70">No {filter.toLowerCase()} openings right now.</p>
             )}
           </>
         )}
@@ -164,12 +164,12 @@ export default function Careers() {
             {whyWorkWithUs.map((v, i) => {
               const Icon = VALUE_ICONS[i];
               return (
-                <Reveal as="li" key={v.title} delay={i * 0.06} className="rounded-2xl bg-grey-light p-6">
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-teal/10 text-teal">
+                <Reveal as="li" key={v.title} delay={i * 0.06} className="rounded-2xl bg-surface p-6">
+                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-brand/10 text-brand">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <h3 className="font-heading text-base font-semibold text-navy">{v.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-grey-dark/70">{v.body}</p>
+                  <h3 className="font-heading text-base font-semibold text-ink">{v.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-graphite/70">{v.body}</p>
                 </Reveal>
               );
             })}
@@ -177,7 +177,7 @@ export default function Careers() {
         </div>
       </section>
 
-      <section id="career-areas" className="scroll-mt-6 bg-grey-light py-20">
+      <section id="career-areas" className="scroll-mt-6 bg-surface py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
             <SectionHeading
@@ -192,10 +192,10 @@ export default function Careers() {
               const Icon = AREA_ICONS[i];
               return (
                 <Reveal as="li" key={a.title} delay={(i % 3) * 0.06} className="rounded-2xl bg-white p-6 shadow-sm">
-                  <Icon className="h-6 w-6 text-teal" />
-                  <h3 className="mt-4 font-heading text-lg font-semibold text-navy">{a.title}</h3>
-                  <p className="mt-2 text-sm text-grey-dark/80">{a.roles}</p>
-                  <p className="mt-2 text-xs text-grey-dark/60">{a.skills}</p>
+                  <Icon className="h-6 w-6 text-brand" />
+                  <h3 className="mt-4 font-heading text-lg font-semibold text-ink">{a.title}</h3>
+                  <p className="mt-2 text-sm text-graphite/80">{a.roles}</p>
+                  <p className="mt-2 text-xs text-graphite/60">{a.skills}</p>
                 </Reveal>
               );
             })}
@@ -205,7 +205,7 @@ export default function Careers() {
 
       <Openings />
 
-      <section id="internships" className="scroll-mt-6 bg-navy py-20 text-white">
+      <section id="internships" className="scroll-mt-6 bg-ink py-20 text-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
             <SectionHeading
@@ -239,7 +239,7 @@ export default function Careers() {
       </section>
 
       <section id="general-application" className="scroll-mt-6 px-4 pb-20 sm:px-6 lg:px-8">
-        <Reveal className="mx-auto max-w-6xl rounded-3xl bg-teal px-6 py-14 text-center text-white sm:px-12">
+        <Reveal className="mx-auto max-w-6xl rounded-3xl bg-brand px-6 py-14 text-center text-white sm:px-12">
           <h2 className="font-heading text-3xl font-bold">Don't see the right role?</h2>
           <p className="mx-auto mt-3 max-w-2xl text-white/80">
             Send a general application and tell us where your skills could fit.

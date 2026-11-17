@@ -1,7 +1,7 @@
 export default function SectionLabel({ index, label, dark = false, className = "" }) {
-  const numberColor = dark ? "text-azure" : "text-teal";
-  const labelColor = dark ? "text-white/70" : "text-grey-dark/70";
-  const ruleColor = dark ? "bg-white/30" : "bg-grey-dark/30";
+  const numberColor = dark ? "text-brand-light" : "text-brand";
+  const labelColor = dark ? "text-white/70" : "text-graphite/70";
+  const ruleColor = dark ? "bg-white/30" : "bg-graphite/30";
 
   return (
     <div className={`flex items-center gap-3 ${className}`}>

@@ -1,36 +1,74 @@
-@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap");
 @import "tailwindcss";
 
+/* Design tokens: see DESIGN.md. Use these names, never raw hex values. */
 @theme {
   --font-sans: "Inter", system-ui, "Segoe UI", Roboto, sans-serif;
-  --font-heading: "Sora", "Inter", system-ui, sans-serif;
+  --font-heading: "Archivo", "Inter", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-  --font-serif-accent: "Instrument Serif", serif;
+  /* Kept for pages not yet rebuilt; maps to the heading face. */
+  --font-serif-accent: "Archivo", "Inter", system-ui, sans-serif;
 
-  --color-navy: #0f2a22;
-  --color-navy-light: #1c3f33;
-  --color-teal: #2f6f5e;
-  --color-emerald: #c9922e;
-  --color-azure: #3fb6c0;
-  --color-grey-light: #f5f6f1;
-  --color-grey-dark: #2a322d;
+  /* Brand: the logo gradient */
+  --color-brand-dark: #0c447c;
+  --color-brand: #1d6fa5;
+  --color-brand-light: #6fb3dc;
+  --color-brand-tint: #e8f2fa;
+
+  /* One warm accent */
+  --color-accent: #f08a3c;
+  --color-accent-strong: #a84d0e;
+
+  /* Neutrals */
+  --color-ink: #0b1f33;
+  --color-ink-soft: #14324f;
+  --color-graphite: #26364a;
+  --color-muted: #52637a;
+  --color-line: #d9e2eb;
+  --color-surface: #f3f6f9;
+
+  /* States */
+  --color-success: #1f7a4d;
+  --color-warning: #a84d0e;
+  --color-danger: #c23b3b;
 }
 
-html {
-  scroll-behavior: smooth;
-  /* Keep anchored sections clear of the sticky header (h-20). */
-  scroll-padding-top: 5rem;
+/* The one layout container: same left edge for header, every section and footer. */
+@utility container-page {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (width >= 40rem) {
+    padding-inline: 2rem;
+  }
+  @media (width >= 64rem) {
+    padding-inline: 2.5rem;
+  }
 }
 
-* {
-  font-family: "Inter", sans-serif;
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Keep anchored sections clear of the sticky header (h-18). */
+    scroll-padding-top: 4.5rem;
+  }
 
-body {
-  margin: 0;
-  font-family: var(--font-sans);
-  color: var(--color-grey-dark);
-  background: #ffffff;
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    color: var(--color-graphite);
+    background: #ffffff;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-heading);
+    color: inherit;
+    letter-spacing: -0.015em;
+  }
 }
 
 @keyframes scan-sweep {

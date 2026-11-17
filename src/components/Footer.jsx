@@ -9,12 +9,12 @@ import {
 } from "../data/site";
 
 const linkClass =
-  "rounded-sm transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-azure";
+  "rounded-sm transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-light";
 
 function Column({ title, children }) {
   return (
     <div>
-      <h2 className="text-sm font-semibold uppercase tracking-wider text-azure">{title}</h2>
+      <h2 className="font-mono text-xs font-medium uppercase tracking-[0.08em] text-brand-light">{title}</h2>
       <ul className="mt-4 space-y-2 text-sm">{children}</ul>
     </div>
   );
@@ -30,8 +30,8 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-white/10 bg-navy text-white/70">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-14 sm:grid-cols-2 lg:grid-cols-5 lg:px-8">
+    <footer className="bg-ink text-white/75">
+      <div className="container-page grid grid-cols-1 gap-10 py-16 sm:grid-cols-2 lg:grid-cols-5">
         <Column title="Company">
           <li className="pb-2">
             <img src={logo} alt="Sarthi AI Solutions" className="h-12 w-auto brightness-0 invert" />
@@ -96,7 +96,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-6 text-xs text-white/50 sm:flex-row lg:px-8">
+        <div className="container-page flex flex-col items-start justify-between gap-4 py-6 text-xs text-white/60 sm:flex-row sm:items-center">
           <p>© {year} Sarthi AI Solutions. All rights reserved.</p>
           <button
             type="button"

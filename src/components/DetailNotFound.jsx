@@ -10,10 +10,10 @@ export default function DetailNotFound({ eyebrow, what, backTo, backLabel }) {
     <>
       <PageHero eyebrow={eyebrow} title={`${what} not found`} />
       <section className="mx-auto max-w-2xl px-6 py-20 text-center">
-        <p className="text-grey-dark/75">
+        <p className="text-graphite/75">
           This {what.toLowerCase()} may have been moved, or isn't published yet.
         </p>
-        <Link to={backTo} className={`mt-6 inline-block font-semibold text-teal underline underline-offset-4 ${focusRing}`}>
+        <Link to={backTo} className={`mt-6 inline-block font-semibold text-brand underline underline-offset-4 ${focusRing}`}>
           {backLabel}
         </Link>
       </section>

@@ -11,7 +11,7 @@ export default function FloatingContact({ visible }) {
       to="/contact"
       aria-hidden={!show}
       tabIndex={show ? 0 : -1}
-      className={`fixed right-4 bottom-4 z-50 inline-flex items-center gap-2 rounded-full bg-navy px-4 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:bg-teal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-azure sm:right-6 sm:bottom-6 sm:px-5 ${
+      className={`fixed right-4 bottom-4 z-50 inline-flex items-center gap-2 rounded-full bg-ink px-4 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:bg-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand sm:right-6 sm:bottom-6 sm:px-5 ${
         show ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"
       }`}
     >

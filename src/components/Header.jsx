@@ -5,11 +5,11 @@ import logo from "../assets/sarthi-logo-header.svg";
 import { primaryNav } from "../data/site";
 
 const focusRing =
-  "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-azure";
+  "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand";
 
 function navLinkClass({ isActive }) {
   return `relative rounded-md px-1 py-2 text-sm font-medium transition-colors ${focusRing} ${
-    isActive ? "text-teal" : "text-grey-dark/80 hover:text-navy"
+    isActive ? "text-brand" : "text-graphite hover:text-brand"
   }`;
 }
 
@@ -46,12 +46,12 @@ export default function Header({ scrolled = false }) {
   return (
     <header
       className={`sticky top-0 z-40 border-b bg-white/95 backdrop-blur-sm transition-shadow duration-300 ${
-        scrolled ? "border-grey-dark/10 shadow-[0_6px_20px_-12px_rgba(15,42,34,0.35)]" : "border-grey-dark/10"
+        scrolled ? "border-line shadow-[0_8px_24px_-16px_rgba(11,31,51,0.35)]" : "border-line"
       }`}
     >
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 lg:px-8">
+      <div className="container-page flex h-18 items-center justify-between gap-6">
         <Link to="/" className={`shrink-0 rounded-md ${focusRing}`} aria-label="Sarthi AI Solutions — Home">
-          <img src={logo} alt="Sarthi AI Solutions" className="h-16 w-auto" />
+          <img src={logo} alt="Sarthi AI Solutions" className="h-13 w-auto" />
         </Link>
 
         <nav aria-label="Primary" className="hidden lg:block">
@@ -63,7 +63,7 @@ export default function Header({ scrolled = false }) {
                     <>
                       {item.label}
                       {isActive && (
-                        <span className="absolute inset-x-1 -bottom-0.5 h-0.5 rounded-full bg-teal" aria-hidden="true" />
+                        <span className="absolute inset-x-1 -bottom-0.5 h-0.5 rounded-full bg-brand" aria-hidden="true" />
                       )}
                     </>
                   )}
@@ -74,8 +74,8 @@ export default function Header({ scrolled = false }) {
               <NavLink
                 to="/contact"
                 className={({ isActive }) =>
-                  `rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-colors ${focusRing} ${
-                    isActive ? "bg-teal" : "bg-navy hover:bg-teal"
+                  `inline-flex min-h-11 items-center rounded-lg px-5 text-sm font-semibold text-white transition-colors ${focusRing} ${
+                    isActive ? "bg-brand-dark" : "bg-brand hover:bg-brand-dark"
                   }`
                 }
               >
@@ -87,7 +87,7 @@ export default function Header({ scrolled = false }) {
 
         <button
           type="button"
-          className={`inline-flex h-11 w-11 items-center justify-center rounded-lg text-navy hover:bg-grey-light lg:hidden ${focusRing}`}
+          className={`inline-flex h-11 w-11 items-center justify-center rounded-lg text-ink hover:bg-surface lg:hidden ${focusRing}`}
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
           aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -101,9 +101,9 @@ export default function Header({ scrolled = false }) {
         <nav
           id="mobile-menu"
           aria-label="Primary"
-          className="absolute inset-x-0 top-full border-b border-grey-dark/10 bg-white shadow-lg lg:hidden"
+          className="absolute inset-x-0 top-full border-b border-line bg-white shadow-lg lg:hidden"
         >
-          <ul className="mx-auto max-w-7xl space-y-1 px-4 py-4 sm:px-6">
+          <ul className="container-page space-y-1 py-4">
             {primaryNav.map((item) => (
               <li key={item.to}>
                 <NavLink
@@ -111,7 +111,7 @@ export default function Header({ scrolled = false }) {
                   end={item.to === "/"}
                   className={({ isActive }) =>
                     `block rounded-lg px-4 py-3 text-base font-medium ${focusRing} ${
-                      isActive ? "bg-grey-light text-teal" : "text-grey-dark hover:bg-grey-light"
+                      isActive ? "bg-surface text-brand" : "text-graphite hover:bg-surface"
                     }`
                   }
                 >
