@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
-import PageHero from "../components/PageHero";
-import Reveal from "../components/graphics/Reveal";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
+import { Reveal } from "../components/motion";
+import { MapSheet, MediaHero } from "../components/pagefx";
 import ContourLines from "../components/graphics/ContourLines";
 import { LayersIcon } from "../components/graphics/PointIcons";
 import { CheckIcon, ArrowRightIcon } from "../components/Icons";
@@ -14,24 +16,86 @@ import {
   imageryExamples,
 } from "../data/pages";
 
+// Concept preview of the mobile app that plays a short loop while on screen: a search is typed,
+// parcels outline themselves on the map and the parcel card slides up. Still for reduced motion.
+const QUERY = "Search Khasra, address…";
+const PARCELS = [
+  "M58 150 L120 138 L132 196 L66 210 Z",
+  "M30 96 L82 88 L90 128 L36 136 Z",
+  "M118 70 L162 64 L170 108 L124 114 Z",
+];
+
 function PhonePreview() {
+  const reduce = useReducedMotion();
+  const ref = useRef(null);
+  const inView = useInView(ref, { amount: 0.4 });
+  const play = !reduce && inView;
+  const loop = { duration: 7, repeat: Infinity, ease: "easeInOut" };
   return (
     <div
+      ref={ref}
       aria-hidden="true"
       className="relative mx-auto h-[420px] w-[210px] rounded-[2.2rem] border-[6px] border-ink bg-ink shadow-2xl"
     >
       <div className="absolute inset-0 overflow-hidden rounded-[1.7rem] bg-surface">
-        <ContourLines opacity={0.35} />
-        <div className="absolute inset-x-3 top-6 flex items-center gap-2 rounded-full bg-white px-3 py-2 text-[10px] text-graphite/60 shadow">
-          <span className="h-2 w-2 rounded-full bg-brand" /> Search Khasra, address…
+        <ContourLines opacity={0.45} className="text-brand" />
+        {/* search bar with a typed query */}
+        <div className="absolute inset-x-3 top-6 z-10 flex items-center gap-2 rounded-full bg-white px-3 py-2 text-[10px] text-graphite shadow">
+          <span className="h-2 w-2 shrink-0 rounded-full bg-brand" />
+          {play ? (
+            <motion.span
+              className="overflow-hidden whitespace-nowrap"
+              initial={{ width: 0 }}
+              animate={{ width: ["0%", "100%", "100%", "0%"] }}
+              transition={{ ...loop, times: [0, 0.3, 0.9, 1] }}
+            >
+              {QUERY}
+            </motion.span>
+          ) : (
+            <span className="text-graphite/60">{QUERY}</span>
+          )}
         </div>
-        <div className="absolute left-[38%] top-[42%] h-20 w-24 rotate-6 border-2 border-accent bg-accent/20" />
-        <div className="absolute left-[18%] top-[30%] h-14 w-16 -rotate-3 border border-brand/60 bg-brand/10" />
-        <div className="absolute left-[60%] top-[24%] h-12 w-14 rotate-12 border border-brand/60 bg-brand/10" />
-        <div className="absolute inset-x-3 bottom-4 rounded-2xl bg-white p-3 text-[10px] shadow-lg">
+        {/* parcels */}
+        <svg viewBox="0 0 198 400" className="absolute inset-0 h-full w-full">
+          {PARCELS.map((d, k) => (
+            <motion.path
+              key={d}
+              d={d}
+              fill={k === 0 ? "rgba(240,138,60,0.22)" : "rgba(23,120,74,0.12)"}
+              stroke={k === 0 ? "#f08a3c" : "#17784a"}
+              strokeWidth={k === 0 ? 2 : 1.2}
+              initial={play ? { pathLength: 0, fillOpacity: 0 } : false}
+              animate={play ? { pathLength: [0, 1, 1, 0], fillOpacity: [0, 1, 1, 0] } : {}}
+              transition={{ ...loop, times: [0.25 + k * 0.06, 0.5 + k * 0.06, 0.9, 1] }}
+            />
+          ))}
+          {play && (
+            <motion.circle
+              cx="95"
+              cy="174"
+              r="5"
+              fill="#f08a3c"
+              style={{ transformBox: "fill-box", transformOrigin: "center" }}
+              animate={{ scale: [1, 2.6, 1], opacity: [1, 0.25, 1] }}
+              transition={{ duration: 1.6, repeat: Infinity }}
+            />
+          )}
+        </svg>
+        {/* parcel card */}
+        <motion.div
+          className="absolute inset-x-3 bottom-4 rounded-2xl bg-white p-3 text-[10px] shadow-lg"
+          initial={play ? { y: 90, opacity: 0 } : false}
+          animate={play ? { y: [90, 90, 0, 0, 90], opacity: [0, 0, 1, 1, 0] } : {}}
+          transition={{ ...loop, times: [0, 0.5, 0.62, 0.9, 1] }}
+        >
           <p className="font-semibold text-ink">Parcel details</p>
-          <p className="mt-1 text-graphite/60">Land use · Area · Nearby landmarks</p>
-        </div>
+          <p className="mt-1 text-graphite/70">Land use · Area · Nearby landmarks</p>
+          <div className="mt-2 grid grid-cols-3 gap-1">
+            {["Residential", "0.42 ha", "School 300 m"].map((t) => (
+              <span key={t} className="rounded bg-surface px-1.5 py-1 text-center text-[9px] text-ink">{t}</span>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </div>
   );
@@ -48,8 +112,8 @@ function FeaturedCapability() {
         <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-5">
           <Reveal className="lg:col-span-3">
             <article className="h-full overflow-hidden rounded-3xl border border-graphite/10 bg-white shadow-sm">
-              <div className="relative h-56">
-                <img src={topoMap} alt="" aria-hidden="true" loading="lazy" className="h-full w-full object-cover" />
+              <div className="relative h-56 overflow-hidden">
+                <img src={topoMap} alt="" aria-hidden="true" loading="lazy" className="drift h-full w-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/70 to-transparent" />
                 <div className="absolute bottom-4 left-4 flex flex-wrap gap-2">
                   <StatusBadge tone="light">Featured capability</StatusBadge>
@@ -182,14 +246,17 @@ function Demonstrations({ index }) {
               delay={(i % 4) * 0.05}
               className="overflow-hidden rounded-2xl border border-line bg-white transition-all duration-300 hover:border-brand/40 hover:shadow-[0_0_0_4px_rgba(23,120,74,0.12),0_20px_44px_-18px_rgba(15,51,36,0.35)]"
             >
-              <div className="relative h-36 overflow-hidden">
+              <div className="group relative h-44 overflow-hidden">
                 <img
                   src={ex.image}
                   alt={`Sentinel-2 satellite image of ${ex.title}, ${ex.captured}`}
                   loading="lazy"
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/70 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent" />
+                <span className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <MapSheet />
+                </span>
                 <span className="absolute top-3 right-3 rounded-full bg-ink/75 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-white ring-1 ring-white/25 backdrop-blur-sm">
                   Sentinel-2 · {ex.captured}
                 </span>
@@ -221,10 +288,17 @@ function Demonstrations({ index }) {
   );
 }
 
+const HERO_SLIDES = imageryExamples
+  .filter((e) => !e.detail)
+  .slice(0, 5)
+  .map((e) => ({ src: e.image, label: e.title, note: `${e.theme} · Sentinel-2 · ${e.captured}`, alt: `Sentinel-2 image of ${e.title}` }));
+
 export default function Projects() {
   return (
     <>
-      <PageHero eyebrow="Projects" title="Projects, case studies and applications" description={projectsIntro} />
+      <MediaHero eyebrow="Projects" title="Projects, case studies and applications" body={projectsIntro} slides={HERO_SLIDES}>
+        <ButtonLink to="#featured-capabilities">See the featured capability</ButtonLink>
+      </MediaHero>
       <FeaturedCapability />
       {/* Hidden until Sarthi AI has client-approved case studies (client call, 12 Nov 2026). */}
       {caseStudies.length > 0 && <CaseStudies />}
