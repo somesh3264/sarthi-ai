@@ -185,11 +185,11 @@ function HeroMedia({ plate }) {
     if (phase !== "film") return;
     const v = videoRef.current;
     if (!v) return;
-    // The film is 16.7 s; played a little faster it hands over in about 10 s.
+    // The film is 18 s; played a little faster it hands over in about 14 s.
     v.currentTime = 0;
-    v.playbackRate = 1.6;
+    v.playbackRate = 1.25;
     v.play().catch(() => setPhase("slider"));
-    const guard = setTimeout(() => setPhase("slider"), 20000);
+    const guard = setTimeout(() => setPhase("slider"), 24000);
     return () => clearTimeout(guard);
   }, [phase]);
 
