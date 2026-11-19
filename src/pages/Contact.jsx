@@ -127,7 +127,7 @@ export default function Contact() {
         <div id="enquiry-form" className="scroll-mt-6 lg:col-span-3">
           {status === "success" ? (
             <div role="status" className="rounded-2xl border border-brand-light/30 bg-surface p-8 text-center">
-              <h2 className="font-heading text-xl font-semibold text-ink">Thank you for contacting Sarthi AI</h2>
+              <h2 className="text-xl font-semibold text-ink">Thank you for contacting Sarthi AI</h2>
               <p className="mt-2 text-graphite/75">
                 Your enquiry has been received. Our team will review the information and contact you
                 using the details provided.
@@ -135,7 +135,7 @@ export default function Contact() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} noValidate className="space-y-5">
-              <h2 className="font-heading text-xl font-semibold text-ink">Project enquiry</h2>
+              <h2 className="text-xl font-semibold text-ink">Project enquiry</h2>
               <input
                 type="text"
                 name="_gotcha"

@@ -19,19 +19,19 @@ function ArticleView({ article }) {
 
   return (
     <article>
-      <header className="relative overflow-hidden bg-ink text-white">
-        <ContourLines opacity={0.15} />
+      <header className="relative overflow-hidden bg-stone text-ink">
+        <ContourLines opacity={0.35} />
         <div className="relative mx-auto max-w-3xl px-6 py-16 lg:px-8">
-          <Link to="/newsletter" className={`text-sm font-semibold text-brand-light hover:underline ${focusRing}`}>
+          <Link to="/newsletter" className={`text-sm font-semibold text-brand hover:underline ${focusRing}`}>
             ← Sarthi Newsletter
           </Link>
           <div className="mt-6 flex flex-wrap items-center gap-2">
-            <p className="text-xs font-semibold uppercase tracking-widest text-brand-light">
+            <p className="text-xs font-semibold uppercase tracking-widest text-brand">
               {categoryName[article.category]}
             </p>
           </div>
-          <h1 className="mt-3 font-heading text-3xl font-bold leading-tight sm:text-4xl">{article.title}</h1>
-          <p className="mt-4 text-sm text-white/70">
+          <h1 className="mt-3 font-heading text-3xl font-normal leading-tight sm:text-4xl">{article.title}</h1>
+          <p className="mt-4 text-sm text-graphite">
             <time dateTime={article.date}>{formatDate(article.date)}</time>
             {article.author && <> · {article.author}</>}
           </p>
@@ -52,7 +52,7 @@ function ArticleView({ article }) {
         {article.body?.map((section, i) => (
           <section key={section.heading ?? i} className="mt-8">
             {section.heading && (
-              <h2 className="font-heading text-2xl font-semibold text-ink">{section.heading}</h2>
+              <h2 className="font-heading text-2xl font-normal text-ink">{section.heading}</h2>
             )}
             {section.paragraphs.map((p) => (
               <p key={p.slice(0, 40)} className="mt-4 text-base leading-relaxed text-graphite/80">
@@ -81,12 +81,12 @@ function ArticleView({ article }) {
       {related.length > 0 && (
         <aside aria-labelledby="related-heading" className="bg-surface py-16">
           <div className="mx-auto max-w-6xl px-6 lg:px-8">
-            <h2 id="related-heading" className="font-heading text-2xl font-semibold text-ink">Related articles</h2>
+            <h2 id="related-heading" className="font-heading text-2xl font-normal text-ink">Related articles</h2>
             <ul className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
               {related.map((a) => (
                 <li key={a.slug} className="rounded-2xl bg-white p-6 shadow-sm">
                   <p className="text-xs font-semibold uppercase tracking-widest text-brand">{categoryName[a.category]}</p>
-                  <h3 className="mt-2 font-heading text-lg font-semibold text-ink">
+                  <h3 className="mt-2 text-lg font-semibold text-ink">
                     <Link to={`/newsletter/${a.slug}`} className={`hover:underline ${focusRing}`}>{a.title}</Link>
                   </h3>
                   <time dateTime={a.date} className="mt-1 block text-xs text-graphite/60">{formatDate(a.date)}</time>

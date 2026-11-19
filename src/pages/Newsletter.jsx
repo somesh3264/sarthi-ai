@@ -18,7 +18,7 @@ function ArticleCard({ article }) {
         <div className="flex flex-wrap items-center gap-2">
           <p className="text-xs font-semibold uppercase tracking-widest text-brand">{categoryName[article.category]}</p>
         </div>
-        <h3 className="mt-2 font-heading text-lg font-semibold text-ink">
+        <h3 className="mt-2 text-lg font-semibold text-ink">
           {/* The stretched link makes the whole card clickable while keeping one link per card. */}
           <Link to={`/newsletter/${article.slug}`} className={`after:absolute after:inset-0 ${focusRing}`}>
             {article.title}
@@ -54,7 +54,7 @@ export default function Newsletter() {
           {articles.length === 0 ? (
             <Reveal className="mt-10 rounded-3xl border border-dashed border-graphite/20 bg-surface p-8 text-center sm:p-12">
               <DocumentChartIcon className="mx-auto h-8 w-8 text-brand" />
-              <h3 className="mt-4 font-heading text-xl font-semibold text-ink">First articles coming soon</h3>
+              <h3 className="mt-4 text-xl font-semibold text-ink">First articles coming soon</h3>
               <p className="mx-auto mt-3 max-w-xl text-base text-graphite/75">
                 We're preparing articles on geospatial technology, remote sensing, AI and sustainable
                 development. Browse the topics we'll cover below.
@@ -95,7 +95,7 @@ export default function Newsletter() {
           <ul className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {newsletterCategories.map((c, i) => (
               <Reveal as="li" key={c.id} delay={(i % 3) * 0.06} className="rounded-2xl bg-white p-6 shadow-sm">
-                <h3 className="font-heading text-lg font-semibold text-ink">{c.title}</h3>
+                <h3 className="text-lg font-semibold text-ink">{c.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-graphite/70">{c.themes}</p>
               </Reveal>
             ))}
@@ -106,14 +106,14 @@ export default function Newsletter() {
       {/* Subscription stays switched off until the mailing list owner, cadence, sending platform
           and unsubscribe process are approved (blueprint, Sarthi Newsletter page). */}
       <section id="subscribe" className="scroll-mt-6 px-4 py-20 sm:px-6 lg:px-8">
-        <Reveal className="mx-auto max-w-4xl rounded-3xl bg-ink px-6 py-14 text-center text-white sm:px-12">
-          <h2 className="font-heading text-3xl font-bold">Get Sarthi AI insights and updates in your inbox</h2>
-          <p className="mx-auto mt-3 max-w-2xl text-white/75">
+        <Reveal className="mx-auto max-w-4xl rounded-3xl bg-brand-light px-6 py-14 text-center text-ink sm:px-12">
+          <h2 className="font-heading text-3xl font-normal">Get Sarthi AI insights and updates in your inbox</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-ink/80">
             Email subscriptions are coming soon. In the meantime, get in touch if you'd like to hear
             about our work.
           </p>
           <div className="mt-8">
-            <ButtonLink to="/contact" variant="light">Contact Us</ButtonLink>
+            <ButtonLink to="/contact" variant="primary">Contact Us</ButtonLink>
           </div>
         </Reveal>
       </section>

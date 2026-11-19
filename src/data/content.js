@@ -333,6 +333,108 @@ export const home = {
     credit: "Contains modified Copernicus Sentinel data, processed for display.",
   },
 
+  explore: {
+    eyebrow: "The view from above",
+    title: "Explore the ground we work on.",
+    body: "Satellites revisit every one of these places every few days, and their archives go back years. Pick a place on the map: these are the kinds of landscapes our clients build on, mine, farm and protect.",
+    credit: "Locator: NASA Blue Marble. Scenes: Sentinel-2 L2A, contains modified Copernicus Sentinel data. Bhopal: Sentinel-2 cloudless 2016 by EOX IT Services GmbH (CC BY 4.0).",
+  },
+
+  story: {
+    eyebrow: "Inside an analysis",
+    title: "How a site-suitability study is built.",
+    body: "One area west of Bhopal, about 25 × 17 km, taken from raw imagery to a short list of sites. Scroll to add each layer.",
+    note: "Illustrative model for this page, not a client study. Imagery: Sentinel-2 cloudless 2016 by EOX (CC BY 4.0). Elevation: Terrain Tiles on AWS Open Data (SRTM and other public sources).",
+    steps: [
+      {
+        label: "Start with the imagery",
+        body: "Sentinel-2 imagery at 10 m: fields, forest, a lake, villages and the edge of the city. This is the raw view every study starts from.",
+        legend: [],
+      },
+      {
+        label: "Add the terrain",
+        body: "An elevation model shows hills, valleys and slope. Contours every 20 m; steeper ground costs more to build on and drains differently.",
+        legend: [{ name: "Contour, 20 m", color: "#fff6d6" }],
+      },
+      {
+        label: "Classify land cover",
+        body: "Each 90 m cell is labelled from the imagery. In a real study this is a trained model checked against field data.",
+        legend: [
+          { name: "Water", color: "#1d6fa5" },
+          { name: "Dense vegetation", color: "#146e3e" },
+          { name: "Cropland and grass", color: "#8fd26e" },
+          { name: "Built-up and bare", color: "#e2965a" },
+        ],
+      },
+      {
+        label: "Map the constraints",
+        body: "Rule out water and a 250 m buffer around it, dense vegetation, built-up land and slopes over 10 %. Real projects add legal limits such as forest land and protected areas.",
+        legend: [
+          { name: "Water", color: "#1d6fa5" },
+          { name: "Excluded", color: "#c23b3b" },
+        ],
+      },
+      {
+        label: "Rank what is left",
+        body: "The remaining land is scored on slope and cover. The three largest high-scoring areas, A to C, go forward for a field visit and a closer look.",
+        legend: [
+          { name: "High", color: "#17784a" },
+          { name: "Medium", color: "#8fe07c" },
+          { name: "Low", color: "#f0be5a" },
+          { name: "Excluded", color: "#8a8a8a" },
+        ],
+      },
+    ],
+  },
+
+  // Example engagements for the tabbed switcher. Illustrative until real case studies are added
+  // to `caseStudies` in data/pages.js; outcome figures must come from the client.
+  engagements: {
+    eyebrow: "What an engagement looks like",
+    title: "The question, the work and what you get.",
+    items: [
+      {
+        id: "solar",
+        tab: "Solar developer",
+        media: "renewable-energy",
+        scene: "Bhadla Solar Park, Rajasthan",
+        question: "Which candidate parcels in western Rajasthan should we secure for a utility-scale solar park?",
+        work: [
+          "Slope, irradiance, land-use and access layers for every parcel",
+          "Exclusion zones: water, settlements, forest and protected land",
+          "Multi-criteria ranking reviewed with your land team",
+        ],
+        deliver: ["Suitability maps", "Site ranking report", "Feasibility dashboard"],
+      },
+      {
+        id: "mining",
+        tab: "Mining operator",
+        media: "mining",
+        scene: "Singrauli coalfield",
+        question: "How has land cover changed around our lease since operations began, and what do we report for environmental clearance?",
+        work: [
+          "Land-cover maps from the satellite archive, year by year",
+          "Change detection around the lease boundary and buffer",
+          "Baseline and impact chapters for the EIA",
+        ],
+        deliver: ["Change-detection maps", "EIA / EMP chapters", "Monitoring dashboard"],
+      },
+      {
+        id: "city",
+        tab: "City planning team",
+        media: "infrastructure",
+        scene: "Delhi and the Yamuna River",
+        question: "Where is the city growing, and which parcels, corridors and services does the next master plan need to cover?",
+        work: [
+          "Land-use change mapped from years of satellite imagery",
+          "Cadastral parcels joined to planning and infrastructure layers",
+          "Growth scenarios compared with the planning team",
+        ],
+        deliver: ["Land-use change maps", "Master-plan GIS layers", "Planning dashboard"],
+      },
+    ],
+  },
+
   sectors: {
     eyebrow: "Who we work with",
     title: "For teams accountable for land, assets and risk.",

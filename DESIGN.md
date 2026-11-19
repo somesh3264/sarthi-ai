@@ -21,40 +21,45 @@ comparison was done):
 | SatSure | Indian EO company: outcomes for named sectors (agri, infra, energy) instead of technology lists. |
 | Genesys International | Services shown as a scannable index, not as decorative cards. |
 
-What we avoid: centred text over an empty gradient, darkened stock photos, green/gold palettes
-unrelated to the logo, three identical icon cards, gradient text, glassmorphism.
+What we avoid: centred text over an empty gradient, darkened stock photos, three identical
+icon cards, gradient text, glassmorphism. (The original "Mapbox-style dark sections" were dropped
+after client feedback; see Colour.)
 
 ## Colour
 
-Built from the logo gradient (`#0C447C → #1D6FA5 → #6FB3DC`), one warm accent and cool neutrals.
-The site has no dark mode; "dark" below means dark sections on the light page.
+**Revised after client feedback (Nov 2026): "too dark".** The client pointed to bcg.com as the
+look they like: mostly white and warm-stone pages, a deep green for headings and strong
+surfaces, and one bright green used boldly for highlights. We follow that pattern with our own
+values. The logo keeps its blue gradient; blue water and green land read together as Earth.
+The site has no dark mode.
 
 | Token | Value | Role |
 | --- | --- | --- |
-| `ink` | `#0B1F33` | Headings on light; background of dark sections (hero, CTA band, footer). |
-| `ink-soft` | `#14324F` | Raised surfaces and borders inside dark sections. |
-| `brand-dark` | `#0C447C` | Logo dark stop. Button hover, link hover. |
-| `brand` | `#1D6FA5` | Primary: buttons, links, focus rings, active nav. 5.4:1 on white. |
-| `brand-light` | `#6FB3DC` | Logo light stop. Links, labels and focus rings **on dark** (7.3:1 on `ink`). Never body text on white. |
-| `brand-tint` | `#E8F2FA` | Tinted backgrounds: icon tiles, selected states. |
-| `accent` | `#F08A3C` | One warm accent (sun / sand / map marker). Markers, small highlights and data on dark only. Never body text on white (2.5:1). |
-| `accent-strong` | `#A84D0E` | Accent as text on white: badges such as "In development" (5.6:1). |
-| `graphite` | `#26364A` | Body text (12.3:1 on white). |
-| `muted` | `#52637A` | Secondary text, captions (6.1:1 on white). |
-| `line` | `#D9E2EB` | Borders, dividers, table rules. |
-| `surface` | `#F3F6F9` | Alternate section background. |
+| `ink` | `#0F3324` | Deep forest green: headings, primary buttons, small chips on imagery. Dark bands only over photos. |
+| `ink-soft` | `#1B4A36` | Raised surfaces inside the rare dark area. |
+| `brand-dark` | `#0E5A36` | Button and link hover. |
+| `brand` | `#17784A` | Links, eyebrows, focus rings, active nav (5.5:1 on white, 4.7:1 on stone). |
+| `brand-light` | `#8FE07C` | Bright leaf green: highlight buttons, the CTA band, contour lines. Always with `ink` text (8.6:1), never as text on white. |
+| `brand-tint` | `#E7F6E1` | Mint bands (process, internships, capabilities), icon tiles, hover. |
+| `accent` | `#F08A3C` | Pre-launch "Needs client input" markers and process dots only. |
+| `accent-strong` | `#A84D0E` | Accent as text on white. |
+| `graphite` | `#23282C` | Body text. |
+| `muted` | `#5A6470` | Secondary text, captions (5.2:1 on stone). |
+| `line` | `#E3E1DC` | Borders and dividers. |
+| `surface` | `#F4F4F1` | Light grey band. |
+| `stone` | `#F1EDE6` | Warm band: page headers and footer. |
 | white | `#FFFFFF` | Default page background. |
 | `success` / `warning` / `danger` | `#1F7A4D` / `#A84D0E` / `#C23B3B` | Form states. |
 
-Rules: one blue for every action; the accent appears at most once or twice per screen; dark
-sections use `ink` (never green, never a gradient blob).
+Rules: pages are light; bands alternate white, `surface`, `brand-tint` and `stone`; one
+`brand-light` moment per page (usually the closing CTA); text on `brand-light` is always `ink`.
 
 ## Typography
 
 | Use | Family | Why |
 | --- | --- | --- |
-| Headings | **Archivo** 600/700 | Grotesque with an engineering, cartographic feel; tight and legible at display sizes. |
-| Body / UI | **Inter** 400/500/600 | Neutral, excellent at small sizes. |
+| h1, h2, big numbers, quotes | **Source Serif 4** 300/400 | A light editorial serif at display sizes, the "consulting report" voice the client liked. |
+| h3, body, UI | **Inter** 400/500/600 | Neutral, excellent at small sizes; card titles stay sans and semibold. |
 | Data labels | **IBM Plex Mono** 500 | Coordinates, dates, sensor names, step numbers: the "map legend" voice. |
 
 There is no global `font-family` rule on `*`; `body` sets Inter and headings opt in with

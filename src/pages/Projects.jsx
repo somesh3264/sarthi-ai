@@ -57,7 +57,7 @@ function FeaturedCapability() {
                 </div>
               </div>
               <div className="p-6 sm:p-8">
-                <p className="font-heading text-lg font-semibold text-ink">{featuredPlatform.tagline}</p>
+                <p className="text-lg font-semibold text-ink">{featuredPlatform.tagline}</p>
                 <p className="mt-4 text-sm leading-relaxed text-graphite/75">{featuredPlatform.body}</p>
                 <h3 className="mt-6 text-xs font-semibold uppercase tracking-widest text-brand">
                   Technology foundation
@@ -77,7 +77,7 @@ function FeaturedCapability() {
             <div className="flex h-full flex-col items-center gap-8 rounded-3xl bg-surface p-6 sm:p-8">
               <PhonePreview />
               <div className="w-full">
-                <h3 className="font-heading text-lg font-semibold text-ink">{featuredPlatform.mobile.title}</h3>
+                <h3 className="text-lg font-semibold text-ink">{featuredPlatform.mobile.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-graphite/75">{featuredPlatform.mobile.body}</p>
                 <p className="mt-4 text-xs font-semibold uppercase tracking-widest text-brand">Proposed capabilities</p>
                 <ul className="mt-2 space-y-2">
@@ -129,7 +129,7 @@ function CaseStudies() {
                   <div className="flex flex-wrap gap-2">
                     <StatusBadge tone="brand">Case study</StatusBadge>
                   </div>
-                  <h3 className="mt-3 font-heading text-lg font-semibold text-ink">
+                  <h3 className="mt-3 text-lg font-semibold text-ink">
                     {/* Stretched link: the whole card opens the case study. */}
                     <Link to={`/projects/${cs.slug}`} className={`after:absolute after:inset-0 ${focusRing}`}>
                       {cs.title}
@@ -163,7 +163,7 @@ function CaseStudies() {
 
 function Demonstrations({ index }) {
   return (
-    <section id="demonstrations" className="scroll-mt-6 bg-ink py-20 text-white">
+    <section id="demonstrations" className="scroll-mt-6 bg-brand-tint py-20 text-ink">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <Reveal>
           <SectionHeading
@@ -171,7 +171,6 @@ function Demonstrations({ index }) {
             label="Demonstrations & applications"
             title="Satellite imagery applications"
             intro="Examples of how satellite imagery and geospatial analysis reveal change, risk and opportunity across very different landscapes."
-            dark
           />
         </Reveal>
 
@@ -181,7 +180,7 @@ function Demonstrations({ index }) {
               as="li"
               key={ex.title}
               delay={(i % 4) * 0.05}
-              className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition-all duration-300 hover:border-brand-light/50 hover:shadow-[0_0_0_4px_rgba(29,111,165,0.15),0_20px_44px_-18px_rgba(0,0,0,0.6)]"
+              className="overflow-hidden rounded-2xl border border-line bg-white transition-all duration-300 hover:border-brand/40 hover:shadow-[0_0_0_4px_rgba(23,120,74,0.12),0_20px_44px_-18px_rgba(15,51,36,0.35)]"
             >
               <div className="relative h-36 overflow-hidden">
                 <img
@@ -196,22 +195,22 @@ function Demonstrations({ index }) {
                 </span>
               </div>
               <div className="p-5">
-                <h3 className="font-heading text-base font-semibold">{ex.title}</h3>
-                <p className="mt-1 text-sm text-white/70">{ex.theme}</p>
-                {ex.detail && <p className="mt-2 text-xs text-white/55">{ex.detail}</p>}
+                <h3 className="text-base font-semibold text-ink">{ex.title}</h3>
+                <p className="mt-1 text-sm text-graphite">{ex.theme}</p>
+                {ex.detail && <p className="mt-2 text-xs text-muted">{ex.detail}</p>}
               </div>
             </Reveal>
           ))}
         </ul>
 
-        <div className="mt-12 rounded-2xl border border-white/10 p-6">
+        <div className="mt-12 rounded-2xl border border-line bg-white p-6">
           <div className="flex flex-wrap items-center gap-3">
-            <StatusBadge tone="light">Demonstration</StatusBadge>
-            <h3 className="font-heading text-base font-semibold">Technical demonstrations</h3>
+            <StatusBadge tone="brand">Demonstration</StatusBadge>
+            <h3 className="text-base font-semibold text-ink">Technical demonstrations</h3>
           </div>
           <ul className="mt-4 flex flex-wrap gap-2">
             {demonstrationTypes.map((d) => (
-              <li key={d} className="rounded-full border border-white/20 px-3 py-1 text-xs text-white/80">
+              <li key={d} className="rounded-full border border-ink/15 px-3 py-1 text-xs text-graphite">
                 {d}
               </li>
             ))}

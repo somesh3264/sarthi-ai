@@ -21,7 +21,7 @@ export default function Legal({ doc }) {
 
         {page.sections.map((s) => (
           <section key={s.heading} className="mt-10">
-            <h2 className="font-heading text-xl font-semibold text-ink">{s.heading}</h2>
+            <h2 className="text-xl font-semibold text-ink">{s.heading}</h2>
             {s.paragraphs.map((p) => (
               <p key={p.slice(0, 40)} className="mt-3 text-base leading-relaxed text-graphite/80">
                 {p}
@@ -31,7 +31,7 @@ export default function Legal({ doc }) {
         ))}
 
         <section className="mt-10">
-          <h2 className="font-heading text-xl font-semibold text-ink">Contact us</h2>
+          <h2 className="text-xl font-semibold text-ink">Contact us</h2>
           <p className="mt-3 text-base leading-relaxed text-graphite/80">
             Email:{" "}
             <a href={`mailto:${contactInfo.email}`} className={`text-brand underline underline-offset-2 ${focusRing}`}>

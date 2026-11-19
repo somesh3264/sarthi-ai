@@ -40,7 +40,7 @@ export default function ServiceAccordion({ service, defaultOpen = false }) {
         >
           <span className="font-mono text-3xl font-bold text-brand">{service.number}</span>
           <span className="flex-1">
-            <span className="block font-heading text-lg font-semibold text-ink">{service.title}</span>
+            <span className="block text-lg font-semibold text-ink">{service.title}</span>
             <span className="mt-1 block text-sm leading-relaxed text-graphite/70">{service.summary}</span>
           </span>
           <ChevronDownIcon

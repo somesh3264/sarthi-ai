@@ -45,14 +45,13 @@ function ServiceGroups() {
 
 function SupportingCapabilities() {
   return (
-    <section id="capabilities" className="scroll-mt-6 bg-ink py-20 text-white">
+    <section id="capabilities" className="scroll-mt-6 bg-brand-tint py-20 text-ink">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <Reveal>
           <SectionHeading
             index="02"
             label="Supporting capabilities"
             title="The technology behind every engagement"
-            dark
           />
         </Reveal>
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -60,15 +59,15 @@ function SupportingCapabilities() {
             const Icon = CAPABILITY_ICONS[i];
             return (
               <Reveal key={cap.title} delay={i * 0.08} className="h-full">
-                <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-6">
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-brand-light/15 text-brand-light">
+                <div className="h-full rounded-2xl border border-line bg-white p-6">
+                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-brand-tint text-brand">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <h3 className="font-heading text-lg font-semibold">{cap.title}</h3>
+                  <h3 className="text-lg font-semibold text-ink">{cap.title}</h3>
                   <ul className="mt-4 space-y-2">
                     {cap.points.map((p) => (
-                      <li key={p} className="flex gap-2 text-sm leading-relaxed text-white/70">
-                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-light" />
+                      <li key={p} className="flex gap-2 text-sm leading-relaxed text-graphite">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
                         <span>{p}</span>
                       </li>
                     ))}
@@ -98,7 +97,7 @@ function SectorPanel({ sector, reverse }) {
         <div className="absolute inset-0 bg-gradient-to-t from-ink/40 to-transparent" />
       </div>
       <div className="p-6 sm:p-8">
-        <h3 className="font-heading text-2xl font-semibold text-ink">{sector.name}</h3>
+        <h3 className="font-heading text-2xl font-normal text-ink">{sector.name}</h3>
         <p className="mt-3 text-sm leading-relaxed text-graphite/75">{sector.description}</p>
 
         <h4 className="mt-6 text-xs font-semibold uppercase tracking-widest text-brand">Typical support</h4>

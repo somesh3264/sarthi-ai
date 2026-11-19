@@ -1,3 +1,4 @@
+import ContourLines from "../components/graphics/ContourLines";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Reveal from "../components/graphics/Reveal";
@@ -14,7 +15,6 @@ import {
   PeopleIcon,
 } from "../components/graphics/PointIcons";
 import { ButtonLink, SectionHeading, StatusBadge, focusRing } from "../components/ui";
-import aiDataStreams from "../assets/photos/ai-data-streams.jpg";
 import {
   careersHero,
   whyWorkWithUs,
@@ -40,18 +40,18 @@ function CheckCircle({ className }) {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-ink text-white">
-      <img src={aiDataStreams} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full object-cover opacity-40" />
-      <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/40" />
+    <section className="relative overflow-hidden bg-stone text-ink">
+      <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,var(--color-brand-tint),transparent_60%)]" />
+      <ContourLines opacity={0.35} />
       <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-light">Careers</p>
-        <h1 className="mt-3 max-w-2xl font-heading text-4xl font-bold sm:text-5xl">{careersHero.title}</h1>
-        <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/80">{careersHero.body}</p>
+        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand">Careers</p>
+        <h1 className="mt-3 max-w-2xl font-heading text-4xl font-light sm:text-[3.4rem] sm:leading-[1.08]">{careersHero.title}</h1>
+        <p className="mt-5 max-w-2xl text-base leading-relaxed text-graphite">{careersHero.body}</p>
         <div className="mt-8 flex flex-wrap gap-4">
-          <ButtonLink to="#openings" variant="light">Explore Opportunities</ButtonLink>
+          <ButtonLink to="#openings" variant="primary">Explore Opportunities</ButtonLink>
           <Link
             to="/careers/apply"
-            className={`inline-flex items-center rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10 ${focusRing}`}
+            className={`inline-flex items-center rounded-full border border-ink/25 px-6 py-3 text-sm font-semibold text-ink transition-colors hover:border-ink hover:bg-white ${focusRing}`}
           >
             Submit Your Resume
           </Link>
@@ -68,7 +68,7 @@ function OpeningCard({ job }) {
         <StatusBadge tone="brand">{job.type}</StatusBadge>
         <StatusBadge>{job.status}</StatusBadge>
       </div>
-      <h3 className="mt-3 font-heading text-lg font-semibold text-ink">{job.title}</h3>
+      <h3 className="mt-3 text-lg font-semibold text-ink">{job.title}</h3>
       <p className="text-xs text-graphite/60">{job.area}</p>
       <p className="mt-2 text-xs text-graphite/70">
         {[job.location, job.mode, job.experience].filter(Boolean).join(" · ")}
@@ -100,7 +100,7 @@ function Openings() {
 
         {openings.length === 0 ? (
           <Reveal className="mt-10 rounded-3xl border border-dashed border-graphite/20 bg-surface p-8 text-center sm:p-12">
-            <h3 className="font-heading text-xl font-semibold text-ink">No Current Openings</h3>
+            <h3 className="text-xl font-semibold text-ink">No Current Openings</h3>
             <p className="mx-auto mt-3 max-w-xl text-base text-graphite/75">
               We don't have active vacancies right now, but we're interested in connecting with
               talented people.
@@ -168,7 +168,7 @@ export default function Careers() {
                   <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-brand/10 text-brand">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <h3 className="font-heading text-base font-semibold text-ink">{v.title}</h3>
+                  <h3 className="text-base font-semibold text-ink">{v.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-graphite/70">{v.body}</p>
                 </Reveal>
               );
@@ -193,7 +193,7 @@ export default function Careers() {
               return (
                 <Reveal as="li" key={a.title} delay={(i % 3) * 0.06} className="rounded-2xl bg-white p-6 shadow-sm">
                   <Icon className="h-6 w-6 text-brand" />
-                  <h3 className="mt-4 font-heading text-lg font-semibold text-ink">{a.title}</h3>
+                  <h3 className="mt-4 text-lg font-semibold text-ink">{a.title}</h3>
                   <p className="mt-2 text-sm text-graphite/80">{a.roles}</p>
                   <p className="mt-2 text-xs text-graphite/60">{a.skills}</p>
                 </Reveal>
@@ -205,7 +205,7 @@ export default function Careers() {
 
       <Openings />
 
-      <section id="internships" className="scroll-mt-6 bg-ink py-20 text-white">
+      <section id="internships" className="scroll-mt-6 bg-brand-tint py-20 text-ink">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
             <SectionHeading
@@ -213,14 +213,13 @@ export default function Careers() {
               label="Internship programme"
               title="Learn by working on real geospatial problems"
               intro="Areas where internships may be offered. Open internships are listed under Current openings when available."
-              dark
             />
           </Reveal>
           <ul className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {internshipAreas.map((it, i) => (
-              <Reveal as="li" key={it.title} delay={i * 0.05} className="rounded-2xl border border-white/10 bg-white/5 p-6">
-                <h3 className="font-heading text-base font-semibold">{it.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-white/70">{it.body}</p>
+              <Reveal as="li" key={it.title} delay={i * 0.05} className="rounded-2xl border border-line bg-white p-6">
+                <h3 className="text-base font-semibold text-ink">{it.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-graphite">{it.body}</p>
               </Reveal>
             ))}
           </ul>
@@ -240,7 +239,7 @@ export default function Careers() {
 
       <section id="general-application" className="scroll-mt-6 px-4 pb-20 sm:px-6 lg:px-8">
         <Reveal className="mx-auto max-w-6xl rounded-3xl bg-brand px-6 py-14 text-center text-white sm:px-12">
-          <h2 className="font-heading text-3xl font-bold">Don't see the right role?</h2>
+          <h2 className="font-heading text-3xl font-normal">Don't see the right role?</h2>
           <p className="mx-auto mt-3 max-w-2xl text-white/80">
             Send a general application and tell us where your skills could fit.
           </p>

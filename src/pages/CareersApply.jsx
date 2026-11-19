@@ -201,7 +201,7 @@ export default function CareersApply() {
       <>
         <PageHero eyebrow="Careers" title="Application received" />
         <section role="status" className="mx-auto max-w-2xl px-6 py-20 text-center">
-          <h2 className="font-heading text-2xl font-semibold text-ink">Thank you for applying to Sarthi AI</h2>
+          <h2 className="font-heading text-2xl font-normal text-ink">Thank you for applying to Sarthi AI</h2>
           <p className="mt-3 text-graphite/75">
             We've received your application. Your reference number is{" "}
             <strong className="font-mono text-ink">{reference}</strong>; please quote it if you contact us

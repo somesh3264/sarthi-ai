@@ -1,31 +1,34 @@
-@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap");
 @import "tailwindcss";
 
-/* Design tokens: see DESIGN.md. Use these names, never raw hex values. */
+/* Design tokens: see DESIGN.md. Use these names, never raw hex values.
+   Light, editorial theme: white and warm-stone pages, a deep forest green for headings and
+   strong surfaces, a fresh green for links and a bright leaf green for highlights. */
 @theme {
   --font-sans: "Inter", system-ui, "Segoe UI", Roboto, sans-serif;
-  --font-heading: "Archivo", "Inter", system-ui, sans-serif;
+  --font-heading: "Source Serif 4", Georgia, "Times New Roman", serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
   /* Kept for pages not yet rebuilt; maps to the heading face. */
-  --font-serif-accent: "Archivo", "Inter", system-ui, sans-serif;
+  --font-serif-accent: "Source Serif 4", Georgia, serif;
 
-  /* Brand: the logo gradient */
-  --color-brand-dark: #0c447c;
-  --color-brand: #1d6fa5;
-  --color-brand-light: #6fb3dc;
-  --color-brand-tint: #e8f2fa;
+  /* Brand greens */
+  --color-brand-dark: #0e5a36;
+  --color-brand: #17784a;
+  --color-brand-light: #8fe07c;  /* highlight fills, and text on deep green */
+  --color-brand-tint: #e7f6e1;
 
-  /* One warm accent */
+  /* Warm accent: pre-launch markers and small details only */
   --color-accent: #f08a3c;
   --color-accent-strong: #a84d0e;
 
   /* Neutrals */
-  --color-ink: #0b1f33;
-  --color-ink-soft: #14324f;
-  --color-graphite: #26364a;
-  --color-muted: #52637a;
-  --color-line: #d9e2eb;
-  --color-surface: #f3f6f9;
+  --color-ink: #0f3324;          /* headings, primary buttons, the rare dark band */
+  --color-ink-soft: #1b4a36;
+  --color-graphite: #23282c;     /* body text */
+  --color-muted: #5a6470;
+  --color-line: #e3e1dc;
+  --color-surface: #f4f4f1;      /* light grey band */
+  --color-stone: #f1ede6;        /* warm band: page headers, footer */
 
   /* States */
   --color-success: #1f7a4d;
@@ -62,12 +65,18 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  /* Large headings in a light serif; card titles stay in the sans. */
   h1,
-  h2,
-  h3 {
+  h2 {
     font-family: var(--font-heading);
     color: inherit;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-family: var(--font-sans);
+    color: inherit;
+    letter-spacing: -0.01em;
   }
 }
 
@@ -96,6 +105,16 @@
 .drift {
   animation: drift 24s ease-in-out infinite alternate;
   will-change: transform;
+}
+
+/* Progress bar under the active tab of the engagement switcher */
+@keyframes tab-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

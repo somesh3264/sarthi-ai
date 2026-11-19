@@ -46,7 +46,7 @@ export default function Header({ scrolled = false }) {
   return (
     <header
       className={`sticky top-0 z-40 border-b bg-white/95 backdrop-blur-sm transition-shadow duration-300 ${
-        scrolled ? "border-line shadow-[0_8px_24px_-16px_rgba(11,31,51,0.35)]" : "border-line"
+        scrolled ? "border-line shadow-[0_8px_24px_-16px_rgba(15,51,36,0.3)]" : "border-line"
       }`}
     >
       <div className="container-page flex h-18 items-center justify-between gap-6">
@@ -74,8 +74,8 @@ export default function Header({ scrolled = false }) {
               <NavLink
                 to="/contact"
                 className={({ isActive }) =>
-                  `inline-flex min-h-11 items-center rounded-lg px-5 text-sm font-semibold text-white transition-colors ${focusRing} ${
-                    isActive ? "bg-brand-dark" : "bg-brand hover:bg-brand-dark"
+                  `inline-flex min-h-11 items-center rounded-full px-5 text-sm font-semibold transition-colors ${focusRing} ${
+                    isActive ? "bg-ink text-white" : "bg-brand-light text-ink hover:bg-ink hover:text-white"
                   }`
                 }
               >

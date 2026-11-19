@@ -9,7 +9,7 @@ function List({ title, items }) {
   if (!items?.length) return null;
   return (
     <section className="mt-10">
-      <h2 className="font-heading text-xl font-semibold text-ink">{title}</h2>
+      <h2 className="text-xl font-semibold text-ink">{title}</h2>
       <ul className="mt-4 space-y-2">
         {items.map((item) => (
           <li key={item} className="flex gap-3 text-base leading-relaxed text-graphite/80">
@@ -35,19 +35,19 @@ function VacancyView({ job }) {
 
   return (
     <article>
-      <header className="relative overflow-hidden bg-ink text-white">
-        <ContourLines opacity={0.15} />
+      <header className="relative overflow-hidden bg-stone text-ink">
+        <ContourLines opacity={0.35} />
         <div className="relative mx-auto max-w-4xl px-6 py-16 lg:px-8">
-          <Link to="/careers#openings" className={`text-sm font-semibold text-brand-light hover:underline ${focusRing}`}>
+          <Link to="/careers#openings" className={`text-sm font-semibold text-brand hover:underline ${focusRing}`}>
             ← All openings
           </Link>
           <div className="mt-6 flex flex-wrap gap-2">
-            <StatusBadge tone="light">{job.type}</StatusBadge>
-            <StatusBadge tone="amberOnDark">{job.status}</StatusBadge>
+            <StatusBadge tone="brand">{job.type}</StatusBadge>
+            <StatusBadge tone="amber">{job.status}</StatusBadge>
           </div>
-          <h1 className="mt-4 font-heading text-3xl font-bold leading-tight sm:text-4xl">{job.title}</h1>
+          <h1 className="mt-4 font-heading text-3xl font-normal leading-tight sm:text-4xl">{job.title}</h1>
           <div className="mt-8">
-            <ButtonLink to={`/careers/apply?position=${job.id}`} variant="light">Apply Now</ButtonLink>
+            <ButtonLink to={`/careers/apply?position=${job.id}`} variant="primary">Apply Now</ButtonLink>
           </div>
         </div>
       </header>
@@ -55,7 +55,7 @@ function VacancyView({ job }) {
       <div className="mx-auto grid max-w-5xl grid-cols-1 gap-12 px-6 py-14 lg:grid-cols-3 lg:px-8">
         <div className="lg:col-span-2">
           <section>
-            <h2 className="font-heading text-xl font-semibold text-ink">About the role</h2>
+            <h2 className="text-xl font-semibold text-ink">About the role</h2>
             <p className="mt-3 text-base leading-relaxed text-graphite/80">{job.summary}</p>
           </section>
           <List title="What you'll do" items={job.responsibilities} />

@@ -9,12 +9,12 @@ import {
 } from "../data/site";
 
 const linkClass =
-  "rounded-sm transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-light";
+  "rounded-sm transition-colors hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand";
 
 function Column({ title, children }) {
   return (
     <div>
-      <h2 className="font-mono text-xs font-medium uppercase tracking-[0.08em] text-brand-light">{title}</h2>
+      <h2 className="font-mono text-xs font-medium uppercase tracking-[0.08em] text-brand">{title}</h2>
       <ul className="mt-4 space-y-2 text-sm">{children}</ul>
     </div>
   );
@@ -30,12 +30,12 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-ink text-white/75">
+    <footer className="bg-stone text-graphite">
       <div className="container-page grid grid-cols-1 gap-10 py-16 sm:grid-cols-2 lg:grid-cols-5">
         <Column title="Company">
           <li className="pb-2">
-            <img src={logo} alt="Sarthi AI Solutions" className="h-12 w-auto brightness-0 invert" />
-            <p className="mt-4 max-w-xs leading-relaxed text-white/60">
+            <img src={logo} alt="Sarthi AI Solutions" className="h-12 w-auto" />
+            <p className="mt-4 max-w-xs leading-relaxed text-muted">
               Turning complex geospatial data into actionable intelligence for better land,
               infrastructure and environmental decisions.
             </p>
@@ -72,15 +72,15 @@ export default function Footer() {
         </Column>
 
         <Column title="Contact">
-          <li className="text-white/60">
+          <li className="text-muted">
             Phone: <a href={contactInfo.phoneHref} className={linkClass}>{contactInfo.phone}</a>
           </li>
-          <li className="text-white/60">
+          <li className="text-muted">
             Email: <a href={`mailto:${contactInfo.email}`} className={`break-all ${linkClass}`}>{contactInfo.email}</a>
           </li>
-          <li className="text-white/60">Address: {contactInfo.address}</li>
+          <li className="text-muted">Address: {contactInfo.address}</li>
           <li className="pt-2">
-            <Link to="/contact" className={`font-semibold text-white ${linkClass}`}>
+            <Link to="/contact" className={`font-semibold text-ink ${linkClass}`}>
               Contact Us →
             </Link>
           </li>
@@ -95,13 +95,13 @@ export default function Footer() {
         </Column>
       </div>
 
-      <div className="border-t border-white/10">
-        <div className="container-page flex flex-col items-start justify-between gap-4 py-6 text-xs text-white/60 sm:flex-row sm:items-center">
+      <div className="border-t border-ink/10">
+        <div className="container-page flex flex-col items-start justify-between gap-4 py-6 text-xs text-muted sm:flex-row sm:items-center">
           <p>© {year} Sarthi AI Solutions. All rights reserved.</p>
           <button
             type="button"
             onClick={backToTop}
-            className={`inline-flex cursor-pointer items-center gap-1.5 font-semibold text-white/70 ${linkClass}`}
+            className={`inline-flex cursor-pointer items-center gap-1.5 font-semibold text-ink ${linkClass}`}
           >
             Back to Top
             <svg viewBox="0 0 20 20" fill="none" className="h-4 w-4" aria-hidden="true">

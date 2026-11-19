@@ -27,7 +27,7 @@ export default function ServiceEcosystem({ hub, items }) {
       </svg>
 
       <div className="absolute left-1/2 top-1/2 flex h-[32%] w-[32%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-ink px-3 text-center">
-        <span className="font-heading text-xs font-semibold leading-tight text-white sm:text-sm">
+        <span className="text-xs font-semibold leading-tight text-white sm:text-sm">
           {hub}
         </span>
       </div>

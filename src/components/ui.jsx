@@ -27,7 +27,7 @@ export function SectionHeading({ index, label, title, intro, dark = false, cente
     <div className={center ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
       <SectionLabel index={index} label={label} dark={dark} className={center ? "justify-center" : ""} />
       <h2
-        className={`mt-4 font-heading text-3xl font-bold sm:text-4xl ${dark ? "text-white" : "text-ink"}`}
+        className={`mt-4 font-heading text-3xl font-normal sm:text-4xl ${dark ? "text-white" : "text-ink"}`}
       >
         {title}
       </h2>

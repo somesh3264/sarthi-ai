@@ -27,7 +27,7 @@ export function Field({ id, label, required, error, hint, children }) {
 export function Fieldset({ legend, children }) {
   return (
     <fieldset className="rounded-2xl border border-graphite/10 p-5 sm:p-6">
-      <legend className="px-2 font-heading text-base font-semibold text-ink">{legend}</legend>
+      <legend className="px-2 text-base font-semibold text-ink">{legend}</legend>
       <div className="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2">{children}</div>
     </fieldset>
   );

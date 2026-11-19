@@ -45,7 +45,7 @@ export default function About() {
               <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-brand/10 text-brand">
                 <GlobeIcon className="h-5 w-5" />
               </div>
-              <h2 className="font-heading text-xl font-bold text-ink">Our Vision</h2>
+              <h2 className="text-xl font-bold text-ink">Our Vision</h2>
               <p className="mt-4 leading-relaxed text-graphite/75">{company.vision}</p>
             </div>
           </Reveal>
@@ -54,7 +54,7 @@ export default function About() {
               <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-brand/10 text-brand">
                 <PrecisionIcon className="h-5 w-5" />
               </div>
-              <h2 className="font-heading text-xl font-bold text-ink">Our Mission</h2>
+              <h2 className="text-xl font-bold text-ink">Our Mission</h2>
               <p className="mt-4 leading-relaxed text-graphite/75">{company.mission}</p>
             </div>
           </Reveal>
@@ -85,12 +85,12 @@ export default function About() {
       {/* Sustainability banner */}
       <section id="sustainability" className="relative scroll-mt-6 overflow-hidden py-24 text-white">
         <img src={forestCanopy} alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-ink/80" />
+        <div className="absolute inset-0 bg-ink/75" />
         <Reveal className="relative mx-auto max-w-3xl px-6 text-center lg:px-8">
-          <SectionHeading label="Commitment to sustainability" title="Responsible development, by design" dark center />
-          <p className="mt-6 text-lg leading-relaxed text-white/80">{company.sustainability}</p>
+          <SectionHeading label="Commitment to sustainability" title="Responsible development, by design" center />
+          <p className="mt-6 text-lg leading-relaxed text-graphite">{company.sustainability}</p>
           <div className="mt-8">
-            <ButtonLink to="/contact" variant="light">Discuss Your Project</ButtonLink>
+            <ButtonLink to="/contact" variant="primary">Discuss Your Project</ButtonLink>
           </div>
         </Reveal>
       </section>
