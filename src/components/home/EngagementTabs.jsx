@@ -113,9 +113,6 @@ export default function EngagementTabs() {
                     />
                   )}
                   <span className="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent" aria-hidden="true" />
-                  <span className="absolute top-3 left-3 rounded bg-white/90 px-2 py-1 font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-ink">
-                    Example engagement · illustrative
-                  </span>
                   {/* The same kind of place, seen from orbit */}
                   {it.image && (
                     <span className="absolute right-3 bottom-3 w-[38%] overflow-hidden rounded-md bg-white p-1 shadow-lg">
@@ -125,7 +122,6 @@ export default function EngagementTabs() {
                   )}
                   <span className="absolute bottom-3 left-3 max-w-[55%] font-mono text-[11px] leading-snug text-white">On the ground</span>
                 </div>
-                <figcaption className="mt-2 font-mono text-xs text-muted">Inset: {it.scene}</figcaption>
               </figure>
               <div className="lg:col-span-7">
                 <p className="font-mono text-xs font-medium uppercase tracking-[0.08em] text-brand">The question</p>

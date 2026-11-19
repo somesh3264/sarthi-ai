@@ -13,7 +13,7 @@ import satMumbai from "../assets/satellite/mumbai-thane-creek.jpg";
 /* ---------------------------------- Projects --------------------------------- */
 
 export const projectsIntro =
-  "How Sarthi AI applies geospatial, environmental and AI-enabled capabilities. Every item is labelled as a completed project, a capability in development, a demonstration or an illustrative example.";
+  "How Sarthi AI applies geospatial, environmental and AI-enabled capabilities.";
 
 export const featuredPlatform = {
   title: "City Master Plan & Urban Land Intelligence",

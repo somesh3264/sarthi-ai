@@ -60,7 +60,7 @@ export const legalDocs = {
         heading: "Website content",
         paragraphs: [
           "The content on this site is provided for general information about Sarthi AI and its services. It is not professional advice for any specific project, and you should not rely on it as such.",
-          "Some imagery and examples are illustrative or demonstrations and are labelled accordingly. They do not represent completed client work unless stated.",
+          "Some imagery, maps and examples are demonstrations. They do not represent completed client work unless stated.",
         ],
       },
       {
@@ -72,8 +72,10 @@ export const legalDocs = {
       {
         heading: "Image credits",
         paragraphs: [
-          "Homepage film: imagery from NASA Earth Observatory (Blue Marble). Contains modified Copernicus Sentinel data.",
-          "Satellite imagery examples (Home and Projects pages): contains modified Copernicus Sentinel data (2017, 2024–2025), Sentinel-2 Level-2A.",
+          "Satellite scenes (Home, About and Projects pages): Sentinel-2 Level-2A, contains modified Copernicus Sentinel data (2017, 2024–2025).",
+          "Homepage film, Bhopal imagery and the site-suitability layers: Sentinel-2 cloudless 2016 by EOX IT Services GmbH (https://s2maps.eu), licensed under CC BY 4.0; contains modified Copernicus Sentinel data 2016. NASA Blue Marble and Black Marble imagery, courtesy of NASA Earth Observatory.",
+          "Locator map: NASA Blue Marble, courtesy of NASA Earth Observatory.",
+          "Elevation for the site-suitability layers: Terrain Tiles on the Registry of Open Data on AWS, derived from SRTM (NASA) and other public sources.",
         ],
       },
       {

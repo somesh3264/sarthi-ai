@@ -97,7 +97,16 @@ export default function Footer() {
 
       <div className="border-t border-ink/10">
         <div className="container-page flex flex-col items-start justify-between gap-4 py-6 text-xs text-muted sm:flex-row sm:items-center">
-          <p>© {year} Sarthi AI Solutions. All rights reserved.</p>
+          <div className="space-y-1">
+            <p>© {year} Sarthi AI Solutions. All rights reserved.</p>
+            <p>
+              Satellite imagery contains modified Copernicus Sentinel data; Sentinel-2 cloudless 2016 by EOX
+              (CC BY 4.0); NASA Blue Marble.{" "}
+              <Link to="/terms#image-credits" className={`underline underline-offset-2 ${linkClass}`}>
+                Image credits
+              </Link>
+            </p>
+          </div>
           <button
             type="button"
             onClick={backToTop}

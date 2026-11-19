@@ -330,21 +330,18 @@ export const home = {
     eyebrow: "The view from above",
     title: "Change you can measure, from orbit.",
     body: "Multispectral satellites revisit the same ground every few days and their archives go back years. That is how we see what a site was, what it is now and what is changing around it. These are public Sentinel-2 scenes of the kinds of places our clients work.",
-    credit: "Contains modified Copernicus Sentinel data, processed for display.",
   },
 
   explore: {
     eyebrow: "The view from above",
     title: "Explore the ground we work on.",
     body: "Satellites revisit every one of these places every few days, and their archives go back years. Pick a place on the map: these are the kinds of landscapes our clients build on, mine, farm and protect.",
-    credit: "Locator: NASA Blue Marble. Scenes: Sentinel-2 L2A, contains modified Copernicus Sentinel data. Bhopal: Sentinel-2 cloudless 2016 by EOX IT Services GmbH (CC BY 4.0).",
   },
 
   story: {
     eyebrow: "Inside an analysis",
     title: "How a site-suitability study is built.",
     body: "One area west of Bhopal, about 25 × 17 km, taken from raw imagery to a short list of sites. Scroll to add each layer.",
-    note: "Illustrative model for this page, not a client study. Imagery: Sentinel-2 cloudless 2016 by EOX (CC BY 4.0). Elevation: Terrain Tiles on AWS Open Data (SRTM and other public sources).",
     steps: [
       {
         label: "Start with the imagery",
@@ -387,8 +384,8 @@ export const home = {
     ],
   },
 
-  // Example engagements for the tabbed switcher. Illustrative until real case studies are added
-  // to `caseStudies` in data/pages.js; outcome figures must come from the client.
+  // Example engagements for the tabbed switcher, until real case studies are added to
+  // `caseStudies` in data/pages.js; outcome figures must come from the client.
   engagements: {
     eyebrow: "What an engagement looks like",
     title: "The question, the work and what you get.",

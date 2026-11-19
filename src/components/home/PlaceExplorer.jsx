@@ -16,7 +16,7 @@ const pos = (lat, lon) => ({
 });
 
 const PLACES = [
-  { id: "bhopal", label: "Bhopal", theme: "Where we are based", lat: 23.26, lon: 77.41, image: bhopal, captured: "Sentinel-2 cloudless 2016 by EOX (CC BY 4.0)" },
+  { id: "bhopal", label: "Bhopal", theme: "Where we are based", lat: 23.26, lon: 77.41, image: bhopal, captured: "Sentinel-2" },
   { id: "bhadla", scene: "Bhadla Solar Park, Rajasthan", label: "Bhadla Solar Park", lat: 27.53, lon: 71.92 },
   { id: "delhi", scene: "Delhi and the Yamuna River", label: "Delhi", lat: 28.61, lon: 77.25 },
   { id: "singrauli", scene: "Singrauli coalfield", label: "Singrauli", lat: 24.2, lon: 82.67 },
@@ -152,7 +152,6 @@ export default function PlaceExplorer() {
             </figcaption>
           </figure>
         </Reveal>
-        <p className="mt-8 font-mono text-xs text-muted">{copy.credit}</p>
       </div>
     </section>
   );

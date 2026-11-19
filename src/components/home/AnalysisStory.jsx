@@ -45,7 +45,7 @@ export default function AnalysisStory() {
                   <img
                     key={src}
                     src={src}
-                    alt={i === step ? `${copy.steps[i].label}: illustrative map of an area west of Bhopal` : ""}
+                    alt={i === step ? `${copy.steps[i].label}: map of an area west of Bhopal` : ""}
                     aria-hidden={i === step ? undefined : "true"}
                     loading={i === 0 ? "eager" : "lazy"}
                     className={`absolute inset-0 h-full w-full object-cover ${reduce ? "" : "transition-opacity duration-700 ease-out"} ${
@@ -55,9 +55,6 @@ export default function AnalysisStory() {
                 ))}
                 <span className="absolute top-3 left-3 rounded bg-ink/85 px-2 py-1 font-mono text-[11px] font-medium text-white">
                   {String(step + 1).padStart(2, "0")} / {String(copy.steps.length).padStart(2, "0")} · {current.label}
-                </span>
-                <span className="absolute top-3 right-3 rounded bg-white/90 px-2 py-1 font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-ink">
-                  Illustrative
                 </span>
                 {current.legend.length > 0 && (
                   <ul className="absolute right-3 bottom-3 hidden flex-col gap-1.5 rounded-md bg-white/92 px-3 py-2.5 text-xs text-ink shadow-sm sm:flex">
@@ -76,7 +73,6 @@ export default function AnalysisStory() {
                   <span key={s.label} className={`h-1 flex-1 rounded-full transition-colors duration-500 ${i <= step ? "bg-brand" : "bg-line"}`} />
                 ))}
               </div>
-              <figcaption className="mt-3 hidden font-mono text-[11px] leading-relaxed text-muted lg:block">{copy.note}</figcaption>
             </figure>
           </div>
 
@@ -108,7 +104,6 @@ export default function AnalysisStory() {
             ))}
           </ol>
         </div>
-        <p className="mt-6 font-mono text-[11px] leading-relaxed text-muted lg:hidden">{copy.note}</p>
       </div>
     </section>
   );

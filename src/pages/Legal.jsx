@@ -20,7 +20,7 @@ export default function Legal({ doc }) {
         <p className="mt-6 text-base leading-relaxed text-graphite/80">{page.intro}</p>
 
         {page.sections.map((s) => (
-          <section key={s.heading} className="mt-10">
+          <section key={s.heading} id={s.heading.toLowerCase().replace(/[^a-z0-9]+/g, "-")} className="mt-10 scroll-mt-24">
             <h2 className="text-xl font-semibold text-ink">{s.heading}</h2>
             {s.paragraphs.map((p) => (
               <p key={p.slice(0, 40)} className="mt-3 text-base leading-relaxed text-graphite/80">
