@@ -53,24 +53,49 @@ function Button({ to, children, variant = "primary" }) {
 // replayed.
 function HeroMedia() {
   const reduce = useReducedMotion();
+  // film: playing (or waiting to be on screen) · blocked: autoplay refused · end: final frame held
   const [phase, setPhase] = useState(reduce ? "end" : "film");
   const videoRef = useRef(null);
+  const boxRef = useRef(null);
+  // On phones the film sits below the text, so it only plays while it is on screen.
+  const inView = useInView(boxRef, { amount: 0.5 });
+
+  // Restart from the beginning whenever the film is (re)started.
+  useEffect(() => {
+    const v = videoRef.current;
+    if (v && phase === "film") v.currentTime = 0;
+  }, [phase]);
 
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
-    if (phase !== "film") {
+    if (phase !== "film" || !inView) {
       v.pause();
       return;
     }
-    v.currentTime = 0;
+    // iOS only autoplays when the muted attribute itself is present.
+    v.muted = true;
+    v.setAttribute("muted", "");
     v.playbackRate = 1.25;
-    v.play().catch(() => setPhase("end"));
+    v.play().catch((err) => setPhase(err?.name === "NotAllowedError" ? "blocked" : "end"));
+  }, [phase, inView]);
+
+  // If autoplay was refused (e.g. iOS Low Power Mode), the first tap or touch anywhere starts it.
+  useEffect(() => {
+    if (phase !== "blocked") return;
+    const go = () => {
+      const v = videoRef.current;
+      if (!v) return;
+      v.playbackRate = 1.25;
+      v.play().then(() => setPhase("film")).catch(() => {});
+    };
+    window.addEventListener("pointerdown", go, { once: true });
+    return () => window.removeEventListener("pointerdown", go);
   }, [phase]);
 
   const film = phase === "film";
   return (
-    <div className="relative h-full w-full overflow-hidden bg-ink">
+    <div ref={boxRef} className="relative h-full w-full overflow-hidden bg-ink">
       {!reduce && (
         <video
           ref={videoRef}
@@ -87,7 +112,7 @@ function HeroMedia() {
       )}
       {/* Final frame, held after the film */}
       <AnimatePresence>
-        {!film && (
+        {phase === "end" && (
           <motion.img
             key="end"
             src={earthEnd}
@@ -110,10 +135,16 @@ function HeroMedia() {
       {!reduce && (
         <button
           type="button"
-          onClick={() => setPhase(film ? "end" : "film")}
+          onClick={() => {
+            if (phase === "blocked") {
+              const v = videoRef.current;
+              v.playbackRate = 1.25;
+              v.play().then(() => setPhase("film")).catch(() => setPhase("end"));
+            } else setPhase(film ? "end" : "film");
+          }}
           className={`absolute top-4 right-4 cursor-pointer rounded bg-ink/80 px-3 py-1.5 font-mono text-[11px] font-medium text-white hover:bg-ink ${focusRing} focus-visible:outline-brand-light`}
         >
-          {film ? "Skip intro" : "Replay intro"}
+          {phase === "blocked" ? "Play intro" : film ? "Skip intro" : "Replay intro"}
         </button>
       )}
     </div>
