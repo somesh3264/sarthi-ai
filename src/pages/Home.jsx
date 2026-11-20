@@ -77,7 +77,12 @@ function HeroMedia() {
     v.muted = true;
     v.setAttribute("muted", "");
     v.playbackRate = 1.25;
-    v.play().catch((err) => setPhase(err?.name === "NotAllowedError" ? "blocked" : "end"));
+    v.play().catch((err) => {
+      // AbortError only means a pause (e.g. scrolled away) interrupted a play that was still
+      // loading; it resumes when the film is back on screen.
+      if (err?.name === "AbortError") return;
+      setPhase(err?.name === "NotAllowedError" ? "blocked" : "end");
+    });
   }, [phase, inView]);
 
   // If autoplay was refused (e.g. iOS Low Power Mode), the first tap or touch anywhere starts it.
