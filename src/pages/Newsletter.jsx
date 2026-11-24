@@ -1,12 +1,36 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import PageHero from "../components/PageHero";
+import { MediaHero, MapSheet } from "../components/pagefx";
+import earthIndia from "../assets/photos/earth-india.jpg";
+import aiStreams from "../assets/photos/ai-data-streams.jpg";
+import droneMountains from "../assets/photos/drone-mountains.jpg";
+import topoMap from "../assets/photos/topo-map.jpg";
+import earthEnd from "../assets/photos/earth-to-bhopal-end.jpg";
+import satSundarbans from "../assets/satellite/sundarbans.jpg";
+import satDelhi from "../assets/satellite/delhi-yamuna.jpg";
+import landcover from "../assets/story/landcover.jpg";
 import Reveal from "../components/graphics/Reveal";
 import { DocumentChartIcon } from "../components/graphics/PointIcons";
 import { ButtonLink, SectionHeading, focusRing } from "../components/ui";
 import { newsletterHero, newsletterCategories, articles } from "../data/pages";
 import { formatDate } from "../data/format";
 import { ArrowRightIcon } from "../components/Icons";
+
+const HERO_SLIDES = [
+  { src: earthIndia, label: "The Indian subcontinent", note: "Geospatial intelligence", alt: "The Indian subcontinent from orbit" },
+  { src: aiStreams, label: "AI and data", note: "Technology updates", alt: "Data streams over a map" },
+  { src: satSundarbans, label: "Sundarbans", note: "Environment and disaster management", coords: "21.95° N · 89.18° E", alt: "Satellite image of the Sundarbans" },
+  { src: satDelhi, label: "Delhi and the Yamuna River", note: "Land and urban intelligence", coords: "28.61° N · 77.25° E", alt: "Satellite image of Delhi" },
+];
+
+const CATEGORY_IMAGES = {
+  gis: topoMap,
+  "ai-remote-sensing": landcover,
+  drone: droneMountains,
+  environment: satSundarbans,
+  urban: satDelhi,
+  updates: earthEnd,
+};
 
 const categoryName = Object.fromEntries(newsletterCategories.map((c) => [c.id, c.title]));
 
@@ -43,7 +67,10 @@ export default function Newsletter() {
 
   return (
     <>
-      <PageHero eyebrow="Sarthi Newsletter" title={newsletterHero.title} description={newsletterHero.body} />
+      <MediaHero eyebrow="Sarthi Newsletter" title={newsletterHero.title} body={newsletterHero.body} slides={HERO_SLIDES}>
+        <ButtonLink to="/newsletter#categories">See the topics</ButtonLink>
+        <ButtonLink to="/contact" variant="secondary">Get in touch</ButtonLink>
+      </MediaHero>
 
       <section id="latest" className="scroll-mt-6 py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -87,16 +114,22 @@ export default function Newsletter() {
         </div>
       </section>
 
-      <section id="categories" className="scroll-mt-6 bg-surface py-20">
+      <section id="categories" className="scroll-mt-24 bg-surface py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <Reveal>
             <SectionHeading index="02" label="Categories" title="What we write about" />
           </Reveal>
           <ul className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {newsletterCategories.map((c, i) => (
-              <Reveal as="li" key={c.id} delay={(i % 3) * 0.06} className="rounded-2xl bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-ink">{c.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-graphite/70">{c.themes}</p>
+              <Reveal as="li" key={c.id} delay={(i % 3) * 0.06} className="group overflow-hidden rounded-2xl bg-white ring-1 ring-ink/5 transition-shadow duration-300 hover:shadow-[0_20px_44px_-24px_rgba(15,51,36,0.45)]">
+                <div className="relative h-40 overflow-hidden bg-ink">
+                  <img src={CATEGORY_IMAGES[c.id]} alt="" loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <MapSheet grid={false} />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold text-ink">{c.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-graphite/70">{c.themes}</p>
+                </div>
               </Reveal>
             ))}
           </ul>
