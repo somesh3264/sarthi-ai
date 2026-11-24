@@ -1,4 +1,8 @@
-import ContourLines from "../components/graphics/ContourLines";
+import { MediaHero } from "../components/pagefx";
+import droneMountains from "../assets/photos/drone-mountains.jpg";
+import topoMap from "../assets/photos/topo-map.jpg";
+import satMajuli from "../assets/satellite/brahmaputra-majuli.jpg";
+import landcover from "../assets/story/landcover.jpg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Reveal from "../components/graphics/Reveal";
@@ -38,26 +42,19 @@ function CheckCircle({ className }) {
   );
 }
 
+const HERO_SLIDES = [
+  { src: droneMountains, label: "Field and drone surveys", note: "Work on the ground", alt: "Drone surveying mountainous terrain" },
+  { src: satMajuli, label: "Brahmaputra River at Majuli", note: "Remote sensing and GIS", coords: "26.95° N · 94.17° E", alt: "Satellite image of the Brahmaputra at Majuli" },
+  { src: landcover, label: "Land-cover classification", note: "AI on satellite imagery", alt: "Land-cover map classified from satellite imagery" },
+  { src: topoMap, label: "Mapping and analysis", note: "From data to decisions", alt: "Topographic map" },
+];
+
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-stone text-ink">
-      <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,var(--color-brand-tint),transparent_60%)]" />
-      <ContourLines opacity={0.35} />
-      <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand">Careers</p>
-        <h1 className="mt-3 max-w-2xl font-heading text-4xl font-light sm:text-[3.4rem] sm:leading-[1.08]">{careersHero.title}</h1>
-        <p className="mt-5 max-w-2xl text-base leading-relaxed text-graphite">{careersHero.body}</p>
-        <div className="mt-8 flex flex-wrap gap-4">
-          <ButtonLink to="#openings" variant="primary">Explore Opportunities</ButtonLink>
-          <Link
-            to="/careers/apply"
-            className={`inline-flex items-center rounded-full border border-ink/25 px-6 py-3 text-sm font-semibold text-ink transition-colors hover:border-ink hover:bg-white ${focusRing}`}
-          >
-            Submit Your Resume
-          </Link>
-        </div>
-      </div>
-    </section>
+    <MediaHero eyebrow="Careers" title={careersHero.title} body={careersHero.body} slides={HERO_SLIDES}>
+      <ButtonLink to="#openings" variant="primary">Explore Opportunities</ButtonLink>
+      <ButtonLink to="/careers/apply" variant="secondary">Submit Your Resume</ButtonLink>
+    </MediaHero>
   );
 }
 
